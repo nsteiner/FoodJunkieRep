@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Food Junkie</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="tips_fragment">Tips and Tricks Fragment</string>
+    <string name="profile_fragment">Profile Fragment</string>
+</resources>

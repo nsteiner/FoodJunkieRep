@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "588328628729",
+    "project_id": "food-junkie-database",
+    "storage_bucket": "food-junkie-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588328628729:android:402d9bb6371d1ce2aecd28",
+        "android_client_info": {
+          "package_name": "com.example.foodjunkie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588328628729-kcvcrl1jsg9gdn9d493l3vqsfv2d8o1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAw0sRIrd5jwxXZuVMhFBa3YQeoc5C1pQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588328628729-kcvcrl1jsg9gdn9d493l3vqsfv2d8o1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
