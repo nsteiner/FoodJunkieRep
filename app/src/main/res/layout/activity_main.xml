@@ -26,12 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navmenu"/>
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
-        android:id="@+id/listView"
-        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.foodjunkie;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import androidx.annotation.Nullable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,12 +65,45 @@ public class HomeFragment extends Fragment {
     }
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
+    }
+
+    ArrayList<Food> peopleList;
+    public void dataInitialize(){
+
+        peopleList = new ArrayList<>();
+
+        String i1 = "info 1";
+        String i2 = "info 2";
+
+        Food john = new Food("Chicken a la mode", "info 1", "Info 2", "drawable://" + R.drawable.food);
+        Food jerry = new Food("Applesauce", i1, i2, "drawable://" + R.drawable.food);
+        Food jason = new Food("Mac and Cheese", i1, i2, "drawable://" + R.drawable.food);
+        Food jimbo = new Food("Ceasar Salad", i1, i2, "drawable://" + R.drawable.food);
+        Food james = new Food("Pasta Carbinara", i1, "Male", "drawable://" + R.drawable.food);
+
+        peopleList.add(john);
+        peopleList.add(jerry);
+        peopleList.add(jason);
+        peopleList.add(jimbo);
+        peopleList.add(james);
+
+    }
+
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+
+        dataInitialize();
+
+
+        ListView mListView = ((ListView) view.findViewById(R.id.listView));
+
+        PersonListAdapter adapter = new PersonListAdapter(getContext(), R.layout.adapter_view_layout, peopleList);
+
+        mListView.setAdapter(adapter);
     }
 }
