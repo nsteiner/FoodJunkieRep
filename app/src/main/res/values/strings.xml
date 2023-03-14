@@ -5,4 +5,10 @@
     <string name="home_fragment">Home Fragment</string>
     <string name="tips_fragment">Tips and Tricks Fragment</string>
     <string name="profile_fragment">Profile Fragment</string>
+    <string name="recipe_name">Recipe Name</string>
+    <string name="ingredients_input">Ingredients:</string>
+    <string name="new_recipe">New Recipe</string>
+    <string name="add_Recipe">Add Recipe</string>
+    <string name="add_Ingredient">+</string>
+    <string name="add_instruction">+</string>
 </resources>

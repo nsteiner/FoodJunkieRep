@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextView eRegister;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         eLogin = findViewById(R.id.btnLogin);
         eAttemptsInfo = findViewById(R.id.tvAttemptsInfo);
         eRegister = findViewById(R.id.tvRegister);
+
 
         eRegister.setOnClickListener(new View.OnClickListener() {
             @Override

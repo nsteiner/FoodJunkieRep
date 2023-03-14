@@ -4,14 +4,11 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import android.content.Context;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -32,6 +29,8 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    Button btnNewRecipe;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -102,8 +101,9 @@ public class HomeFragment extends Fragment {
 
         ListView mListView = ((ListView) view.findViewById(R.id.listView));
 
-        PersonListAdapter adapter = new PersonListAdapter(getContext(), R.layout.adapter_view_layout, peopleList);
+        RecipeListAdapter adapter = new RecipeListAdapter(getContext(), R.layout.adapter_view_layout, peopleList);
 
         mListView.setAdapter(adapter);
     }
+
 }

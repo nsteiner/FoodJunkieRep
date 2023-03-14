@@ -22,11 +22,11 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.util.ArrayList;
 
-public class PersonListAdapter extends ArrayAdapter<Food> {
-    private static final String TAG = "Person List Adapter";
+public class RecipeListAdapter extends ArrayAdapter<Food> {
+    private static final String TAG = "Recipe List Adapter";
     private Context mContext;
     private int mResource;
-    private int lastPostion = -1;
+    private int lastPosition = -1;
 
     ImageLoader imageLoader;
 
@@ -41,7 +41,7 @@ public class PersonListAdapter extends ArrayAdapter<Food> {
     }
 
 
-    public PersonListAdapter(Context context, int resource, ArrayList<Food> objects) {
+    public RecipeListAdapter(Context context, int resource, ArrayList<Food> objects) {
         super(context, resource, objects);
         this.mContext = context;
         mResource = resource;
@@ -97,9 +97,9 @@ public class PersonListAdapter extends ArrayAdapter<Food> {
         //declare animation
 
         Animation animation = AnimationUtils.loadAnimation(mContext,
-                (position > lastPostion) ? R.anim.load_down_anim : R.anim.load_up_anim);
+                (position > lastPosition) ? R.anim.load_down_anim : R.anim.load_up_anim);
         result.startAnimation(animation);
-        lastPostion = position;
+        lastPosition = position;
 
         imageLoader.displayImage(imgURL, holder.img, options);
 
