@@ -63,7 +63,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     //pulling information from the database
-/*
+
     public List<String> getAll() {
         List<String> returnList = new ArrayList<>();
 
@@ -83,8 +83,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 String time = cursor.getString(1);
                 String instructions = cursor.getString(2);
 
-                RecipeModel newRecipe = new RecipeModel(name, time, instructions);
-                returnList.add(newRecipe.getName();
+                //RecipeModel newRecipe = new RecipeModel(name, time, instructions);
+                //returnList.add(newRecipe.getRecipeName());
 
             } while (cursor.moveToNext());
 
@@ -97,9 +97,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
- */
+
 
     public void generateRecipes(DataBaseHelper dataBaseHelper) {
+        //structure for default recipes
         List<String> applePieIng = new ArrayList<String>(30);
         applePieIng.add("3 Tablespoons Granulated Sugar");
         applePieIng.add("8-10 Thinly Sliced Medium Apples");
@@ -119,6 +120,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             applePieIns.add("");
         }
         RecipeModel applePie = new RecipeModel("Apple Pie", applePieIng, applePieIns);
+
+
+
+
+
+
 
 
         String queryString = "SELECT * FROM " + RECIPE_TABLE;
