@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link TandTFragment#newInstance} factory method to
@@ -82,8 +84,10 @@ public class TandTFragment extends Fragment implements View.OnClickListener {
         switch(v.getId()) {
             case R.id.btn_example:
                 //(getActivity(), [name of activity to be switched to].class);
-                Intent intent = new Intent(getActivity(), MyRecipeDisplay.class);
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
+                break;
             case R.id.btn_example2:
 
         }

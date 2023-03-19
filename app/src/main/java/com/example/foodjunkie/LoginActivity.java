@@ -1,91 +1,98 @@
-package com.example.foodjunkie;
 
+package com.example.foodjunkie;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class LoginActivity extends AppCompatActivity {
+    TextInputEditText editTextEmail, editTextPassword;
+    Button buttonLogin;
+    FirebaseAuth mAuth;
+    ProgressBar progressBar;
+    TextView textView;
 
-    private EditText eName;
-    private EditText ePassword;
-    private Button eLogin;
-    private TextView eAttemptsInfo;
-    boolean isValid = false;
-
-    private int counter = 5;
-
-    private TextView eRegister;
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        eName = findViewById(R.id.etName);
-        ePassword = findViewById(R.id.etPassword);
-        eLogin = findViewById(R.id.btnLogin);
-        eAttemptsInfo = findViewById(R.id.tvAttemptsInfo);
-        eRegister = findViewById(R.id.tvRegister);
-
-
-        eRegister.setOnClickListener(new View.OnClickListener() {
+        mAuth = FirebaseAuth.getInstance();
+        editTextEmail = findViewById(R.id.email);
+        editTextPassword = findViewById(R.id.password);
+        buttonLogin = findViewById(R.id.btn_login);
+        progressBar = findViewById(R.id.progressBar);
+        textView = findViewById(R.id.registerNow);
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
-        eLogin.setOnClickListener(new View.OnClickListener() {
+
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
+                String email, password;
+                email = String.valueOf(editTextEmail.getText());
+                password = String.valueOf(editTextPassword.getText());
 
-                String inputName = eName.getText().toString();
-                String inputPassword = ePassword.getText().toString();
-
-                if(inputName.isEmpty() || inputPassword.isEmpty()){
-                    Toast.makeText(LoginActivity.this, "Please ensure user and password is entered", Toast.LENGTH_SHORT).show();
-                } else{
-
-                    isValid = validate(inputName, inputPassword);
-
-                    if(!isValid){
-                        counter--;
-                        Toast.makeText(LoginActivity.this, "The username/password entered is incorrect", Toast.LENGTH_SHORT).show();
-                        eAttemptsInfo.setText("Number of Attempts remaining: "  + counter);
-
-                        if(counter == 0){
-                            eLogin.setEnabled(false);
-                        }
-                    }else{
-                        Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-
-                        //This switches the screen to homepage can be edited to open first screen of app.
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        //startActivityFromFragment(HomeFragment, intent);
-
-                    }
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(LoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(LoginActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressBar.setVisibility(View.GONE);
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
             }
         });
-
-
-    }
-
-
-    private boolean validate(String name, String password) {
-
-        if (RegisterActivity.credentials != null) {
-            if (name.equals(RegisterActivity.credentials.getUsername()) && password.equals(RegisterActivity.credentials.getPassword())) {
-                return true;
-            }
-        }
-        return false;
     }
 }

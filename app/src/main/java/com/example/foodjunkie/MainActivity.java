@@ -8,12 +8,18 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.foodjunkie.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+
+    FirebaseAuth auth;
+    FirebaseUser user;
 
     private static final String TAG = "MainActivity";
 
@@ -29,6 +35,17 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new MyRecipesFragment());
+
+        //firebase
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        // gets current user
+        if (user == null){
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        // can use else statment to display profile info
 
         //set buttons, listViews, etc.
         btnNewRecipe = findViewById(R.id.btn_newRecipe);
