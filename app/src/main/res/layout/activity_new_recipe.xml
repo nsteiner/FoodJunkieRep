@@ -9,14 +9,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/scrollView4"
-        android:layout_width="410dp"
-        android:layout_height="512dp"
+        android:layout_width="415dp"
+        android:layout_height="733dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/ingredientsLabel"
@@ -25,10 +25,10 @@
             android:text="@string/ingredients_input"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.097"
+            app:layout_constraintHorizontal_bias="0.099"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recipeName"
-            app:layout_constraintVertical_bias="0.152" />
+            app:layout_constraintVertical_bias="0.689" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -48,10 +48,10 @@
             android:text="@string/recipe_name"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.099"
+            app:layout_constraintHorizontal_bias="0.096"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.118" />
+            app:layout_constraintVertical_bias="0.421" />
 
         <TextView
             android:id="@+id/instructionsLabel"
@@ -73,11 +73,10 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.843"
             app:layout_constraintStart_toEndOf="@+id/recipeName"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.075"
-            />
+            app:layout_constraintVertical_bias="0.413" />
 
         <EditText
             android:id="@+id/ingredientInput"
@@ -90,13 +89,13 @@
             android:maxLines="5"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.345"
+            app:layout_constraintHorizontal_bias="0.317"
             app:layout_constraintStart_toEndOf="@+id/ingredientsLabel"
             app:layout_constraintTop_toBottomOf="@+id/recipeInput"
-            app:layout_constraintVertical_bias="0.063" />
+            app:layout_constraintVertical_bias="0.624" />
 
         <EditText
-            android:id="@+id/instructionsInput"
+            android:id="@+id/instructionInput"
             android:layout_width="208dp"
             android:layout_height="47dp"
             android:ems="10"
@@ -112,7 +111,7 @@
             app:layout_constraintVertical_bias="0.157" />
 
         <Button
-            android:id="@+id/btnAddRecipe"
+            android:id="@+id/btn_addRecipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_Recipe"
@@ -124,24 +123,66 @@
             app:layout_constraintVertical_bias="0.814" />
 
         <Button
-            android:id="@+id/btnAddIngredient"
+            android:id="@+id/btn_addIngredient"
             android:layout_width="45dp"
             android:layout_height="50dp"
+            android:layout_marginTop="52dp"
             android:text="@string/add_Ingredient"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.461"
             app:layout_constraintStart_toEndOf="@+id/ingredientInput"
             app:layout_constraintTop_toBottomOf="@+id/recipeInput" />
 
         <Button
-            android:id="@+id/btnAddInstruction"
+            android:id="@+id/btn_addInstruction"
             android:layout_width="42dp"
             android:layout_height="46dp"
-            android:layout_marginBottom="176dp"
+            android:layout_marginBottom="364dp"
             android:text="@string/add_instruction"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.388"
-            app:layout_constraintStart_toEndOf="@+id/instructionsInput" />
+            app:layout_constraintHorizontal_bias="0.545"
+            app:layout_constraintStart_toEndOf="@+id/instructionInput" />
+
+        <RadioGroup
+            android:id="@+id/rb_categories"
+            android:layout_width="239dp"
+            android:layout_height="237dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_addRecipe"
+            app:layout_constraintTop_toBottomOf="@+id/instructionInput">
+
+            <RadioButton
+                android:id="@+id/rb_breakfast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Breakfast" />
+
+            <RadioButton
+                android:id="@+id/rb_lunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Lunch" />
+
+            <RadioButton
+                android:id="@+id/rb_dinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Dinner" />
+
+            <RadioButton
+                android:id="@+id/rb_snack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Snack" />
+
+            <RadioButton
+                android:id="@+id/rb_dessert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Dessert" />
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText eName;
@@ -23,6 +25,9 @@ public class LoginActivity extends AppCompatActivity {
     private TextView eRegister;
 
 
+    DataBaseHelper dataBaseHelper;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,14 @@ public class LoginActivity extends AppCompatActivity {
         eLogin = findViewById(R.id.btnLogin);
         eAttemptsInfo = findViewById(R.id.tvAttemptsInfo);
         eRegister = findViewById(R.id.tvRegister);
+
+        //database code
+        dataBaseHelper = new DataBaseHelper(LoginActivity.this);
+        try {
+            dataBaseHelper.createDataBase();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
         eRegister.setOnClickListener(new View.OnClickListener() {

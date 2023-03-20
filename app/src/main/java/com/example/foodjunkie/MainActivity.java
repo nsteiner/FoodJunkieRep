@@ -13,13 +13,14 @@ import android.widget.Button;
 
 import com.example.foodjunkie.databinding.ActivityMainBinding;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
     ActivityMainBinding binding;
 
-    DataBaseHelper dataBaseHelper;
 
     Button btnNewRecipe, btn_example;
 
@@ -57,9 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //database code
-        dataBaseHelper = new DataBaseHelper(MainActivity.this);
-        dataBaseHelper.generateRecipes(dataBaseHelper);
+
 
 
         //switch from "new recipe" button to newRecipe screen

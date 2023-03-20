@@ -11,4 +11,9 @@
     <string name="add_Recipe">Add Recipe</string>
     <string name="add_Ingredient">+</string>
     <string name="add_instruction">+</string>
+    <string name="Breakfast">Breakfast</string>
+    <string name="Lunch">Lunch</string>
+    <string name="Dinner">Dinner</string>
+    <string name="Snack">Snack</string>
+    <string name="Dessert">Dessert</string>
 </resources>

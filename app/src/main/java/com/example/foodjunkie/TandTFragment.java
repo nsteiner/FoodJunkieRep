@@ -82,7 +82,7 @@ public class TandTFragment extends Fragment implements View.OnClickListener {
         switch(v.getId()) {
             case R.id.btn_example:
                 //(getActivity(), [name of activity to be switched to].class);
-                Intent intent = new Intent(getActivity(), MyRecipeDisplay.class);
+                Intent intent = new Intent(getActivity(), NewRecipe.class);
                 startActivity(intent);
             case R.id.btn_example2:
 

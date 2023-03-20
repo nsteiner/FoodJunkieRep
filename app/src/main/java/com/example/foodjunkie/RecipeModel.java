@@ -5,8 +5,8 @@ import java.util.List;
 
 public class RecipeModel {
     private String recipeName;
-    private List<String> instructions;
-    private List<String> ingredients;
+    private List<String> instructions = new ArrayList<>(30);
+    private List<String> ingredients = new ArrayList<>(30);
 
     public RecipeModel() {
     }
