@@ -1,5 +1,6 @@
 package com.example.foodjunkie;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,12 +15,14 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import androidx.annotation.Nullable;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MyRecipesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyRecipesFragment extends Fragment {
+public class MyRecipesFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,6 +34,8 @@ public class MyRecipesFragment extends Fragment {
     private String mParam2;
 
     Button btnNewRecipe;
+
+    Button Logout;
 
     public MyRecipesFragment() {
         // Required empty public constructor
@@ -63,47 +68,39 @@ public class MyRecipesFragment extends Fragment {
         }
     }
 
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
+        Logout = view.findViewById(R.id.LogOut);
+        Logout.setOnClickListener(this);
+
+    return view;
     }
 
-    ArrayList<Food> peopleList;
-    public void dataInitialize(){
+    public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.LogOut:
+                //(getActivity(), [name of activity to be switched to].class);
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_example2:
 
-        peopleList = new ArrayList<>();
-
-        String i1 = "info 1";
-        String i2 = "info 2";
-
-        Food john = new Food("Chicken a la mode", "info 1", "Info 2", "drawable://" + R.drawable.food);
-        Food jerry = new Food("Applesauce", i1, i2, "drawable://" + R.drawable.food);
-        Food jason = new Food("Mac and Cheese", i1, i2, "drawable://" + R.drawable.food);
-        Food jimbo = new Food("Ceasar Salad", i1, i2, "drawable://" + R.drawable.food);
-        Food james = new Food("Pasta Carbinara", i1, "Male", "drawable://" + R.drawable.food);
-
-        peopleList.add(john);
-        peopleList.add(jerry);
-        peopleList.add(jason);
-        peopleList.add(jimbo);
-        peopleList.add(james);
-
+        }
     }
+
+
+
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
-        dataInitialize();
 
-
-        ListView mListView = ((ListView) view.findViewById(R.id.listView));
-
-        RecipeListAdapter adapter = new RecipeListAdapter(getContext(), R.layout.adapter_view_layout, peopleList);
-
-        mListView.setAdapter(adapter);
     }
 
 }

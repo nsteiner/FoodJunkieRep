@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     DataBaseHelper dataBaseHelper;
 
-    Button btnNewRecipe, btn_example, btn_signout;
+    Button btnNewRecipe, LogOut, btn_signout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
         // can use else statment to display profile info
 
         //set buttons, listViews, etc.
-        btnNewRecipe = findViewById(R.id.btn_newRecipe);
-        btn_signout = findViewById(R.id.Signout);
+      //  btnNewRecipe = findViewById(R.id.btn_newRecipe);
+       // btn_signout = findViewById(R.id.Signout);
 
-        btn_example = findViewById(R.id.btn_example);
+        LogOut = findViewById(R.id.LogOut);
 
         //changes the fragment when a button on the nav bar is clicked
         binding.bottomNav.setOnItemSelectedListener(item -> {
@@ -59,15 +59,15 @@ public class MainActivity extends AppCompatActivity {
                 //will put whatever you want to show up in these cases
                 case R.id.home:
                     replaceFragment(new MyRecipesFragment());
-                    btnNewRecipe.setVisibility(View.VISIBLE);
+              //   LogOut.setVisibility(View.VISIBLE);
                     break;
                 case R.id.profile:
                     replaceFragment(new DefaultRecipesFragment());
-                    btnNewRecipe.setVisibility(View.GONE);
+              //      LogOut.setVisibility(View.GONE);
                     break;
                 case R.id.tipsTricks:
                     replaceFragment(new TandTFragment());
-                    btnNewRecipe.setVisibility(View.GONE);
+             //     LogOut.setVisibility(View.GONE);
                     break;
             }
 
@@ -81,21 +81,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         //switch from "new recipe" button to newRecipe screen
-        btnNewRecipe.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, NewRecipe.class);
-                startActivity(intent);
-            }
-                                        });
 
-        /*btn_example.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, RecipeDisplay.class);
-                startActivity(intent);
-            }
-        });
 
-         */
+        //   LogOut.setOnClickListener(new View.OnClickListener() {
+   //         public void onClick(View view){
+         //       FirebaseAuth.getInstance().signOut();
+            //    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+           //     startActivity(intent);
+
+     //   });
+
+
 
 
     }

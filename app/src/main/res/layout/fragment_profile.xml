@@ -1,20 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/frameLayout"
+
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+
     tools:context=".DefaultRecipesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/profile_fragment" />
+
+        android:id="@+id/tv_defaultRecipes"
+
+        android:layout_width="124dp"
+
+        android:layout_height="64dp"
+
+        android:text="Default Recipes"
+
+        android:textSize="24sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.498"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.074" />
+
+
 
     <Button
-        android:id="@+id/Signout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign out" />
 
-</FrameLayout>
+        android:id="@+id/btn_defaultBreakfast"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:text="Breakfast"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.498"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_defaultRecipes"
+
+        app:layout_constraintVertical_bias="0.098" />
+
+
+
+    <Button
+
+        android:id="@+id/btn_defaultLunch"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:text="Lunch"
+
+        app:layout_constraintBottom_toTopOf="@+id/btn_defaultDinner"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.504"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/btn_defaultBreakfast"
+
+        app:layout_constraintVertical_bias="0.55" />
+
+
+
+    <Button
+
+        android:id="@+id/btn_defaultDinner"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:text="Dinner"
+
+        app:layout_constraintBottom_toTopOf="@+id/btn_defaultSnacks"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.503"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/btn_defaultBreakfast"
+
+        app:layout_constraintVertical_bias="0.713" />
+
+
+
+    <Button
+
+        android:id="@+id/btn_defaultSnacks"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:text="Snacks"
+
+        app:layout_constraintBottom_toTopOf="@+id/btn_defaultDessert"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.498"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/btn_defaultBreakfast"
+
+        app:layout_constraintVertical_bias="0.82" />
+
+
+
+    <Button
+
+        android:id="@+id/btn_defaultDessert"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:text="Dessert"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.498"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/btn_defaultBreakfast"
+
+        app:layout_constraintVertical_bias="0.762" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

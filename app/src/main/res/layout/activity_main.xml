@@ -13,15 +13,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/btn_newRecipe"
-            android:layout_width="133dp"
-            android:layout_height="wrap_content"
-            android:text="@string/new_recipe" />
-
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
