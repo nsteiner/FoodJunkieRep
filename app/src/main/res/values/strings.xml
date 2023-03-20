@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Food Junkie</string>
     <!-- TODO: Remove or change this placeholder text -->
+
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_fragment">Home Fragment</string>
     <string name="tips_fragment">Tips and Tricks Fragment</string>
@@ -11,4 +14,135 @@
     <string name="add_Recipe">Add Recipe</string>
     <string name="add_Ingredient">+</string>
     <string name="add_instruction">+</string>
+    <string name="title_activity_safety_tips">SafetyTips</string>
+    <string name="button_Safety">Safety</string>
+    <string name="button_Sub">Substitutions</string>
+    <string name="button_Metric">Metric</string>
+    <string name="button_TspToTbs">Teaspoon to Tablespoon</string>
+    <string name="button_TbsToTsp">Tablespoon to Teaspoon</string>
+    <string name="button_CupToOz">Cups to Ounces</string>
+    <string name="button_OzToCup">Ounces to Cups</string>
+    <string name="button_ButToTbs">Stick of Butter to Tablespoon</string>
+    <string name="button_ButToCup">Stick of Butter to Cup</string>
+    <string name="unit_input">Enter number.</string>
+    <string name="unit_Output">result</string>
+    <string name="button_Home">Home</string>
+    <string name="Metric_Act">Metric Activity</string>
+
+    <string name="large_text">
+Storage: \n\n
+" - Always refrigerate perishable food \n"
+" within 2 hours (1 hour when the \n"
+" temperature is above 90 °F). \n"
+" - Cook or freeze fresh poultry, fish, \n"
+" ground meats, and variety meats \n"
+" within 2 days; other beef, veal, \n"
+" lamb, or pork, within 3 to 5 days \n\n"
+Thawing: \n\n
+" - Refrigerator—The refrigerator \n"
+" allows slow, safe thawing. Make \n"
+" sure thawing meat and \n"
+" poultry juices do not drip onto \n"
+" other food. \n"
+" - Cold Water—Place food in a leak- \n"
+" proof plastic bag for faster \n"
+" thawing. Submerge in cold tap \n"
+" water. Change the water every \n"
+" 30 minutes. Cook immediately \n"
+" after thawing. \n"
+" - Microwave—Cook meat and \n"
+" poultry immediately after \n"
+" microwave thawing.\n\n"
+Preparation: \n\n
+" - Always wash hands with soap \n"
+" and warm water for 20 seconds \n"
+" before and after handling food. \n"
+" - Do not cross-contaminate. Keep \n"
+" raw meat, poultry, fish, and their \n"
+" juices away from other food. \n"
+" - After cutting raw meats, wash \n"
+" cutting board, knife, and counter \n"
+" tops with hot, soapy water.\n"
+" - Marinate meat and poultry in a \n"
+" covered dish in the refrigerator. \n"
+" - Sanitize cutting boards by using a \n"
+" solution of 1 tablespoon of \n"
+" unscented, liquid chlorine bleach \n"
+" in 1 gallon of water.\n\n"
+Cooking Temperature: \n\n
+" - Cook all raw beef, pork, lamb and \n"
+" veal steaks, chops, and roasts to \n"
+" a minimum internal temperature \n"
+" of 145 °F as measured with a \n"
+" food thermometer before \n"
+
+" removing meat from the heat \n"
+" source.\n"
+" - For safety and quality, allow meat \n"
+" to rest for at least three minutes \n"
+" before carving or consuming.\n"
+" - Ground meats: Cook all raw \n"
+" ground beef, pork, lamb, and \n"
+" veal to an internal temperature of \n"
+" 160 °F as measured with a food \n"
+" thermometer.\n"
+" - Poultry: Cook all poultry to an \n"
+" internal temperature of 165 °F as \n"
+" measured with a food \n"
+" thermometer.\n"
+</string>
+    <string name="large_text2">
+Ingredient Substitutions: \n\n
+Meat Alternatives: \n
+" - Pea Protein \n"
+" - Tempeh \n"
+" - Seitan \n"
+" - Jackfruit \n"
+" - Tofu \n"
+" - Lentils \n"
+" - Black Beans \n"
+" - Chickpeas \n"
+" - Plant-based meat products\n\n"
+Milk Alternatives: \n
+" - Almond milk, Soy milk, Oat milk, \n"
+" Coconut milk \n\n"
+Butter Alternatives: \n
+" - Coconut oil/Olive oil: 1:1 (Olive oil \n"
+" in cooking, not baking.)\n"
+" - Avocados \n"
+" - Bananas (in baking) \n\n"
+Cheese Alternatives: \n
+" - Add nutritional yeast to recipes \n"
+" that need a cheesy flavor. \n\n"
+" • Soft cheese: \n"
+" - Soak cashew nuts overnight and \n"
+" blend them with a bit of nut milk \n"
+" and lemon juice as a cream \n"
+" cheese alternative. \n"
+" - Blend soft silken tofu with salt and \n"
+
+" spices as a nacho cheese \n"
+" alternative. \n"
+" - Thin slices of smoked tofu can \n"
+" replace provolone cheese for \n"
+" sandwiches. \n\n"
+" • Hard cheese: \n"
+" - Crumbling hard tofu and baking it \n"
+" with salt and truffle oil. \n\n"
+"Alternative for one egg: \n"
+" - 1/4 cup of applesauce \n"
+" - 1/4 cup of banana, pumpkin, or \n"
+" avocado puree \n"
+" - 1 tablespoon of ground chia \n"
+" seeds with 3 tablespoons of \n"
+" water \n\n"
+Baking soda / powder alternatives: \n
+" - 1 teaspoon of baking powder - 1⁄2 \n"
+" teaspoon of cream of tartar \n"
+" and 1⁄4 teaspoon baking soda \n"
+" - 1 teaspoon baking soda - 3 \n"
+" teaspoons baking powder \n\n"
+</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_sub_tips">SubTips</string>
 </resources>

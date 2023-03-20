@@ -62,6 +62,7 @@ Button btn_defaultBreakfast, btn_defaultLunch, btn_defaultDinner, btn_defaultSna
         btn_defaultBreakfast.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                intent.putExtra("title","Breakfast");
                 startActivity(intent);
             }
         });

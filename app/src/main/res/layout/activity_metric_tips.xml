@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MetricTips">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Metric_Act"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="-54dp" />
+        <Button
+            android:id="@+id/btn_TspToTbs"
+            android:layout_width="252dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="456dp"
+            android:text="@string/button_TspToTbs"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btn_TbsToTsp"
+            android:layout_width="252dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="388dp"
+            android:text="@string/button_TbsToTsp"
+            android:textSize="16sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/btn_CupToOz"
+            android:layout_width="252dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="320dp"
+            android:text="@string/button_CupToOz"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/btn_OzToCup"
+            android:layout_width="252dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="252dp"
+            android:text="@string/button_OzToCup"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/btn_ButToTbs"
+            android:layout_width="252dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="184dp"
+            android:text="@string/button_ButToTbs"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/btn_ButToCup"
+            android:layout_width="252dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="116dp"
+            android:text="@string/button_ButToCup"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/unit_Output"
+            android:layout_width="170dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="532dp"
+            android:text="@string/unit_Output"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:inputType="numberDecimal">
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/unit_input"
+            android:layout_width="179dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="612dp"
+            android:hint="@string/unit_input"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
