@@ -35,7 +35,9 @@ public class MyRecipesFragment extends Fragment implements View.OnClickListener 
 
     Button btnNewRecipe;
 
-    Button Logout;
+    Button Logout, newRecipe;
+
+
 
     public MyRecipesFragment() {
         // Required empty public constructor
@@ -77,6 +79,8 @@ public class MyRecipesFragment extends Fragment implements View.OnClickListener 
         view = inflater.inflate(R.layout.fragment_home, container, false);
         Logout = view.findViewById(R.id.LogOut);
         Logout.setOnClickListener(this);
+        newRecipe = view.findViewById(R.id.btn_newRecipe);
+        newRecipe.setOnClickListener(this);
 
     return view;
     }
@@ -89,6 +93,11 @@ public class MyRecipesFragment extends Fragment implements View.OnClickListener 
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btn_newRecipe:
+                Intent intent1 = new Intent(getActivity(), NewRecipe.class);
+                startActivity(intent1);
+                break;
+
 
         }
     }

@@ -28,6 +28,11 @@
     <string name="unit_Output">result</string>
     <string name="button_Home">Home</string>
     <string name="Metric_Act">Metric Activity</string>
+    <string name="Breakfast">Breakfast</string>
+    <string name="Lunch">Lunch</string>
+    <string name="Dinner">Dinner</string>
+    <string name="Snack">Snack</string>
+    <string name="Dessert">Dessert</string>
 
     <string name="large_text">
 Storage: \n\n

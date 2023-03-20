@@ -16,6 +16,8 @@ import com.example.foodjunkie.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
@@ -31,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dataBaseHelper = new DataBaseHelper(MainActivity.this);
+        try {
+            dataBaseHelper.createDataBase();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -76,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //database code
-        dataBaseHelper = new DataBaseHelper(MainActivity.this);
-        dataBaseHelper.generateRecipes(dataBaseHelper);
+
+
 
 
         //switch from "new recipe" button to newRecipe screen
