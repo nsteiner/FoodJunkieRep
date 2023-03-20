@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     DataBaseHelper dataBaseHelper;
 
-    Button btnNewRecipe, btn_example;
+    Button btnNewRecipe, btn_example, btn_signout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         //set buttons, listViews, etc.
         btnNewRecipe = findViewById(R.id.btn_newRecipe);
+        btn_signout = findViewById(R.id.Signout);
 
         btn_example = findViewById(R.id.btn_example);
 

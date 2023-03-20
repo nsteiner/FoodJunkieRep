@@ -10,12 +10,12 @@
     tools:context=".RegisterActivity">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="321dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="register"
         android:textSize="25sp"
-        android:layout_marginBottom="20dp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email"
+            android:id="@+id/ForgotEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="email" />
@@ -37,7 +37,8 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password" />
+            android:hint="password"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
@@ -48,9 +49,16 @@
 
     <Button
         android:id="@+id/btn_register"
-        android:text="register"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="register" />
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+        android:text="Show Password"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/loginNow"
