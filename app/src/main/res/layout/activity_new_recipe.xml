@@ -18,6 +18,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <CheckBox
+            android:id="@+id/cb_dairyFree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/dairy_free"
+            app:layout_constraintBottom_toTopOf="@+id/cb_vegan"
+            app:layout_constraintEnd_toStartOf="@+id/rb_categories"
+            app:layout_constraintHorizontal_bias="0.312"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instructionsLabel"
+            app:layout_constraintVertical_bias="0.966" />
+
+        <CheckBox
+            android:id="@+id/cb_vegan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vegan"
+            app:layout_constraintBottom_toTopOf="@+id/btn_addRecipe"
+            app:layout_constraintEnd_toStartOf="@+id/rb_categories"
+            app:layout_constraintHorizontal_bias="0.218"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instructionsLabel"
+            app:layout_constraintVertical_bias="0.915" />
+
         <TextView
             android:id="@+id/ingredientsLabel"
             android:layout_width="82dp"
@@ -183,6 +208,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Dessert" />
         </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/cb_glutenFree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gluten_free"
+            app:layout_constraintBottom_toTopOf="@+id/cb_dairyFree"
+            app:layout_constraintEnd_toStartOf="@+id/rb_categories"
+            app:layout_constraintHorizontal_bias="0.345"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instructionsLabel"
+            app:layout_constraintVertical_bias="0.859" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

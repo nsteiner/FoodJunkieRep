@@ -121,9 +121,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(RECIPE_NAME, recipeModel.getRecipeName());
         cv.put("RECIPE_ING1", recipeModel.getIngredients(0)); cv.put("RECIPE_ING2", recipeModel.getIngredients(1)); cv.put("RECIPE_ING3", recipeModel.getIngredients(2)); cv.put("RECIPE_ING4", recipeModel.getIngredients(3));cv.put("RECIPE_ING5", recipeModel.getIngredients(4)); cv.put("RECIPE_ING6", recipeModel.getIngredients(5)); cv.put("RECIPE_ING7", recipeModel.getIngredients(6)); cv.put("RECIPE_ING8", recipeModel.getIngredients(7)); cv.put("RECIPE_ING9", recipeModel.getIngredients(8)); cv.put("RECIPE_ING10", recipeModel.getIngredients(9)); cv.put("RECIPE_ING11", recipeModel.getIngredients(10)); cv.put("RECIPE_ING12", recipeModel.getIngredients(11)); cv.put("RECIPE_ING13", recipeModel.getIngredients(12)); cv.put("RECIPE_ING14", recipeModel.getIngredients(13)); cv.put("RECIPE_ING15", recipeModel.getIngredients(14));cv.put("RECIPE_ING16", recipeModel.getIngredients(15)); cv.put("RECIPE_ING17", recipeModel.getIngredients(16)); cv.put("RECIPE_ING18", recipeModel.getIngredients(17)); cv.put("RECIPE_ING19", recipeModel.getIngredients(18)); cv.put("RECIPE_ING20", recipeModel.getIngredients(19)); cv.put("RECIPE_ING21", recipeModel.getIngredients(20)); cv.put("RECIPE_ING22", recipeModel.getIngredients(21)); cv.put("RECIPE_ING23", recipeModel.getIngredients(22)); cv.put("RECIPE_ING24", recipeModel.getIngredients(23));cv.put("RECIPE_ING25", recipeModel.getIngredients(24)); cv.put("RECIPE_ING26", recipeModel.getIngredients(25)); cv.put("RECIPE_ING27", recipeModel.getIngredients(26)); cv.put("RECIPE_ING28", recipeModel.getIngredients(27)); cv.put("RECIPE_ING29", recipeModel.getIngredients(28)); cv.put("RECIPE_ING30", recipeModel.getIngredients(29));
         cv.put("RECIPE_INS1", recipeModel.getInstructions(0)); cv.put("RECIPE_INS2", recipeModel.getInstructions(1)); cv.put("RECIPE_INS3", recipeModel.getInstructions(2)); cv.put("RECIPE_INS4", recipeModel.getInstructions(3));cv.put("RECIPE_INS5", recipeModel.getInstructions(4)); cv.put("RECIPE_INS6", recipeModel.getInstructions(5)); cv.put("RECIPE_INS7", recipeModel.getInstructions(6)); cv.put("RECIPE_INS8", recipeModel.getInstructions(7)); cv.put("RECIPE_INS9", recipeModel.getInstructions(8)); cv.put("RECIPE_INS10", recipeModel.getInstructions(9)); cv.put("RECIPE_INS11", recipeModel.getInstructions(10)); cv.put("RECIPE_INS12", recipeModel.getInstructions(11)); cv.put("RECIPE_INS13", recipeModel.getInstructions(12)); cv.put("RECIPE_INS14", recipeModel.getInstructions(13)); cv.put("RECIPE_INS15", recipeModel.getInstructions(14));cv.put("RECIPE_INS16", recipeModel.getInstructions(15)); cv.put("RECIPE_INS17", recipeModel.getInstructions(16)); cv.put("RECIPE_INS18", recipeModel.getInstructions(17)); cv.put("RECIPE_INS19", recipeModel.getInstructions(18)); cv.put("RECIPE_INS20", recipeModel.getInstructions(19)); cv.put("RECIPE_INS21", recipeModel.getInstructions(20)); cv.put("RECIPE_INS22", recipeModel.getInstructions(21)); cv.put("RECIPE_INS23", recipeModel.getInstructions(22)); cv.put("RECIPE_INS24", recipeModel.getInstructions(23));cv.put("RECIPE_INS25", recipeModel.getInstructions(24)); cv.put("RECIPE_INS26", recipeModel.getInstructions(25)); cv.put("RECIPE_INS27", recipeModel.getInstructions(26)); cv.put("RECIPE_INS28", recipeModel.getInstructions(27)); cv.put("RECIPE_INS29", recipeModel.getInstructions(28)); cv.put("RECIPE_INS30", recipeModel.getInstructions(29));
+        cv.put("DAIRY_FREE", recipeModel.getDairyFree()); cv.put("GLUTEN_FREE", recipeModel.getGlutenFree()); cv.put("VEGAN", recipeModel.getVegan());
 
         //long insert = db.insert(table, null, cv);
-        db.insert(table, null, cv);
+        switch(table){
+            case "breakfast":
+                db.insert("MYBREAKFAST_TABLE", null, cv);
+                break;
+            case "lunch":
+                db.insert("MYLUNCH_TABLE", null, cv);
+                break;
+            case "dinner":
+                db.insert("MYDINNER_TABLE", null, cv);
+                break;
+            case "snack":
+                db.insert("MYSNACK_TABLE", null, cv);
+                break;
+            case "dessert":
+                db.insert("MYDESSERT_TABLE", null, cv);
+                break;
+        }
         //(table name (must be MY..._TABLE, null, cv)
         /*
         if (insert == -1) {

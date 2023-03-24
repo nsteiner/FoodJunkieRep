@@ -72,8 +72,6 @@ public class RecipeListAdapter extends ArrayAdapter<Food> {
             convertView = inflater.inflate(mResource, parent, false);
             holder = new ViewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.textView1);
-            holder.birthday = (TextView) convertView.findViewById(R.id.textView2);
-            holder.sex = (TextView) convertView.findViewById(R.id.textView3);
             holder.img = (ImageView) convertView.findViewById(R.id.image);
 
             result = convertView;
@@ -104,8 +102,6 @@ public class RecipeListAdapter extends ArrayAdapter<Food> {
         imageLoader.displayImage(imgURL, holder.img, options);
 
         holder.name.setText(name);
-        holder.birthday.setText(birthday);
-        holder.sex.setText(sex);
 
 
         return convertView;

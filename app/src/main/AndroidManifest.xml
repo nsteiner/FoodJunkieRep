@@ -14,31 +14,40 @@
         android:theme="@style/Theme.FoodJunkie"
         tools:targetApi="31">
         <activity
+            android:name=".DefaultRecipeList"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".MyRecipeList"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".MyRecipeDisplay"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".DefaultRecipeDisplay"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".MetricTips"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SubTips"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SafetyTips"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DefaultRecipesList"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".MyRecipeDisplay"
-            android:exported="false" />
-        <activity
             android:name=".NewRecipe"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />

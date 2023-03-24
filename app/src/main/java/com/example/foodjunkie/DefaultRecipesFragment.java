@@ -61,8 +61,37 @@ Button btn_defaultBreakfast, btn_defaultLunch, btn_defaultDinner, btn_defaultSna
 
         btn_defaultBreakfast.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
                 intent.putExtra("title","Breakfast");
+                startActivity(intent);
+            }
+        });
+
+        btn_defaultLunch.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
+                intent.putExtra("title","Lunch");
+                startActivity(intent);
+            }
+        });
+        btn_defaultDinner.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
+                intent.putExtra("title","Dinner");
+                startActivity(intent);
+            }
+        });
+        btn_defaultSnacks.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
+                intent.putExtra("title","Snacks");
+                startActivity(intent);
+            }
+        });
+        btn_defaultDessert.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
+                intent.putExtra("title","Dessert");
                 startActivity(intent);
             }
         });
@@ -88,7 +117,7 @@ Button btn_defaultBreakfast, btn_defaultLunch, btn_defaultDinner, btn_defaultSna
         //   mListView.setAdapter(adapter);
 
     public void onClick(View v){
-        Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+        Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
 
 
         //switch case that changes title of DefaultRecipeList activity depending on button

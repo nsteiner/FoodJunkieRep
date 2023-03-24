@@ -2,18 +2,28 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tv_defaultTitle"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MyRecipeDisplay" >
+
     <TextView
         android:id="@+id/defaultTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="176dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/lv_recipeList"
+        android:layout_width="410dp"
+        android:layout_height="646dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="29dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintTop_toBottomOf="@+id/defaultTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

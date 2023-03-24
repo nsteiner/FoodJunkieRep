@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     DataBaseHelper dataBaseHelper;
 
+    //need to keep track of what screen you're on so when
+    // we switch back it doesn't go to the main recipe page
+    int screen = 1;
+
     Button btnNewRecipe, LogOut, btn_signout;
 
     @Override
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new MyRecipesFragment());
+
 
         //firebase
         auth = FirebaseAuth.getInstance();

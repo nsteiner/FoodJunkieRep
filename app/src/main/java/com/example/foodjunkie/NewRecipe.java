@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,15 +21,17 @@ public class NewRecipe extends AppCompatActivity {
 
     //database variables
     EditText nameInput, ingredientInput, instructionInput;
-    String recipeName, tempIngredient, tempInstruction, category;
+    String recipeName, tempIngredient, tempInstruction, category = "breakfast";
+    int glutenFree = 0; int dairyFree = 0; int vegan = 0;
     ArrayList<String> instructions, ingredients;
 
     Button btn_addRecipe, btn_addIngredient, btn_addInstruction;
 
     DataBaseHelper dataBaseHelper;
 
-    RadioGroup rb_categories;
+    RadioGroup rb_categories; int checked; RadioButton radioButton;
     RadioButton rb_breakfast, rb_lunch, rb_dinner, rb_snack, rb_dessert;
+    CheckBox cb_glutenFree, cb_dairyFree, cb_vegan;
 
     RecipeModel newRecipe;
 
@@ -49,12 +53,42 @@ public class NewRecipe extends AppCompatActivity {
         btn_addIngredient = findViewById(R.id.btn_addIngredient);
         btn_addInstruction = findViewById(R.id.btn_addInstruction);
 
-        rb_categories = findViewById(R.id.rb_categories);
+        cb_dairyFree = findViewById(R.id.cb_dairyFree);
+        cb_glutenFree = findViewById(R.id.cb_glutenFree);
+        cb_vegan = findViewById(R.id.cb_vegan);
+
+        rb_categories = (RadioGroup) findViewById(R.id.rb_categories);
         rb_breakfast = findViewById(R.id.rb_breakfast);
         rb_lunch = findViewById(R.id.rb_lunch);
         rb_dinner = findViewById(R.id.rb_dinner);
         rb_snack = findViewById(R.id.rb_snack);
         rb_dessert = findViewById(R.id.rb_dessert);
+
+
+        rb_categories.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                int radioId = rb_categories.getCheckedRadioButtonId();
+
+                radioButton = findViewById(radioId);
+
+                if (rb_breakfast.equals(radioButton)) {
+                    category = "breakfast";
+                } else if (rb_lunch.equals(radioButton)) {
+                    category = "lunch";
+                } else if (rb_dinner.equals(radioButton)) {
+                    category = "dinner";
+                } else if (rb_snack.equals(radioButton)) {
+                    category = "snack";
+                } else if (rb_dessert.equals(radioButton)) {
+                    category = "dessert";
+                }
+            }
+        });
+
+
+
+        //buttons for gluten free, dairy free, vegan
 
 
         dataBaseHelper = new DataBaseHelper(NewRecipe.this);
@@ -68,8 +102,6 @@ public class NewRecipe extends AppCompatActivity {
             public void onClick(View v) {
                 recipeName = nameInput.getText().toString();
 
-                category = "MYBREAKFAST_TABLE";
-
                 for(int i = ingCounter; i < 30; i++){
                     ingredients.add("");
                 }
@@ -77,7 +109,20 @@ public class NewRecipe extends AppCompatActivity {
                     instructions.add("");
                 }
 
-                newRecipe = new RecipeModel(recipeName, instructions, ingredients);
+                //seeing if recipe is gluten free, dairy free, vegan
+
+                if(cb_glutenFree.isChecked()){
+                    glutenFree = 1;
+                }
+                if(cb_dairyFree.isChecked()){
+                    dairyFree = 1;
+                }
+                if(cb_vegan.isChecked()){
+                    vegan = 1;
+                }
+
+
+                newRecipe = new RecipeModel(recipeName, instructions, ingredients, dairyFree, glutenFree, vegan);
                 dataBaseHelper.addOne(newRecipe, category);
 
                 nameInput.setText("");
@@ -85,7 +130,11 @@ public class NewRecipe extends AppCompatActivity {
                 ingredientInput.setText("");
                 insCounter = 0;
                 ingCounter = 0;
-                //reset radio buttons
+                //reset radio buttons and dietary checks
+                rb_categories.clearCheck();
+                cb_vegan.setChecked(false);
+                cb_glutenFree.setChecked(false);
+                cb_dairyFree.setChecked(false);
 
                 for(int i = 0; i < 30; i++){
                     ingredients.set(i, "");
@@ -98,19 +147,27 @@ public class NewRecipe extends AppCompatActivity {
 
         btn_addIngredient.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ingredients.add(ingredientInput.getText().toString());
-                ingCounter++;
-                ingredientInput.setText("");
-
-
+                if(ingredients.size() == 30){
+                    Toast.makeText(getBaseContext(), "Max ingredients reached", Toast.LENGTH_SHORT);
+                }
+                else{
+                    ingredients.add(ingredientInput.getText().toString());
+                    ingCounter++;
+                    ingredientInput.setText("");
+                }
             }
         });
 
         btn_addInstruction.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                instructions.add(instructionInput.getText().toString());
-                insCounter++;
-                instructionInput.setText("");
+                if(instructions.size() == 30){
+                    Toast.makeText(getBaseContext(), "Max instructions reached", Toast.LENGTH_SHORT);
+                }
+                else{
+                    instructions.add(instructionInput.getText().toString());
+                    insCounter++;
+                    instructionInput.setText("");
+                }
             }
         });
 
@@ -145,6 +202,7 @@ public class NewRecipe extends AppCompatActivity {
 
 
     }
+
 }
 
 

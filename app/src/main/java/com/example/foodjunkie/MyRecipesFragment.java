@@ -33,9 +33,8 @@ public class MyRecipesFragment extends Fragment implements View.OnClickListener 
     private String mParam1;
     private String mParam2;
 
-    Button btnNewRecipe;
 
-    Button Logout, newRecipe;
+    Button Logout, newRecipe, btn_myBreakfast, btn_myLunch, btn_myDinner, btn_mySnacks, btn_myDessert;;
 
 
 
@@ -82,7 +81,62 @@ public class MyRecipesFragment extends Fragment implements View.OnClickListener 
         newRecipe = view.findViewById(R.id.btn_newRecipe);
         newRecipe.setOnClickListener(this);
 
-    return view;
+        btn_myBreakfast = view.findViewById(R.id.btn_myBreakfast);
+        btn_myLunch = view.findViewById(R.id.btn_myLunch);
+        btn_myDinner = view.findViewById(R.id.btn_myDinner);
+        btn_mySnacks = view.findViewById(R.id.btn_mySnacks);
+        btn_myDessert = view.findViewById(R.id.btn_myDessert);
+        btn_myBreakfast.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), MyRecipeList.class);
+                intent.putExtra("title","Breakfast");
+                startActivity(intent);
+            }
+        });
+        btn_myLunch.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), MyRecipeList.class);
+                intent.putExtra("title","Lunch");
+                startActivity(intent);
+            }
+        });
+        btn_myDinner.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), MyRecipeList.class);
+                intent.putExtra("title","Dinner");
+                startActivity(intent);
+            }
+        });
+        btn_mySnacks.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), MyRecipeList.class);
+                intent.putExtra("title","Snacks");
+                startActivity(intent);
+            }
+        });
+        btn_myDessert.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), MyRecipeList.class);
+                intent.putExtra("title","Dessert");
+                startActivity(intent);
+            }
+        });
+        Logout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        newRecipe.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent1 = new Intent(getActivity(), NewRecipe.class);
+                startActivity(intent1);
+            }
+        });
+
+
+        return view;
     }
 
     public void onClick(View v) {

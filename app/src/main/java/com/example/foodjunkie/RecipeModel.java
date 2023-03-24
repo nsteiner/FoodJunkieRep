@@ -8,13 +8,18 @@ public class RecipeModel {
     private List<String> instructions;
     private List<String> ingredients;
 
+    private int glutenFree, dairyFree, vegan;
+
     public RecipeModel() {
     }
 
-    public RecipeModel(String recipeName, List<String> ingredients, List<String> instructions) {
+    public RecipeModel(String recipeName, List<String> ingredients, List<String> instructions, int dairyFree, int glutenFree, int vegan) {
         this.recipeName = recipeName;
         this.instructions = instructions;
         this.ingredients = ingredients;
+        this.dairyFree = dairyFree;
+        this.glutenFree = glutenFree;
+        this.vegan = vegan;
     }
 
     public String getRecipeName() {
@@ -41,6 +46,27 @@ public class RecipeModel {
         instructions.set(i, string);
     }
 
+    public int getGlutenFree() {
+        return glutenFree;
+    }
 
+    public void setGlutenFree(int glutenFree) {
+        this.glutenFree = glutenFree;
+    }
 
+    public int getDairyFree() {
+        return dairyFree;
+    }
+
+    public void setDairyFree(int dairyFree) {
+        this.dairyFree = dairyFree;
+    }
+
+    public int getVegan() {
+        return vegan;
+    }
+
+    public void setVegan(int vegan) {
+        this.vegan = vegan;
+    }
 }
