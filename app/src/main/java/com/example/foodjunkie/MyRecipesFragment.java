@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
  * Use the {@link MyRecipesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyRecipesFragment extends Fragment implements View.OnClickListener {
+public class MyRecipesFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +35,7 @@ public class MyRecipesFragment extends Fragment implements View.OnClickListener 
 
     Button btnNewRecipe;
 
-    Button Logout, newRecipe;
+    Button Logout, newRecipe,btn_myBreakfast, btn_myLunch, btn_myDinner, btn_mySnacks, btn_myDessert;
 
 
 
@@ -78,28 +78,62 @@ public class MyRecipesFragment extends Fragment implements View.OnClickListener 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         Logout = view.findViewById(R.id.LogOut);
-        Logout.setOnClickListener(this);
         newRecipe = view.findViewById(R.id.btn_newRecipe);
-        newRecipe.setOnClickListener(this);
-
-    return view;
-    }
-
-    public void onClick(View v) {
-        switch(v.getId()) {
-            case R.id.LogOut:
-                //(getActivity(), [name of activity to be switched to].class);
+        btn_myBreakfast = view.findViewById(R.id.btn_myBreakfast);
+        btn_myLunch = view.findViewById(R.id.btn_myLunch);
+        btn_myDinner = view.findViewById(R.id.btn_myDinner);
+        btn_mySnacks = view.findViewById(R.id.btn_mySnacks);
+        btn_myDessert = view.findViewById(R.id.btn_myDessert);
+        btn_myBreakfast.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                intent.putExtra("title","Breakfast");
+                startActivity(intent);
+            }
+        });
+        btn_myLunch.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                intent.putExtra("title","Lunch");
+                startActivity(intent);
+            }
+        });
+        btn_myDinner.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                intent.putExtra("title","Dinner");
+                startActivity(intent);
+            }
+        });
+        btn_mySnacks.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                intent.putExtra("title","Snacks");
+                startActivity(intent);
+            }
+        });
+        btn_myDessert.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                intent.putExtra("title","Dessert");
+                startActivity(intent);
+            }
+        });
+        Logout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.btn_newRecipe:
+            }
+        });
+        newRecipe.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
                 Intent intent1 = new Intent(getActivity(), NewRecipe.class);
                 startActivity(intent1);
-                break;
+            }
+        });
 
-
-        }
+    return view;
     }
 
 

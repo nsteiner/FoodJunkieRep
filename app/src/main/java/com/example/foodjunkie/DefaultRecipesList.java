@@ -14,7 +14,7 @@ public class DefaultRecipesList extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_default_recipes_list);
             //sets title depending on button clicked in default recipes fragment
-        //    TextView title = findViewById(R.id.tv_defaultTitle);
-      // title.setText(getIntent().getStringExtra("title"));
+        TextView title = findViewById(R.id.defaultTitle);
+      title.setText(getIntent().getStringExtra("title"));
         }
     }

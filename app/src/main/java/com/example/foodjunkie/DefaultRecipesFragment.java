@@ -66,12 +66,34 @@ Button btn_defaultBreakfast, btn_defaultLunch, btn_defaultDinner, btn_defaultSna
                 startActivity(intent);
             }
         });
-
-        /*btn_defaultBreakfast.setOnClickListener(this);
-        btn_defaultLunch.setOnClickListener(this) ;
-        btn_defaultDinner.setOnClickListener(this);
-        btn_defaultSnacks.setOnClickListener(this);
-        btn_defaultDessert.setOnClickListener(this); */
+        btn_defaultLunch.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                intent.putExtra("title","Lunch");
+                startActivity(intent);
+            }
+        });
+        btn_defaultDinner.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                intent.putExtra("title","Dinner");
+                startActivity(intent);
+            }
+        });
+        btn_defaultSnacks.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                intent.putExtra("title","Snacks");
+                startActivity(intent);
+            }
+        });
+        btn_defaultDessert.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                intent.putExtra("title","Breakfast");
+                startActivity(intent);
+            }
+        });
 
         return view;
 
@@ -89,28 +111,6 @@ Button btn_defaultBreakfast, btn_defaultLunch, btn_defaultDinner, btn_defaultSna
 
     public void onClick(View v){
         Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
-
-
-        //switch case that changes title of DefaultRecipeList activity depending on button
-        /*switch (v.getId()) {
-            case R.id.btn_defaultBreakfast:
-                intent.putExtra("title","Breakfast");
-                break;
-            case R.id.btn_defaultLunch:
-                intent.putExtra("title","Lunch");
-                break;
-            case R.id.btn_defaultDinner:
-                intent.putExtra("title","Dinner");
-                break;
-            case R.id.btn_defaultSnacks:
-                intent.putExtra("title","Snacks");
-                break;
-            case R.id.btn_defaultDessert:
-                intent.putExtra("title","Dessert");
-                break;
-            default:
-                break;
-        } */
         startActivity(intent);
     } }
 
