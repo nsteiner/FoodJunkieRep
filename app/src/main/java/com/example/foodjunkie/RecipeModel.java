@@ -69,4 +69,9 @@ public class RecipeModel {
     public void setVegan(int vegan) {
         this.vegan = vegan;
     }
+
+    public String createImgURL(){
+        String URL = "drawable://R.drawable.food";
+        return URL;
+    }
 }

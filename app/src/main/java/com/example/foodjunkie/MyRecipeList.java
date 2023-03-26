@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,8 @@ public class MyRecipeList extends AppCompatActivity {
 
     private static final String TAG = "";
     ListView lv_recipeList;
+
+    DataBaseHelper dataBaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,26 @@ public class MyRecipeList extends AppCompatActivity {
         Log.d(TAG, "onCreate: Started");
         lv_recipeList = (ListView) findViewById(R.id.lv_recipeList);
 
+        dataBaseHelper = new DataBaseHelper(MyRecipeList.this);
 
+        dataBaseHelper.getAll(getIntent().getStringExtra("title"));
+
+
+
+        if(dataBaseHelper.checkEmpty(getIntent().getStringExtra("title"), "MyRecipes")){
+            RecipeListAdapter adapter = new RecipeListAdapter(this, R.layout.adapter_view_layout, this.dataBaseHelper.getAll("My" + getIntent().getStringExtra("title")));
+            lv_recipeList.setAdapter(adapter);
+        }
+        else{
+            Toast.makeText(MyRecipeList.this, "No Recipes Found! Create your own, or go to 'Food Junkie Cookbook'", Toast.LENGTH_LONG).show();
+            //new recipe button here?
+            return;
+        }
+
+
+
+
+        /*
         String i1 = "info 1";
         String i2 = "info 2";
 
@@ -76,11 +98,8 @@ public class MyRecipeList extends AppCompatActivity {
         peopleList.add(matt7);
         peopleList.add(matt8);
         peopleList.add(matt9);
+         */
 
-
-
-        RecipeListAdapter adapter = new RecipeListAdapter(this, R.layout.adapter_view_layout, peopleList);
-        lv_recipeList.setAdapter(adapter);
 
         lv_recipeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
