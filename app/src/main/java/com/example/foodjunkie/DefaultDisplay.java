@@ -1,6 +1,15 @@
 package com.example.foodjunkie;
 
-public class DefaultDisplay {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class DefaultDisplay extends AppCompatActivity {
 
     //page where recipe will be displayed from default recipe book
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recipe_display);
+    }
 }

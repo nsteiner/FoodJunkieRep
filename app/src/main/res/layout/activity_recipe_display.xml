@@ -6,4 +6,128 @@
     android:layout_height="match_parent"
     tools:context=".MyRecipeDisplay">
 
+    <TextView
+        android:id="@+id/tv_recipesName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="693dp"
+        android:text="@string/recipe_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="271dp"
+        android:layout_marginBottom="655dp"
+        android:text="@string/ingredients_input"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_instructions"
+        android:layout_width="84dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="654dp"
+        android:text="@string/instructions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_ingredients"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/sv_ingredients"
+        android:layout_width="176dp"
+        android:layout_height="564dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="89dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sv_instructionList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ingredients">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/sv_instructionList"
+        android:layout_width="193dp"
+        android:layout_height="564dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="89dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sv_ingredients"
+        app:layout_constraintTop_toBottomOf="@+id/tv_instructions">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_vegan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="195dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/vegan"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/tv_glutenFree"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sv_ingredients" />
+
+    <TextView
+        android:id="@+id/tv_glutenFree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="166dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/glutenFree"
+        app:layout_constraintBottom_toTopOf="@+id/tv_dairyFree"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_vegan" />
+
+    <TextView
+        android:id="@+id/tv_dairyFree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="174dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/dairyFree"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_glutenFree" />
 </androidx.constraintlayout.widget.ConstraintLayout>
