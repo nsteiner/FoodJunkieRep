@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,110 +7,132 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageViewMetric"
+            android:layout_width="585dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="4dp"
+            android:gravity="top"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.236"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/measurement_md" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/tMetric"
             android:text="@string/Metric_Act"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="123dp"
-            tools:layout_editor_absoluteY="-54dp" />
+            android:layout_width="269dp"
+            android:layout_height="101dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="36dp"
+            android:elevation="4dp"
+            android:shadowColor="@color/black"
+            android:shadowDx="3.5"
+            android:shadowDy="3.3"
+            android:shadowRadius="3.6"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <Button
             android:id="@+id/btn_TspToTbs"
-            android:layout_width="252dp"
+            android:layout_width="280dp"
             android:layout_height="65dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="456dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="420dp"
             android:text="@string/button_TspToTbs"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
         <Button
             android:id="@+id/btn_TbsToTsp"
-            android:layout_width="252dp"
+            android:layout_width="280dp"
+
             android:layout_height="65dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="388dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="348dp"
             android:text="@string/button_TbsToTsp"
             android:textSize="16sp"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
         <Button
             android:id="@+id/btn_CupToOz"
-            android:layout_width="252dp"
+            android:layout_width="280dp"
             android:layout_height="65dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="320dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="276dp"
             android:text="@string/button_CupToOz"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
         <Button
             android:id="@+id/btn_OzToCup"
-            android:layout_width="252dp"
+            android:layout_width="280dp"
             android:layout_height="65dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="252dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="204dp"
             android:text="@string/button_OzToCup"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
         <Button
             android:id="@+id/btn_ButToTbs"
-            android:layout_width="252dp"
+            android:layout_width="280dp"
             android:layout_height="65dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="184dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="132dp"
             android:text="@string/button_ButToTbs"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
         <Button
             android:id="@+id/btn_ButToCup"
-            android:layout_width="252dp"
+            android:layout_width="280dp"
             android:layout_height="65dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="116dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="64dp"
             android:text="@string/button_ButToCup"
+
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
         <TextView
             android:id="@+id/unit_Output"
             android:layout_width="170dp"
             android:layout_height="45dp"
-            android:layout_marginBottom="532dp"
+            android:layout_marginBottom="508dp"
             android:text="@string/unit_Output"
             android:textAlignment="center"
-            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.863"
             app:layout_constraintStart_toStartOf="parent" />
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:inputType="numberDecimal">
-        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/unit_input"
             android:layout_width="179dp"
             android:layout_height="48dp"
-            android:layout_marginBottom="612dp"
+            android:layout_marginBottom="508dp"
+            android:backgroundTint="@color/green"
+            android:backgroundTintMode="src_over"
             android:hint="@string/unit_input"
             android:inputType="numberDecimal"
             android:textAlignment="center"
+            android:textColorHint="@color/black"
+            android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.068"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

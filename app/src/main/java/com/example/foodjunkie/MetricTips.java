@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.widget.*;
 import android.view.View;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.text.DecimalFormat;
+
 public class MetricTips extends AppCompatActivity {
     private Button TspToTbs, TbsToTsp, CupToOz, OzToCup;
     private Button ButToTbs, ButToCup, home1;
@@ -16,6 +19,8 @@ public class MetricTips extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metric_tips);
+
+
         TspToTbs = findViewById(R.id.btn_TspToTbs);
         TbsToTsp = findViewById(R.id.btn_TbsToTsp);
         CupToOz = findViewById(R.id.btn_CupToOz);
@@ -33,7 +38,8 @@ public class MetricTips extends AppCompatActivity {
                         Double.parseDouble(unit_Input.getText().toString());
 
                 unit_Output0 = (unit / 3);
-                unit_Output.setText(String.valueOf(unit_Output0));
+                String formattedResult = String.format("%.2f", unit_Output0);
+                unit_Output.setText(formattedResult);
             }
         });
         TbsToTsp.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +51,8 @@ public class MetricTips extends AppCompatActivity {
 
                 unit_Output0 = (unit * 3);
 
-                unit_Output.setText(String.valueOf(unit_Output0));
+                String formattedResult = String.format("%.2f", unit_Output0);
+                unit_Output.setText(formattedResult);
             }
         });
         CupToOz.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +63,8 @@ public class MetricTips extends AppCompatActivity {
                         Double.parseDouble(unit_Input.getText().toString());
 
                 unit_Output0 = (unit * 8);
-                unit_Output.setText(String.valueOf(unit_Output0));
+                String formattedResult = String.format("%.2f", unit_Output0);
+                unit_Output.setText(formattedResult);
             }
         });
         OzToCup.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +75,8 @@ public class MetricTips extends AppCompatActivity {
                         Double.parseDouble(unit_Input.getText().toString());
 
                 unit_Output0 = (unit / 8);
-                unit_Output.setText(String.valueOf(unit_Output0));
+                String formattedResult = String.format("%.2f", unit_Output0);
+                unit_Output.setText(formattedResult);
             }
         });
         ButToTbs.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +87,8 @@ public class MetricTips extends AppCompatActivity {
                         Double.parseDouble(unit_Input.getText().toString());
 
                 unit_Output0 = (unit * 8);
-                unit_Output.setText(String.valueOf(unit_Output0));
+                String formattedResult = String.format("%.2f", unit_Output0);
+                unit_Output.setText(formattedResult);
             }
         });
         ButToCup.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +99,8 @@ public class MetricTips extends AppCompatActivity {
                         Double.parseDouble(unit_Input.getText().toString());
 
                 unit_Output0 = (unit / 2);
-                unit_Output.setText(String.valueOf(unit_Output0));
+                String formattedResult = String.format("%.2f", unit_Output0);
+                unit_Output.setText(formattedResult);
             }
         });
 /*home1.setOnClickListener(new View.OnClickListener() {

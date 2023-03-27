@@ -2,11 +2,11 @@
     <string name="app_name">Food Junkie</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_fragment">Home Fragment</string>
-    <string name="tips_fragment">Tips and Tricks Fragment</string>
+    <string name="tips_fragment">Tips and Tricks</string>
+    <string name="safety_tips">Cooking and Food Safety</string>
+    <string name="sub_tips">Ingredient Substitutions</string>
     <string name="profile_fragment">Profile Fragment</string>
     <string name="recipe_name">Recipe Name</string>
     <string name="ingredients_input">Ingredients:</string>
@@ -15,9 +15,9 @@
     <string name="add_Ingredient">+</string>
     <string name="add_instruction">+</string>
     <string name="title_activity_safety_tips">SafetyTips</string>
-    <string name="button_Safety">Safety</string>
-    <string name="button_Sub">Substitutions</string>
-    <string name="button_Metric">Metric</string>
+    <string name="button_Safety">Cooking Safety</string>
+    <string name="button_Sub">Common Ingredient Substitutions</string>
+    <string name="button_Metric">Unit Converter</string>
     <string name="button_TspToTbs">Teaspoon to Tablespoon</string>
     <string name="button_TbsToTsp">Tablespoon to Teaspoon</string>
     <string name="button_CupToOz">Cups to Ounces</string>
@@ -25,15 +25,14 @@
     <string name="button_ButToTbs">Stick of Butter to Tablespoon</string>
     <string name="button_ButToCup">Stick of Butter to Cup</string>
     <string name="unit_input">Enter number.</string>
-    <string name="unit_Output">result</string>
+    <string name="unit_Output">Result</string>
     <string name="button_Home">Home</string>
-    <string name="Metric_Act">Metric Activity</string>
+    <string name="Metric_Act">Unit Conversions</string>
     <string name="Breakfast">Breakfast</string>
     <string name="Lunch">Lunch</string>
     <string name="Dinner">Dinner</string>
     <string name="Snack">Snack</string>
     <string name="Dessert">Dessert</string>
-
     <string name="large_text">
 Storage: \n\n
 " - Always refrigerate perishable food \n"
@@ -43,6 +42,7 @@ Storage: \n\n
 " ground meats, and variety meats \n"
 " within 2 days; other beef, veal, \n"
 " lamb, or pork, within 3 to 5 days \n\n"
+
 Thawing: \n\n
 " - Refrigerator—The refrigerator \n"
 " allows slow, safe thawing. Make \n"
@@ -80,7 +80,6 @@ Cooking Temperature: \n\n
 " a minimum internal temperature \n"
 " of 145 °F as measured with a \n"
 " food thermometer before \n"
-
 " removing meat from the heat \n"
 " source.\n"
 " - For safety and quality, allow meat \n"
@@ -92,6 +91,7 @@ Cooking Temperature: \n\n
 " 160 °F as measured with a food \n"
 " thermometer.\n"
 " - Poultry: Cook all poultry to an \n"
+
 " internal temperature of 165 °F as \n"
 " measured with a food \n"
 " thermometer.\n"
@@ -125,7 +125,6 @@ Cheese Alternatives: \n
 " and lemon juice as a cream \n"
 " cheese alternative. \n"
 " - Blend soft silken tofu with salt and \n"
-
 " spices as a nacho cheese \n"
 " alternative. \n"
 " - Thin slices of smoked tofu can \n"
@@ -141,6 +140,7 @@ Cheese Alternatives: \n
 " - 1 tablespoon of ground chia \n"
 " seeds with 3 tablespoons of \n"
 " water \n\n"
+
 Baking soda / powder alternatives: \n
 " - 1 teaspoon of baking powder - 1⁄2 \n"
 " teaspoon of cream of tartar \n"
