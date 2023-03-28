@@ -150,4 +150,15 @@ Baking soda / powder alternatives: \n
 </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_sub_tips">SubTips</string>
+    <string name="gluten_free">Gluten Free</string>
+    <string name="dairy_free">Dairy Free</string>
+    <string name="vegan">Vegan</string>
+    <string name="tv_instructions">Instructions</string>
+    <string name="tv_ingredients">Ingredients</string>
+    <string name="btn_addRecipetoMyPage">Add to My Recipes</string>
+    <string name="tv_vegan">Vegan ✅</string>
+    <string name="tv_glutenFree">Gluten Free ✅</string>
+    <string name="tv_dairyFree">Dairy Free ✅</string>
+    <string name="stringAdded" />
+    <string name="recipeAdded">✅ Added to My Recipes</string>
 </resources>

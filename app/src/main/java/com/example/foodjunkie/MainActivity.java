@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     DataBaseHelper dataBaseHelper;
 
+    //need to keep track of what screen you're on so when
+    // we switch back it doesn't go to the main recipe page
+    int screen = 1;
+
     Button btnNewRecipe, LogOut, btn_signout;
 
     @Override
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         replaceFragment(new MyRecipesFragment());
 
+
         //firebase
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -56,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         // can use else statment to display profile info
 
         //set buttons, listViews, etc.
-      //  btnNewRecipe = findViewById(R.id.btn_newRecipe);
-       // btn_signout = findViewById(R.id.Signout);
+        //  btnNewRecipe = findViewById(R.id.btn_newRecipe);
+        // btn_signout = findViewById(R.id.Signout);
 
         LogOut = findViewById(R.id.LogOut);
 
@@ -67,15 +72,15 @@ public class MainActivity extends AppCompatActivity {
                 //will put whatever you want to show up in these cases
                 case R.id.home:
                     replaceFragment(new MyRecipesFragment());
-              //   LogOut.setVisibility(View.VISIBLE);
+                    //   LogOut.setVisibility(View.VISIBLE);
                     break;
                 case R.id.profile:
                     replaceFragment(new DefaultRecipesFragment());
-              //      LogOut.setVisibility(View.GONE);
+                    //      LogOut.setVisibility(View.GONE);
                     break;
                 case R.id.tipsTricks:
                     replaceFragment(new TandTFragment());
-             //     LogOut.setVisibility(View.GONE);
+                    //     LogOut.setVisibility(View.GONE);
                     break;
             }
 
@@ -92,12 +97,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         //   LogOut.setOnClickListener(new View.OnClickListener() {
-   //         public void onClick(View view){
-         //       FirebaseAuth.getInstance().signOut();
-            //    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-           //     startActivity(intent);
+        //         public void onClick(View view){
+        //       FirebaseAuth.getInstance().signOut();
+        //    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        //     startActivity(intent);
 
-     //   });
+        //   });
 
 
 

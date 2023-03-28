@@ -5,35 +5,54 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
-public class MyRecipeDisplay extends AppCompatActivity {
+public class DefaultRecipeDisplay extends AppCompatActivity {
 
-    TextView recipeName, tv_vegan, tv_glutenFree, tv_dairyFree, tv_ingredients, tv_instructions;
+    Button btn_addRecipe;
+    TextView recipeName, tv_vegan, tv_dairyFree, tv_glutenFree, tv_ingredients, tv_instructions, recipeAdded;
     ScrollView sv_ingredients, sv_instructions;
+
     DataBaseHelper dataBaseHelper;
+    ImageView imageView;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_recipe_display);
+        setContentView(R.layout.activity_default_recipe_display);
 
+        btn_addRecipe = findViewById(R.id.btn_addingRecipe);
         recipeName = findViewById(R.id.tv_recipesName);
-        sv_ingredients = findViewById(R.id.sv_ingredientList);
-        sv_instructions = findViewById(R.id.sv_instructionList);
+        sv_ingredients = findViewById(R.id.sv_ingredients);
+        sv_instructions = findViewById(R.id.sv_instructions);
         tv_vegan = findViewById(R.id.tv_vegan);
         tv_dairyFree = findViewById(R.id.tv_dairyFree);
         tv_glutenFree = findViewById(R.id.tv_glutenFree);
-        tv_ingredients = findViewById(R.id.tv_ingredientOutput);
-        tv_instructions = findViewById(R.id.tv_instructionOutput);
+        tv_ingredients = findViewById(R.id.tv_ingredientsOutput);
+        tv_instructions = findViewById(R.id.tv_instructionsOutput);
+        recipeAdded = findViewById(R.id.tv_recipeAdded);
+        imageView = findViewById(R.id.imageView);
 
-        dataBaseHelper = new DataBaseHelper(MyRecipeDisplay.this);
+        imageView.setImageResource(R.drawable.food);
+
+        dataBaseHelper = new DataBaseHelper(DefaultRecipeDisplay.this);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String nameForObject = extras.getString("Recipe");
         String title = extras.getString("Title");
-        RecipeModel recipe = dataBaseHelper.getRecipe(nameForObject, "My" + title);
+        RecipeModel recipe = dataBaseHelper.getRecipe(nameForObject, title);
 
 
 
@@ -65,6 +84,18 @@ public class MyRecipeDisplay extends AppCompatActivity {
             tv_vegan.setVisibility(View.INVISIBLE);
         }
 
+        btn_addRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dataBaseHelper.addOne(recipe, title);
+                recipeAdded.setVisibility(View.VISIBLE);
+                btn_addRecipe.setVisibility(View.GONE);
+            }
+        });
+
+
+
 
     }
+
 }

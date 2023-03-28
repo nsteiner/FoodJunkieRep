@@ -21,14 +21,17 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class RecipeListAdapter extends ArrayAdapter<Food> {
+public class RecipeListAdapter extends ArrayAdapter<RecipeModel> {
     private static final String TAG = "Recipe List Adapter";
     private Context mContext;
     private int mResource;
     private int lastPosition = -1;
 
     ImageLoader imageLoader;
+
+    String imagePath = "drawable://R.drawable.";
 
 
 
@@ -41,7 +44,7 @@ public class RecipeListAdapter extends ArrayAdapter<Food> {
     }
 
 
-    public RecipeListAdapter(Context context, int resource, ArrayList<Food> objects) {
+    public RecipeListAdapter(Context context, int resource, List<RecipeModel> objects) {
         super(context, resource, objects);
         this.mContext = context;
         mResource = resource;
@@ -55,10 +58,10 @@ public class RecipeListAdapter extends ArrayAdapter<Food> {
         //setup the image loader...
         setupImageLoader();
         //get the persons info:
-        String name = getItem(position).getName();
-        String birthday = getItem(position).getBirthday();
-        String sex = getItem(position).getSex();
-        String imgURL = getItem(position).getImageURL();
+        String name = getItem(position).getRecipeName();
+        String imgURL = "drawable://" + R.drawable.food;
+        //"drawable://" + R.drawable.;
+        //getItem(position).getRecipeName();
 
 
         //create the view result for showing the animation
@@ -72,8 +75,6 @@ public class RecipeListAdapter extends ArrayAdapter<Food> {
             convertView = inflater.inflate(mResource, parent, false);
             holder = new ViewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.textView1);
-            holder.birthday = (TextView) convertView.findViewById(R.id.textView2);
-            holder.sex = (TextView) convertView.findViewById(R.id.textView3);
             holder.img = (ImageView) convertView.findViewById(R.id.image);
 
             result = convertView;
@@ -104,8 +105,6 @@ public class RecipeListAdapter extends ArrayAdapter<Food> {
         imageLoader.displayImage(imgURL, holder.img, options);
 
         holder.name.setText(name);
-        holder.birthday.setText(birthday);
-        holder.sex.setText(sex);
 
 
         return convertView;

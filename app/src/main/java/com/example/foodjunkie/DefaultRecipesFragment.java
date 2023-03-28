@@ -17,7 +17,7 @@ public class DefaultRecipesFragment extends Fragment implements View.OnClickList
     public DefaultRecipesFragment() {
         // Required empty public constructor
     }
-Button btn_defaultBreakfast, btn_defaultLunch, btn_defaultDinner, btn_defaultSnacks, btn_defaultDessert;
+    Button btn_defaultBreakfast, btn_defaultLunch, btn_defaultDinner, btn_defaultSnacks, btn_defaultDessert;
 
     View view;
 
@@ -53,7 +53,7 @@ Button btn_defaultBreakfast, btn_defaultLunch, btn_defaultDinner, btn_defaultSna
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-       btn_defaultBreakfast = view.findViewById(R.id.btn_defaultBreakfast);
+        btn_defaultBreakfast = view.findViewById(R.id.btn_defaultBreakfast);
         btn_defaultLunch = view.findViewById(R.id.btn_defaultLunch);
         btn_defaultDinner = view.findViewById(R.id.btn_defaultDinner);
         btn_defaultSnacks = view.findViewById(R.id.btn_defaultSnacks);
@@ -61,39 +61,46 @@ Button btn_defaultBreakfast, btn_defaultLunch, btn_defaultDinner, btn_defaultSna
 
         btn_defaultBreakfast.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
                 intent.putExtra("title","Breakfast");
                 startActivity(intent);
             }
         });
+
         btn_defaultLunch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
                 intent.putExtra("title","Lunch");
                 startActivity(intent);
             }
         });
         btn_defaultDinner.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
                 intent.putExtra("title","Dinner");
                 startActivity(intent);
             }
         });
         btn_defaultSnacks.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+                Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
                 intent.putExtra("title","Snacks");
                 startActivity(intent);
             }
         });
         btn_defaultDessert.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
-                intent.putExtra("title","Breakfast");
+                Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
+                intent.putExtra("title","Dessert");
                 startActivity(intent);
             }
         });
+
+        /*btn_defaultBreakfast.setOnClickListener(this);
+        btn_defaultLunch.setOnClickListener(this) ;
+        btn_defaultDinner.setOnClickListener(this);
+        btn_defaultSnacks.setOnClickListener(this);
+        btn_defaultDessert.setOnClickListener(this); */
 
         return view;
 
@@ -103,14 +110,36 @@ Button btn_defaultBreakfast, btn_defaultLunch, btn_defaultDinner, btn_defaultSna
     }
 
 
-        //    ListView mListView = ((ListView) view.findViewById(R.id.listView));
+    //    ListView mListView = ((ListView) view.findViewById(R.id.listView));
 
-       // RecipeListAdapter adapter = new RecipeListAdapter(getContext(), R.layout.adapter_view_layout, peopleList);
+    // RecipeListAdapter adapter = new RecipeListAdapter(getContext(), R.layout.adapter_view_layout, peopleList);
 
-        //   mListView.setAdapter(adapter);
+    //   mListView.setAdapter(adapter);
 
     public void onClick(View v){
-        Intent intent = new Intent(getActivity(), DefaultRecipesList.class);
+        Intent intent = new Intent(getActivity(), DefaultRecipeList.class);
+
+
+        //switch case that changes title of DefaultRecipeList activity depending on button
+        /*switch (v.getId()) {
+            case R.id.btn_defaultBreakfast:
+                intent.putExtra("title","Breakfast");
+                break;
+            case R.id.btn_defaultLunch:
+                intent.putExtra("title","Lunch");
+                break;
+            case R.id.btn_defaultDinner:
+                intent.putExtra("title","Dinner");
+                break;
+            case R.id.btn_defaultSnacks:
+                intent.putExtra("title","Snacks");
+                break;
+            case R.id.btn_defaultDessert:
+                intent.putExtra("title","Dessert");
+                break;
+            default:
+                break;
+        } */
         startActivity(intent);
     } }
 
