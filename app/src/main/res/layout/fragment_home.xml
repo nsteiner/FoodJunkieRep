@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MyRecipesFragment">
+
     <Button
         android:id="@+id/btn_newRecipe"
         android:layout_width="88dp"
@@ -15,24 +16,27 @@
         android:text="@string/new_recipe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_myRecipes"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.043" />
+
     <TextView
         android:id="@+id/tv_myRecipes"
-        android:layout_width="163dp"
-        android:layout_height="118dp"
-        android:text="My Cookbook"
+        android:layout_width="209dp"
+        android:layout_height="124dp"
+        android:text="MY COOKBOOK"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="35dp"
+        android:textSize="35sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049" />
+        app:layout_constraintVertical_bias="0.048" />
+
     <Button
         android:id="@+id/btn_myBreakfast"
         android:layout_width="166dp"
@@ -95,6 +99,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_myBreakfast"
         app:layout_constraintVertical_bias="0.811" />
+
     <Button
         android:id="@+id/LogOut"
         android:layout_width="88dp"
@@ -106,5 +111,27 @@
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.043" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="310dp"
+        android:layout_height="348dp"
+        android:layout_marginEnd="156dp"
+        android:src="@drawable/bowl1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.31" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="302dp"
+        android:layout_height="594dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="272dp"
+        android:src="@drawable/bowl2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
