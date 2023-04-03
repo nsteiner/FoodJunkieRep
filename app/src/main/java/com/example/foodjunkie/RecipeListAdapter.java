@@ -59,7 +59,10 @@ public class RecipeListAdapter extends ArrayAdapter<RecipeModel> {
         setupImageLoader();
         //get the persons info:
         String name = getItem(position).getRecipeName();
-        String imgURL = "drawable://" + R.drawable.food;
+     //   String imgURL = getItem(position).getRecipeName().replaceAll("\\s", "").toLowerCase();
+            String imgURL = "food";
+        int resID = getContext().getResources().getIdentifier(imgURL, null, mContext.getPackageName());
+
         //"drawable://" + R.drawable.;
         //getItem(position).getRecipeName();
 
@@ -102,9 +105,10 @@ public class RecipeListAdapter extends ArrayAdapter<RecipeModel> {
         result.startAnimation(animation);
         lastPosition = position;
 
-        imageLoader.displayImage(imgURL, holder.img, options);
+        holder.img.setImageResource(resID);
 
         holder.name.setText(name);
+
 
 
         return convertView;
