@@ -2,24 +2,29 @@ package com.example.foodjunkie;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import android.content.Context;
+
 
 public class RecipeModel {
     private String recipeName;
     private List<String> instructions;
     private List<String> ingredients;
+    private Context context;
 
     private int glutenFree, dairyFree, vegan;
 
     public RecipeModel() {
     }
 
-    public RecipeModel(String recipeName, List<String> ingredients, List<String> instructions, int dairyFree, int glutenFree, int vegan) {
+    public RecipeModel(Context context, String recipeName, List<String> ingredients, List<String> instructions, int dairyFree, int glutenFree, int vegan) {
         this.recipeName = recipeName;
         this.instructions = instructions;
         this.ingredients = ingredients;
         this.dairyFree = dairyFree;
         this.glutenFree = glutenFree;
         this.vegan = vegan;
+        this.context = context;
     }
 
     public String getRecipeName() {
@@ -72,8 +77,10 @@ public class RecipeModel {
         this.vegan = vegan;
     }
 
-    public String createImgURL(){
-        String URL = "drawable://R.drawable.food";
-        return URL;
+    public int getImgResID(){
+        String imgURL = recipeName.replace(" ", "").replace("-","").toLowerCase(Locale.ROOT);
+        int resID = context.getResources().getIdentifier(imgURL, "drawable", context.getPackageName());
+        return resID;
     }
+
 }

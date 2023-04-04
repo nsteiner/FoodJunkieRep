@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import android.content.Context;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,6 +38,7 @@ public class NewRecipe extends AppCompatActivity {
 
     int ingCounter, insCounter;
 
+    Context context;
 
 
     //Notes
@@ -122,7 +124,7 @@ public class NewRecipe extends AppCompatActivity {
                 }
 
 
-                newRecipe = new RecipeModel(recipeName, instructions, ingredients, dairyFree, glutenFree, vegan);
+                newRecipe = new RecipeModel(context, recipeName, instructions, ingredients, dairyFree, glutenFree, vegan);
                 dataBaseHelper.addOne(newRecipe, category);
 
                 nameInput.setText("");

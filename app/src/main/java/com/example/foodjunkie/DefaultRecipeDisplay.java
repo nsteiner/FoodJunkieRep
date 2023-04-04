@@ -44,7 +44,6 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
         recipeAdded = findViewById(R.id.tv_recipeAdded);
         imageView = findViewById(R.id.imageView);
 
-        imageView.setImageResource(R.drawable.food);
 
         dataBaseHelper = new DataBaseHelper(DefaultRecipeDisplay.this);
 
@@ -58,6 +57,7 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
 
         //set Recipe Name
         recipeName.setText(recipe.getRecipeName());
+        imageView.setImageResource(recipe.getImgResID());
 
         //combining arrays into one string
         String printIngredients = "";

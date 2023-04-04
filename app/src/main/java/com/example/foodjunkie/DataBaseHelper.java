@@ -18,18 +18,6 @@ import java.util.List;
 
 import android.database.SQLException;
 public class DataBaseHelper extends SQLiteOpenHelper  {
-    public static final String BREAKFAST_TABLE = "BREAKFAST_TABLE";
-    public static final String MYBREAKFAST_TABLE = "MYBREAKFAST_TABLE";
-    public static final String LUNCH_TABLE = "LUNCH_TABLE";
-    public static final String MYLUNCH_TABLE = "MYLUNCH_TABLE";
-    public static final String DINNER_TABLE = "DINNER_TABLE";
-    public static final String MYDINNER_TABLE = "MYDINNER_TABLE";
-    public static final String SNACK_TABLE = "SNACK_TABLE";
-    public static final String MYSNACK_TABLE = "MYSNACK_TABLE";
-    public static final String DESSERT_TABLE = "DESSERT_TABLE";
-    public static final String MYDESSERT_TABLE = "MYDESSERT_TABLE";
-
-
     public static final String RECIPE_NAME = "RECIPE_NAME";
 
     private static String DB_PATH = "/data/data/com.example.foodjunkie/databases/";
@@ -283,7 +271,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 int gluten_free = cursor.getInt(62);
                 int vegan = cursor.getInt(63);
 
-                RecipeModel newRecipe = new RecipeModel(name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
                 returnList.add(newRecipe);
             } while (cursor.moveToNext());
         }
@@ -348,7 +336,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         int gluten_free = cursor.getInt(62);
         int vegan = cursor.getInt(63);
 
-        displayRecipe = new RecipeModel(name, ingredients, instructions, dairy_free, gluten_free, vegan);
+        displayRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
 
         return displayRecipe;
     }
