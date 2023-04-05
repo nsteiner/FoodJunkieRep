@@ -22,6 +22,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class RecipeListAdapter extends ArrayAdapter<RecipeModel> {
     private static final String TAG = "Recipe List Adapter";
@@ -59,10 +60,9 @@ public class RecipeListAdapter extends ArrayAdapter<RecipeModel> {
         setupImageLoader();
         //get the persons info:
         String name = getItem(position).getRecipeName();
-     //   String imgURL = getItem(position).getRecipeName().replaceAll("\\s", "").toLowerCase();
-            String imgURL = "food";
-        int resID = getContext().getResources().getIdentifier(imgURL, null, mContext.getPackageName());
-
+        //String imgURL = getItem(position).getImgURL();
+        //String imgURL = getItem(position).getImgResID();
+        //int resID = getContext().getResources().getIdentifier(imgURL, "drawable", getContext().getPackageName());
         //"drawable://" + R.drawable.;
         //getItem(position).getRecipeName();
 
@@ -105,10 +105,9 @@ public class RecipeListAdapter extends ArrayAdapter<RecipeModel> {
         result.startAnimation(animation);
         lastPosition = position;
 
-        holder.img.setImageResource(resID);
+        holder.img.setImageResource(getItem(position).getImgResID());
 
         holder.name.setText(name);
-
 
 
         return convertView;

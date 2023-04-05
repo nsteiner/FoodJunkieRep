@@ -83,4 +83,16 @@ public class RecipeModel {
         return resID;
     }
 
+    @Override
+    public String toString() {
+        return "RecipeModel{" +
+                "recipeName='" + recipeName + '\'' +
+                ", instructions=" + instructions +
+                ", ingredients=" + ingredients +
+                ", context=" + context +
+                ", glutenFree=" + glutenFree +
+                ", dairyFree=" + dairyFree +
+                ", vegan=" + vegan +
+                '}';
+    }
 }

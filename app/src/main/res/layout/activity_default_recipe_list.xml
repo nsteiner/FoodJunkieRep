@@ -12,7 +12,7 @@
         android:id="@+id/defaultTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="176dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,10 +20,20 @@
 
     <ListView
         android:id="@+id/lv_recipeList"
-        android:layout_width="410dp"
-        android:layout_height="646dp"
+        android:layout_width="411dp"
+        android:layout_height="606dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="29dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/defaultTitle" />
+
+    <EditText
+        android:id="@+id/defaultSearchBar"
+        android:layout_width="409dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="9dp"
+        android:inputType="date|textUri|textShortMessage|textLongMessage|textAutoCorrect|numberSigned|textVisiblePassword|textWebEditText|textMultiLine|textNoSuggestions|textFilter|number|datetime|textWebEmailAddress|textPersonName|textEnableTextConversionSuggestions|text|textPhonetic|textCapSentences|textPassword|textAutoComplete|textImeMultiLine|textPostalAddress|numberDecimal|textEmailAddress|numberPassword|textCapWords|phone|textEmailSubject|textCapCharacters|time|textWebPassword"
+        app:layout_constraintBottom_toTopOf="@+id/defaultTitle"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

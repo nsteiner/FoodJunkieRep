@@ -19,6 +19,17 @@ import java.util.List;
 import android.database.SQLException;
 public class DataBaseHelper extends SQLiteOpenHelper  {
     public static final String RECIPE_NAME = "RECIPE_NAME";
+    public static final String TAG1 = "TAG1";
+    public static final String TAG2 = "TAG2";
+    public static final String TAG3 = "TAG3";
+    public static final String TAG4 = "TAG4";
+    public static final String TAG5 = "TAG5";
+    public static final String TAG6 = "TAG6";
+    public static final String TAG7 = "TAG7";
+    public static final String TAG8 = "TAG8";
+    public static final String TAG9 = "TAG9";
+    public static final String TAG10 = "TAG10";
+
 
     private static String DB_PATH = "/data/data/com.example.foodjunkie/databases/";
 
@@ -339,6 +350,314 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         displayRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
 
         return displayRecipe;
+    }
+
+
+    public List<RecipeModel> filter(String searchInput, String table){
+        String switchTable = "";
+        switch(table) {
+            case "Breakfast":
+                switchTable = "BREAKFAST_TABLE";
+                break;
+            case "Lunch":
+                switchTable = "LUNCH_TABLE";
+                break;
+            case "Dinner":
+                switchTable = "DINNER_TABLE";
+                break;
+            case "Dessert":
+                switchTable = "DESSERT_TABLE";
+                break;
+            case "Snacks":
+                switchTable = "SNACKS_TABLE";
+                break;
+            case "MyBreakfast":
+                switchTable = "MYBREAKFAST_TABLE";
+                break;
+            case "MyLunch":
+                switchTable = "MYLUNCH_TABLE";
+                break;
+            case "MyDinner":
+                switchTable = "MYDINNER_TABLE";
+                break;
+            case "MyDessert":
+                switchTable = "MYDESSERT_TABLE";
+                break;
+            case "MySnacks":
+                switchTable = "MYSNACKS_TABLE";
+                break;
+        }
+
+        String queryString = "SELECT * FROM " + switchTable + " WHERE RECIPE_NAME LIKE '%" + searchInput +"%'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        List<RecipeModel> returnList = new ArrayList<RecipeModel>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor.getString(i));
+                }
+                int dairy_free = cursor.getInt(61);
+                int gluten_free = cursor.getInt(62);
+                int vegan = cursor.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor.moveToNext());
+        }
+
+
+        String queryString2 = "SELECT * FROM " + switchTable + " WHERE TAG1 LIKE'%" + searchInput +"%'";
+        Cursor cursor2 = db.rawQuery(queryString2, null);
+
+        if (cursor2.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor2.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor2.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor2.getString(i));
+                }
+                int dairy_free = cursor2.getInt(61);
+                int gluten_free = cursor2.getInt(62);
+                int vegan = cursor2.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor2.moveToNext());
+        }
+
+
+        String queryString3 = "SELECT * FROM " + switchTable + " WHERE TAG2 LIKE'%" + searchInput +"%'";
+        Cursor cursor3 = db.rawQuery(queryString3, null);
+
+        if (cursor3.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor3.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor3.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor3.getString(i));
+                }
+                int dairy_free = cursor3.getInt(61);
+                int gluten_free = cursor3.getInt(62);
+                int vegan = cursor3.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor3.moveToNext());
+        }
+
+
+        String queryString4 = "SELECT * FROM " + switchTable + " WHERE TAG3 LIKE'%" + searchInput +"%'";
+        Cursor cursor4 = db.rawQuery(queryString4, null);
+
+        if (cursor4.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor4.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor4.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor4.getString(i));
+                }
+                int dairy_free = cursor4.getInt(61);
+                int gluten_free = cursor4.getInt(62);
+                int vegan = cursor4.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor4.moveToNext());
+        }
+
+
+        String queryString5 = "SELECT * FROM " + switchTable + " WHERE TAG4 LIKE'%" + searchInput +"%'";
+        Cursor cursor5 = db.rawQuery(queryString5, null);
+
+        if (cursor5.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor5.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor5.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor5.getString(i));
+                }
+                int dairy_free = cursor5.getInt(61);
+                int gluten_free = cursor5.getInt(62);
+                int vegan = cursor5.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor5.moveToNext());
+        }
+
+
+        String queryString6 = "SELECT * FROM " + switchTable + " WHERE TAG5 LIKE'%" + searchInput +"%'";
+        Cursor cursor6 = db.rawQuery(queryString6, null);
+
+        if (cursor6.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor6.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor6.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor6.getString(i));
+                }
+                int dairy_free = cursor6.getInt(61);
+                int gluten_free = cursor6.getInt(62);
+                int vegan = cursor6.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor6.moveToNext());
+        }
+
+
+        String queryString7 = "SELECT * FROM " + switchTable + " WHERE TAG6 LIKE'%" + searchInput +"%'";
+        Cursor cursor7 = db.rawQuery(queryString7, null);
+
+        if (cursor7.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor7.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor7.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor7.getString(i));
+                }
+                int dairy_free = cursor7.getInt(61);
+                int gluten_free = cursor7.getInt(62);
+                int vegan = cursor7.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor7.moveToNext());
+        }
+
+
+        String queryString8 = "SELECT * FROM " + switchTable + " WHERE TAG7 LIKE'%" + searchInput +"%'";
+        Cursor cursor8 = db.rawQuery(queryString8, null);
+
+        if (cursor8.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor8.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor8.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor8.getString(i));
+                }
+                int dairy_free = cursor8.getInt(61);
+                int gluten_free = cursor8.getInt(62);
+                int vegan = cursor8.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor8.moveToNext());
+        }
+
+
+        String queryString9 = "SELECT * FROM " + switchTable + " WHERE TAG8 LIKE'%" + searchInput +"%'";
+        Cursor cursor9 = db.rawQuery(queryString9, null);
+
+        if (cursor9.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor9.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor9.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor9.getString(i));
+                }
+                int dairy_free = cursor9.getInt(61);
+                int gluten_free = cursor9.getInt(62);
+                int vegan = cursor9.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor9.moveToNext());
+        }
+
+
+        String queryString10 = "SELECT * FROM " + switchTable + " WHERE TAG9 LIKE'%" + searchInput +"%'";
+        Cursor cursor10 = db.rawQuery(queryString10, null);
+
+        if (cursor10.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor10.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor10.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor10.getString(i));
+                }
+                int dairy_free = cursor10.getInt(61);
+                int gluten_free = cursor10.getInt(62);
+                int vegan = cursor10.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor10.moveToNext());
+        }
+
+        String queryString11 = "SELECT * FROM " + switchTable + " WHERE TAG10 LIKE'%" + searchInput +"%'";
+        Cursor cursor11 = db.rawQuery(queryString11, null);
+
+        if (cursor11.moveToFirst()) {
+            do {
+                List<String> ingredients = new ArrayList<>(30);
+                List<String> instructions = new ArrayList<>(30);
+                String name = cursor11.getString(0);
+                for(int i = 1; i < 31;i++){
+                    ingredients.add(cursor11.getString(i));
+                }
+                for(int i = 31; i < 61; i++){
+                    instructions.add(cursor11.getString(i));
+                }
+                int dairy_free = cursor11.getInt(61);
+                int gluten_free = cursor11.getInt(62);
+                int vegan = cursor11.getInt(63);
+
+                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+                returnList.add(newRecipe);
+            } while (cursor11.moveToNext());
+        }
+
+
+        // make sure to close sqlite
+        cursor.close();
+        db.close();
+        return returnList;
     }
 
 
