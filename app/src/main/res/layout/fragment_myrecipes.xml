@@ -8,110 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".MyRecipesFragment">
 
-    <Button
-        android:id="@+id/btn_newRecipe"
-        android:layout_width="88dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="16dp"
-        android:text="@string/new_recipe"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_myRecipes"
-        app:layout_constraintHorizontal_bias="1.0"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
-
-    <TextView
-        android:id="@+id/tv_myRecipes"
-        android:layout_width="209dp"
-        android:layout_height="124dp"
-        android:text="MY COOKBOOK"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
-
-    <Button
-        android:id="@+id/btn_myBreakfast"
-        android:layout_width="166dp"
-        android:layout_height="81dp"
-        android:text="Breakfast"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_myRecipes"
-
-        app:layout_constraintVertical_bias="0.098" />
-    <Button
-        android:id="@+id/btn_myLunch"
-        android:layout_width="166dp"
-        android:layout_height="81dp"
-        android:text="Lunch"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_myDinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_myBreakfast"
-        app:layout_constraintVertical_bias="0.55" />
-    <Button
-        android:id="@+id/btn_myDinner"
-        android:layout_width="166dp"
-        android:layout_height="81dp"
-        android:text="Dinner"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_mySnacks"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_myBreakfast"
-        app:layout_constraintVertical_bias="0.872" />
-    <Button
-
-        android:id="@+id/btn_mySnacks"
-        android:layout_width="166dp"
-        android:layout_height="81dp"
-        android:text="Snacks"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_myDessert"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_myBreakfast"
-        app:layout_constraintVertical_bias="0.915" />
-    <Button
-        android:id="@+id/btn_myDessert"
-        android:layout_width="166dp"
-        android:layout_height="81dp"
-        android:text="Dessert"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_myBreakfast"
-        app:layout_constraintVertical_bias="0.811" />
-
-    <Button
-        android:id="@+id/LogOut"
-        android:layout_width="88dp"
-        android:layout_height="63dp"
-
-        android:text="SIgn out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -133,5 +29,108 @@
         android:src="@drawable/bowl2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:id="@+id/topHolder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:weightSum="100"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_newRecipe"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="25"
+                android:text="@string/new_recipe" />
+
+            <TextView
+                android:id="@+id/tv_myRecipes"
+                android:layout_width="0dp"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_weight="50"
+                android:gravity="center"
+                android:text="MY COOKBOOK"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/LogOut"
+                android:layout_width="0dp"
+                android:layout_height="63dp"
+                android:layout_gravity="center"
+                android:layout_weight="25"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Sign out" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttonHolder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="80"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/btn_myBreakfast"
+                android:layout_width="166dp"
+                android:layout_height="81dp"
+                android:text="Breakfast"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="80dp"
+                />
+
+            <Button
+                android:id="@+id/btn_myLunch"
+                android:layout_width="166dp"
+                android:layout_height="81dp"
+                android:text="Lunch"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+
+            <Button
+                android:id="@+id/btn_myDinner"
+                android:layout_width="166dp"
+                android:layout_height="81dp"
+                android:text="Dinner"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+
+            <Button
+
+                android:id="@+id/btn_mySnacks"
+                android:layout_width="166dp"
+                android:layout_height="81dp"
+                android:text="Snacks"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+
+            <Button
+                android:id="@+id/btn_myDessert"
+                android:layout_width="166dp"
+                android:layout_height="81dp"
+                android:text="Dessert"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

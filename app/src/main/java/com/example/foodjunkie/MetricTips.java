@@ -21,14 +21,14 @@ public class MetricTips extends AppCompatActivity {
         setContentView(R.layout.activity_metric_tips);
 
 
-        TspToTbs = findViewById(R.id.btn_TspToTbs);
-        TbsToTsp = findViewById(R.id.btn_TbsToTsp);
-        CupToOz = findViewById(R.id.btn_CupToOz);
-        OzToCup = findViewById(R.id.btn_OzToCup);
-        ButToTbs = findViewById(R.id.btn_ButToTbs);
-        ButToCup = findViewById(R.id.btn_ButToCup);
-        unit_Output = findViewById(R.id.unit_Output);
-        unit_Input = findViewById(R.id.unit_input);
+        TspToTbs = findViewById(R.id.btn_TspToTbs2);
+        TbsToTsp = findViewById(R.id.btn_TbsToTsp2);
+        CupToOz = findViewById(R.id.btn_CupToOz2);
+        OzToCup = findViewById(R.id.btn_OzToCup2);
+        ButToTbs = findViewById(R.id.btn_ButToTbs2);
+        ButToCup = findViewById(R.id.btn_ButToCup2);
+        unit_Output = findViewById(R.id.unit_Output2);
+        unit_Input = findViewById(R.id.unit_input2);
 //home1 = findViewById(R.id.btn_home1);
         TspToTbs.setOnClickListener(new View.OnClickListener() {
             @Override

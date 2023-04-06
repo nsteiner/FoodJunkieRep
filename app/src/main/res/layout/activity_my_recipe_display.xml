@@ -6,145 +6,129 @@
     android:layout_height="match_parent"
     tools:context=".MyRecipeDisplay">
 
-    <TextView
-        android:id="@+id/tv_recipesName"
-        android:layout_width="334dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="173dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="180dp"
-        android:layout_marginBottom="693dp"
-        android:gravity="center|center_horizontal"
-        android:text="@string/recipe_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
 
-    <TextView
-        android:id="@+id/tv_ingredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="271dp"
-        android:layout_marginBottom="655dp"
-        android:text="@string/tv_ingredients"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_instructions"
-        android:layout_width="84dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="135dp"
-        android:layout_marginTop="58dp"
-        android:layout_marginEnd="69dp"
-        android:layout_marginBottom="654dp"
-        android:text="@string/tv_instructions"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tv_ingredients"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ScrollView
-        android:id="@+id/sv_ingredientList"
-        android:layout_width="176dp"
-        android:layout_height="564dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="11dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sv_instructionList"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/tv_recipesName"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/recipe_name" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="10"
+            android:weightSum="100">
 
             <TextView
-                android:id="@+id/tv_ingredientOutput"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_ingredients"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
-        </LinearLayout>
-    </ScrollView>
+                android:gravity="center"
+                android:text="@string/tv_ingredients" />
 
-    <ScrollView
-        android:id="@+id/sv_instructionList"
-        android:layout_width="193dp"
-        android:layout_height="564dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="11dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sv_ingredientList"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.506">
+            <TextView
+                android:id="@+id/tv_instructions"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_instructions" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="75"
+            android:weightSum="100">
+
+            <ScrollView
+                android:id="@+id/sv_ingredientList"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ingredientOutput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView" />
+                </LinearLayout>
+            </ScrollView>
+
+            <ScrollView
+                android:id="@+id/sv_instructionList"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_instructionOutput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView" />
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="10">
 
             <TextView
-                android:id="@+id/tv_instructionOutput"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_dairyFree"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_weight="33.3"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/tv_dairyFree" />
+
+            <TextView
+                android:id="@+id/tv_glutenFree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="33.3"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/tv_glutenFree" />
+
+            <TextView
+                android:id="@+id/tv_vegan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="33.3"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/tv_vegan" />
         </LinearLayout>
-    </ScrollView>
 
-    <TextView
-        android:id="@+id/tv_vegan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
-        android:text="@string/tv_vegan"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.97" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_glutenFree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="@string/tv_glutenFree"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.963" />
-
-    <TextView
-        android:id="@+id/tv_dairyFree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="@string/tv_dairyFree"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.996"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.963" />
 </androidx.constraintlayout.widget.ConstraintLayout>

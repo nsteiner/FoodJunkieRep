@@ -51,13 +51,13 @@ public class NewRecipe extends AppCompatActivity {
         instructions = new ArrayList<>(30);
         ingredients = new ArrayList<>(30);
 
-        btn_addRecipe = findViewById(R.id.btn_addRecipe);
-        btn_addIngredient = findViewById(R.id.btn_addIngredient);
-        btn_addInstruction = findViewById(R.id.btn_addInstruction);
+        btn_addRecipe = findViewById(R.id.btn_addRecipe2);
+        btn_addIngredient = findViewById(R.id.btn_addIngredient2);
+        btn_addInstruction = findViewById(R.id.btn_addInstruction2);
 
-        cb_dairyFree = findViewById(R.id.cb_dairyFree);
-        cb_glutenFree = findViewById(R.id.cb_glutenFree);
-        cb_vegan = findViewById(R.id.cb_vegan);
+        cb_dairyFree = findViewById(R.id.cb_dairyFree2);
+        cb_glutenFree = findViewById(R.id.cb_glutenFree2);
+        cb_vegan = findViewById(R.id.cb_vegan2);
 
         rb_categories = (RadioGroup) findViewById(R.id.rb_categories);
         rb_breakfast = findViewById(R.id.rb_breakfast);

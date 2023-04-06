@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -57,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin = findViewById(R.id.btn_login);
         progressBar = findViewById(R.id.progressBar);
         textViewReg = findViewById(R.id.Btn_registerNow);
-        forgotPassword = findViewById(R.id.restPass);
+        forgotPassword = findViewById(R.id.resetPass);
         textViewReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

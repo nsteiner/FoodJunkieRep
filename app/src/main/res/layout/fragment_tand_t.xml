@@ -6,37 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".TandTFragment">
     <!-- TODO: Update blank fragment layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/TandT"
-            android:textStyle="bold"
-            android:layout_width="310dp"
-            android:layout_height="66dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="232dp"
-            android:elevation="4dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="3.5"
-            android:shadowDy="3.3"
-            android:shadowRadius="3.6"
-            android:text="@string/tips_fragment"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="35sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="@id/TipsImage"
-            app:layout_constraintTop_toTopOf="@id/TipsImage" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:id="@+id/TipsImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/mise_en_plase" />
+
+            <TextView
+                android:id="@+id/TandT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:layout_gravity="center"
+                android:shadowColor="@color/black"
+                android:shadowDx="3.5"
+                android:shadowDy="3.3"
+                android:shadowRadius="3.6"
+                android:text="@string/tips_fragment"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
 
         <Button
             android:id="@+id/btn_Safety"
-            android:layout_width="281dp"
-            android:layout_height="104dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginBottom="436dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
             android:backgroundTint="@color/green"
             android:fontFamily="@font/alata"
             android:text="@string/button_Safety"
@@ -44,46 +57,38 @@
             android:textColorHighlight="@color/white"
             android:textColorHint="@color/green"
             android:textColorLink="@color/green"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/btn_Sub"
-            android:layout_width="281dp"
-            android:layout_height="104dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:layout_weight="20"
             android:backgroundTint="@color/green"
             android:fontFamily="@font/alata"
             android:text="@string/button_Sub"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.555" />
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/btn_Metric"
-            android:layout_width="281dp"
-            android:layout_height="104dp"
-            android:layout_marginEnd="64dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="20"
             android:backgroundTint="@color/green"
             android:fontFamily="@font/alata"
             android:text="@string/button_Metric"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.799" />
-        <ImageView
-            android:id="@+id/TipsImage"
-            android:layout_width="512dp"
-            android:layout_height="554dp"
-            android:layout_marginBottom="336dp"
-            android:src="@drawable/mise_en_plase"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

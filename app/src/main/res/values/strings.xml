@@ -161,4 +161,5 @@ Baking soda / powder alternatives: \n
     <string name="tv_dairyFree">Dairy Free ✅</string>
     <string name="stringAdded" />
     <string name="recipeAdded">✅ Added to My Recipes</string>
+    <string name="searchBarHint">"Search "</string>
 </resources>

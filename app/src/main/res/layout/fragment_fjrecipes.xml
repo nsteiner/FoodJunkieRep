@@ -8,89 +8,16 @@
     android:layout_height="match_parent"
     tools:context=".DefaultRecipesFragment">
 
-    <TextView
-        android:id="@+id/tv_defaultRecipes"
-        android:layout_width="270dp"
-        android:layout_height="124dp"
-        android:text="FOOD JUNKIE RECIPES"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="35sp"
-        android:textStyle="bold"
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="277dp"
+        android:layout_height="281dp"
+        android:layout_marginEnd="168dp"
+        android:src="@drawable/bowl0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049" />
-
-    <Button
-        android:id="@+id/btn_defaultBreakfast"
-
-        android:layout_width="166dp"
-        android:layout_height="81dp"
-        android:text="Breakfast"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_defaultRecipes"
-        app:layout_constraintVertical_bias="0.098" />
-
-    <Button
-        android:id="@+id/btn_defaultLunch"
-        android:layout_width="166dp"
-        android:layout_height="81dp"
-        android:text="Lunch"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_defaultDinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_defaultBreakfast"
-        app:layout_constraintVertical_bias="0.55" />
-
-    <Button
-        android:id="@+id/btn_defaultDinner"
-        android:layout_width="166dp"
-        android:layout_height="81dp"
-
-        android:text="Dinner"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_defaultSnacks"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_defaultBreakfast"
-        app:layout_constraintVertical_bias="0.872" />
-
-    <Button
-        android:id="@+id/btn_defaultSnacks"
-        android:layout_width="166dp"
-        android:layout_height="81dp"
-        android:text="Snacks"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_defaultDessert"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_defaultBreakfast"
-        app:layout_constraintVertical_bias="0.915" />
-
-    <Button
-        android:id="@+id/btn_defaultDessert"
-        android:layout_width="166dp"
-        android:layout_height="81dp"
-        android:text="Dessert"
-
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_defaultBreakfast"
-        app:layout_constraintVertical_bias="0.811" />
+        app:layout_constraintVertical_bias="0.961" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -103,16 +30,66 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.24" />
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="277dp"
-        android:layout_height="281dp"
-        android:layout_marginEnd="168dp"
-        android:src="@drawable/bowl0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.961" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="80"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_defaultRecipes"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="FOOD JUNKIE RECIPES"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_defaultBreakfast"
+            android:layout_width="166dp"
+            android:layout_height="0dp"
+            android:layout_weight="12"
+            android:text="Breakfast"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_defaultLunch"
+            android:layout_width="166dp"
+            android:layout_height="0dp"
+            android:layout_weight="12"
+            android:text="Lunch"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_defaultDinner"
+            android:layout_width="166dp"
+            android:layout_height="0dp"
+            android:layout_weight="12"
+
+            android:text="Dinner"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_defaultDessert"
+            android:layout_width="166dp"
+            android:layout_height="0dp"
+            android:layout_weight="12"
+            android:text="Dessert"
+
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_defaultSnacks"
+            android:layout_width="166dp"
+            android:layout_height="0dp"
+            android:layout_weight="12"
+            android:text="Snacks"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
