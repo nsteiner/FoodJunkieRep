@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.SearchView;
 
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class DefaultRecipeList extends AppCompatActivity {
 
         if(dataBaseHelper.checkEmpty(getIntent().getStringExtra("title"), "DefaultRecipes")){
             List<RecipeModel> displayList = this.dataBaseHelper.getAll(getIntent().getStringExtra("title"));
-            RecipeListAdapter adapter = new RecipeListAdapter(this, R.layout.adapter_view_layout, displayList);
+            DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(this, R.layout.default_view_layout, displayList);
             lv_recipeList.setAdapter(adapter);
             for(int i = 0; i < displayList.size() ; i++){
                 System.out.println(displayList.get(i).getRecipeName());
@@ -85,7 +84,7 @@ public class DefaultRecipeList extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 //(DefaultRecipeList.this).adapter.getFilter().filter(charSequence);
                 List<RecipeModel> filteredList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText);
-                RecipeListAdapter adapter = new RecipeListAdapter(getBaseContext(), R.layout.adapter_view_layout, filteredList);
+                DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(getBaseContext(), R.layout.default_view_layout, filteredList);
                 lv_recipeList.setAdapter(adapter);
                 for(int j = 0; j < filteredList.size() ; j++){
                     System.out.println(filteredList.get(j).getRecipeName());

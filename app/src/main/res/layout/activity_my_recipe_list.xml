@@ -10,20 +10,31 @@
 
     <TextView
         android:id="@+id/myTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="176dp"
+        android:layout_width="134dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/lv_recipeList"
-        android:layout_width="406dp"
-        android:layout_height="643dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="29dp"
+        android:layout_width="399dp"
+        android:layout_height="599dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="116dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myTitle" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/myRecipeSearchBar"
+        android:layout_width="409dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="664dp"
+        android:inputType="date|textUri|textShortMessage|textLongMessage|textAutoCorrect|numberSigned|textVisiblePassword|textWebEditText|textMultiLine|textNoSuggestions|textFilter|number|datetime|textWebEmailAddress|textPersonName|textEnableTextConversionSuggestions|text|textPhonetic|textCapSentences|textPassword|textAutoComplete|textImeMultiLine|textPostalAddress|numberDecimal|textEmailAddress|numberPassword|textCapWords|phone|textEmailSubject|textCapCharacters|time|textWebPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

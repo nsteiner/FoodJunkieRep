@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +22,7 @@ public class MyRecipeList extends AppCompatActivity {
     ListView lv_recipeList;
 
     DataBaseHelper dataBaseHelper;
+    EditText myRecipeSearchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,7 @@ public class MyRecipeList extends AppCompatActivity {
         title.setText(titleText);
         Log.d(TAG, "onCreate: Started");
         lv_recipeList = (ListView) findViewById(R.id.lv_recipeList);
-
+        myRecipeSearchBar = findViewById(R.id.myRecipeSearchBar);
         dataBaseHelper = new DataBaseHelper(MyRecipeList.this);
 
         List<RecipeModel> recipeList = dataBaseHelper.getAll("My" + getIntent().getStringExtra("title"));
@@ -39,7 +43,7 @@ public class MyRecipeList extends AppCompatActivity {
 
 
         if(dataBaseHelper.checkEmpty(getIntent().getStringExtra("title"), "MyRecipes")){
-            RecipeListAdapter adapter = new RecipeListAdapter(this, R.layout.adapter_view_layout, recipeList);
+            MyRecipeListAdapter adapter = new MyRecipeListAdapter(this, R.layout.myrecipe_view_layout, recipeList);
             lv_recipeList.setAdapter(adapter);
         }
         else{
@@ -48,60 +52,28 @@ public class MyRecipeList extends AppCompatActivity {
             return;
         }
 
+        myRecipeSearchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //(DefaultRecipeList.this).adapter.getFilter().filter(charSequence);
+                List<RecipeModel> filteredList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), titleText);
+                MyRecipeListAdapter adapter = new MyRecipeListAdapter(getBaseContext(), R.layout.myrecipe_view_layout, filteredList);
+                lv_recipeList.setAdapter(adapter);
+                for(int j = 0; j < filteredList.size() ; j++){
+                    System.out.println(filteredList.get(j).getRecipeName());
+                }
+            }
 
-        /*
-        String i1 = "info 1";
-        String i2 = "info 2";
+            @Override
+            public void afterTextChanged(Editable editable) {
 
-        Food john = new Food("Chicken a la mode", "info 1", "Info 2", "drawable://" + R.drawable.food);
-        Food jerry = new Food("Applesauce", i1, i2, "drawable://" + R.drawable.food);
-        Food jason = new Food("Mac and Cheese", i1, i2, "drawable://" + R.drawable.food);
-        Food jimbo = new Food("Ceasar Salad", i1, i2, "drawable://" + R.drawable.food);
-        Food james = new Food("Pasta Carbinara", i1, "Male", "drawable://" + R.drawable.food);
-        Food jeff = new Food("Food Name 1", i1, i2, "drawable://" + R.drawable.food);
-        Food matt1 = new Food("Food Name 2", i1, i2, "drawable://" + R.drawable.food);
-        Food matt2 = new Food("Food Name 3", i1, i2, "drawable://" + R.drawable.food);
-        Food matt3 = new Food("Food Name 4", i1, i2, "drawable://" + R.drawable.food);
-        Food matt4 = new Food("Food Name 5", i1, i2, "drawable://" + R.drawable.food);
-        Food matt5 = new Food("Food Name 6", i1, i2, "drawable://" + R.drawable.food);
-        Food matt6 = new Food("Food Name 7", i1, i2, "drawable://" + R.drawable.food);
-        Food matt7 = new Food("Food Name 8", i1, i2, "drawable://" + R.drawable.food);
-        Food matt8 = new Food("Food Name 9", i1, i2, "drawable://" + R.drawable.food);
-        Food matt9 = new Food("Food Name 10", i1, i2, "drawable://" + R.drawable.food);
-
-
-
-        ArrayList<Food> peopleList = new ArrayList<>();
-
-        peopleList.add(john);
-        peopleList.add(jerry);
-        peopleList.add(jason);
-        peopleList.add(jimbo);
-        peopleList.add(james);
-        peopleList.add(jeff);
-        peopleList.add(matt1);
-        peopleList.add(matt2);
-        peopleList.add(matt3);
-        peopleList.add(matt4);
-        peopleList.add(matt5);
-        peopleList.add(matt6);
-        peopleList.add(matt7);
-        peopleList.add(matt8);
-        peopleList.add(matt9);
-        peopleList.add(matt1);
-        peopleList.add(matt2);
-        peopleList.add(matt3);
-        peopleList.add(matt4);
-        peopleList.add(matt5);
-        peopleList.add(matt6);
-        peopleList.add(matt7);
-        peopleList.add(matt8);
-        peopleList.add(matt9);
-         */
-
-
+            }
+        });
         lv_recipeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

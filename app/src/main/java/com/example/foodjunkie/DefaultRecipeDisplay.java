@@ -26,7 +26,6 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
     ImageView imageView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +83,11 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
             tv_vegan.setVisibility(View.INVISIBLE);
         }
 
+        if(dataBaseHelper.checkMyRecipes(recipe.getRecipeName(), title)){
+            recipeAdded.setVisibility(View.VISIBLE);
+            btn_addRecipe.setVisibility(View.GONE);
+        }
+
         btn_addRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,9 +96,6 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
                 btn_addRecipe.setVisibility(View.GONE);
             }
         });
-
-
-
 
     }
 

@@ -51,7 +51,7 @@ public class DefaultRecipesFragment extends Fragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_profile, container, false);
+        view = inflater.inflate(R.layout.fragment_fjrecipes, container, false);
 
         btn_defaultBreakfast = view.findViewById(R.id.btn_defaultBreakfast);
         btn_defaultLunch = view.findViewById(R.id.btn_defaultLunch);

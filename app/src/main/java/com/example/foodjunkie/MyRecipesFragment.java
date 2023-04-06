@@ -73,7 +73,7 @@ public class MyRecipesFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_myrecipes, container, false);
         Logout = view.findViewById(R.id.LogOut);
         Logout.setOnClickListener(this);
         newRecipe = view.findViewById(R.id.btn_newRecipe);

@@ -70,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNav.setOnItemSelectedListener(item -> {
             switch(item.getItemId()){
                 //will put whatever you want to show up in these cases
-                case R.id.home:
+                case R.id.myRecipes:
                     replaceFragment(new MyRecipesFragment());
                     //   LogOut.setVisibility(View.VISIBLE);
                     break;
-                case R.id.profile:
+                case R.id.defaultRecipes:
                     replaceFragment(new DefaultRecipesFragment());
                     //      LogOut.setVisibility(View.GONE);
                     break;

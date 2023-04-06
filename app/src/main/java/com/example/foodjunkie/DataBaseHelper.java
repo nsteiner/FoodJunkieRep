@@ -17,19 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.database.SQLException;
-public class DataBaseHelper extends SQLiteOpenHelper  {
+public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String RECIPE_NAME = "RECIPE_NAME";
-    public static final String TAG1 = "TAG1";
-    public static final String TAG2 = "TAG2";
-    public static final String TAG3 = "TAG3";
-    public static final String TAG4 = "TAG4";
-    public static final String TAG5 = "TAG5";
-    public static final String TAG6 = "TAG6";
-    public static final String TAG7 = "TAG7";
-    public static final String TAG8 = "TAG8";
-    public static final String TAG9 = "TAG9";
-    public static final String TAG10 = "TAG10";
-
 
     private static String DB_PATH = "/data/data/com.example.foodjunkie/databases/";
 
@@ -205,21 +194,19 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         //(table name (must be MY..._TABLE, null, cv)
     }
 
-    public boolean checkEmpty(String category, String list){
+    public boolean checkEmpty(String category, String list) {
         String table = "MYBREAKFAST_TABLE";
-        if(list == "MyRecipes"){
+        if (list == "MyRecipes") {
             table = "MY" + category.toUpperCase() + "_TABLE";
-        }
-        else{
+        } else {
             table = category.toUpperCase() + "_TABLE";
         }
         String queryString = "SELECT * FROM " + table;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -228,7 +215,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
     //pulling information from the database
     public List<RecipeModel> getAll(String table) {
         List<RecipeModel> returnList = new ArrayList<>();
-        switch(table){
+        switch (table) {
             case "Breakfast":
                 table = "BREAKFAST_TABLE";
                 break;
@@ -272,10 +259,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor.getString(i));
                 }
                 int dairy_free = cursor.getInt(61);
@@ -293,9 +280,9 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         return returnList;
     }
 
-    public RecipeModel getRecipe(String recipeName, String table){
+    public RecipeModel getRecipe(String recipeName, String table) {
         String switchTable = "";
-        switch(table) {
+        switch (table) {
             case "Breakfast":
                 switchTable = "BREAKFAST_TABLE";
                 break;
@@ -327,7 +314,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 switchTable = "MYSNACKS_TABLE";
                 break;
         }
-        String queryString = "SELECT * FROM " + switchTable + " WHERE RECIPE_NAME ='" + recipeName +"'";
+        String queryString = "SELECT * FROM " + switchTable + " WHERE RECIPE_NAME ='" + recipeName + "'";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
         cursor.moveToFirst();
@@ -337,10 +324,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         RecipeModel displayRecipe;
 
         String name = cursor.getString(0);
-        for(int i = 1; i < 31;i++){
+        for (int i = 1; i < 31; i++) {
             ingredients.add(cursor.getString(i));
         }
-        for(int i = 31; i < 61; i++){
+        for (int i = 31; i < 61; i++) {
             instructions.add(cursor.getString(i));
         }
         int dairy_free = cursor.getInt(61);
@@ -353,9 +340,9 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
     }
 
 
-    public List<RecipeModel> filter(String searchInput, String table){
+    public List<RecipeModel> filter(String searchInput, String table) {
         String switchTable = "";
-        switch(table) {
+        switch (table) {
             case "Breakfast":
                 switchTable = "BREAKFAST_TABLE";
                 break;
@@ -388,7 +375,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 break;
         }
 
-        String queryString = "SELECT * FROM " + switchTable + " WHERE RECIPE_NAME LIKE '%" + searchInput +"%'";
+        String queryString = "SELECT * FROM " + switchTable + " WHERE RECIPE_NAME LIKE '%" + searchInput + "%'";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
 
@@ -399,10 +386,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor.getString(i));
                 }
                 int dairy_free = cursor.getInt(61);
@@ -415,7 +402,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         }
 
 
-        String queryString2 = "SELECT * FROM " + switchTable + " WHERE TAG1 LIKE'%" + searchInput +"%'";
+        String queryString2 = "SELECT * FROM " + switchTable + " WHERE TAG1 LIKE'%" + searchInput + "%'";
         Cursor cursor2 = db.rawQuery(queryString2, null);
 
         if (cursor2.moveToFirst()) {
@@ -423,10 +410,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor2.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor2.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor2.getString(i));
                 }
                 int dairy_free = cursor2.getInt(61);
@@ -439,7 +426,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         }
 
 
-        String queryString3 = "SELECT * FROM " + switchTable + " WHERE TAG2 LIKE'%" + searchInput +"%'";
+        String queryString3 = "SELECT * FROM " + switchTable + " WHERE TAG2 LIKE'%" + searchInput + "%'";
         Cursor cursor3 = db.rawQuery(queryString3, null);
 
         if (cursor3.moveToFirst()) {
@@ -447,10 +434,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor3.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor3.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor3.getString(i));
                 }
                 int dairy_free = cursor3.getInt(61);
@@ -463,7 +450,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         }
 
 
-        String queryString4 = "SELECT * FROM " + switchTable + " WHERE TAG3 LIKE'%" + searchInput +"%'";
+        String queryString4 = "SELECT * FROM " + switchTable + " WHERE TAG3 LIKE'%" + searchInput + "%'";
         Cursor cursor4 = db.rawQuery(queryString4, null);
 
         if (cursor4.moveToFirst()) {
@@ -471,10 +458,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor4.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor4.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor4.getString(i));
                 }
                 int dairy_free = cursor4.getInt(61);
@@ -487,7 +474,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         }
 
 
-        String queryString5 = "SELECT * FROM " + switchTable + " WHERE TAG4 LIKE'%" + searchInput +"%'";
+        String queryString5 = "SELECT * FROM " + switchTable + " WHERE TAG4 LIKE'%" + searchInput + "%'";
         Cursor cursor5 = db.rawQuery(queryString5, null);
 
         if (cursor5.moveToFirst()) {
@@ -495,10 +482,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor5.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor5.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor5.getString(i));
                 }
                 int dairy_free = cursor5.getInt(61);
@@ -511,7 +498,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         }
 
 
-        String queryString6 = "SELECT * FROM " + switchTable + " WHERE TAG5 LIKE'%" + searchInput +"%'";
+        String queryString6 = "SELECT * FROM " + switchTable + " WHERE TAG5 LIKE'%" + searchInput + "%'";
         Cursor cursor6 = db.rawQuery(queryString6, null);
 
         if (cursor6.moveToFirst()) {
@@ -519,10 +506,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor6.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor6.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor6.getString(i));
                 }
                 int dairy_free = cursor6.getInt(61);
@@ -535,7 +522,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         }
 
 
-        String queryString7 = "SELECT * FROM " + switchTable + " WHERE TAG6 LIKE'%" + searchInput +"%'";
+        String queryString7 = "SELECT * FROM " + switchTable + " WHERE TAG6 LIKE'%" + searchInput + "%'";
         Cursor cursor7 = db.rawQuery(queryString7, null);
 
         if (cursor7.moveToFirst()) {
@@ -543,10 +530,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor7.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor7.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor7.getString(i));
                 }
                 int dairy_free = cursor7.getInt(61);
@@ -559,7 +546,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         }
 
 
-        String queryString8 = "SELECT * FROM " + switchTable + " WHERE TAG7 LIKE'%" + searchInput +"%'";
+        String queryString8 = "SELECT * FROM " + switchTable + " WHERE TAG7 LIKE'%" + searchInput + "%'";
         Cursor cursor8 = db.rawQuery(queryString8, null);
 
         if (cursor8.moveToFirst()) {
@@ -567,10 +554,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor8.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor8.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor8.getString(i));
                 }
                 int dairy_free = cursor8.getInt(61);
@@ -583,7 +570,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         }
 
 
-        String queryString9 = "SELECT * FROM " + switchTable + " WHERE TAG8 LIKE'%" + searchInput +"%'";
+        String queryString9 = "SELECT * FROM " + switchTable + " WHERE TAG8 LIKE'%" + searchInput + "%'";
         Cursor cursor9 = db.rawQuery(queryString9, null);
 
         if (cursor9.moveToFirst()) {
@@ -591,10 +578,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor9.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor9.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor9.getString(i));
                 }
                 int dairy_free = cursor9.getInt(61);
@@ -607,7 +594,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
         }
 
 
-        String queryString10 = "SELECT * FROM " + switchTable + " WHERE TAG9 LIKE'%" + searchInput +"%'";
+        String queryString10 = "SELECT * FROM " + switchTable + " WHERE TAG9 LIKE'%" + searchInput + "%'";
         Cursor cursor10 = db.rawQuery(queryString10, null);
 
         if (cursor10.moveToFirst()) {
@@ -615,10 +602,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor10.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor10.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor10.getString(i));
                 }
                 int dairy_free = cursor10.getInt(61);
@@ -630,7 +617,7 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
             } while (cursor10.moveToNext());
         }
 
-        String queryString11 = "SELECT * FROM " + switchTable + " WHERE TAG10 LIKE'%" + searchInput +"%'";
+        String queryString11 = "SELECT * FROM " + switchTable + " WHERE TAG10 LIKE'%" + searchInput + "%'";
         Cursor cursor11 = db.rawQuery(queryString11, null);
 
         if (cursor11.moveToFirst()) {
@@ -638,10 +625,10 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
                 List<String> ingredients = new ArrayList<>(30);
                 List<String> instructions = new ArrayList<>(30);
                 String name = cursor11.getString(0);
-                for(int i = 1; i < 31;i++){
+                for (int i = 1; i < 31; i++) {
                     ingredients.add(cursor11.getString(i));
                 }
-                for(int i = 31; i < 61; i++){
+                for (int i = 31; i < 61; i++) {
                     instructions.add(cursor11.getString(i));
                 }
                 int dairy_free = cursor11.getInt(61);
@@ -661,5 +648,32 @@ public class DataBaseHelper extends SQLiteOpenHelper  {
     }
 
 
-
+    public boolean checkMyRecipes(String recipeName, String table) {
+        String switchTable = "";
+        switch (table) {
+            case "Breakfast":
+                switchTable = "MYBREAKFAST_TABLE";
+                break;
+            case "Lunch":
+                switchTable = "MYLUNCH_TABLE";
+                break;
+            case "Dinner":
+                switchTable = "MYDINNER_TABLE";
+                break;
+            case "Dessert":
+                switchTable = "MYDESSERT_TABLE";
+                break;
+            case "Snacks":
+                switchTable = "MYSNACKS_TABLE";
+                break;
+        }
+        String queryString = "SELECT * FROM " + switchTable + " WHERE RECIPE_NAME ='" + recipeName + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if (cursor.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
