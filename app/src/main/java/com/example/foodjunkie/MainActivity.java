@@ -82,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new TandTFragment());
                     //     LogOut.setVisibility(View.GONE);
                     break;
+                case R.id.pantry:
+                    replaceFragment(new PantryFragment());
+                    //     LogOut.setVisibility(View.GONE);
+                    break;
+
             }
 
             return true;
