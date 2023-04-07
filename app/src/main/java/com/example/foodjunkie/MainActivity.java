@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnNewRecipe, LogOut, btn_signout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         dataBaseHelper = new DataBaseHelper(MainActivity.this);
@@ -72,21 +73,16 @@ public class MainActivity extends AppCompatActivity {
                 //will put whatever you want to show up in these cases
                 case R.id.myRecipes:
                     replaceFragment(new MyRecipesFragment());
-                    //   LogOut.setVisibility(View.VISIBLE);
                     break;
                 case R.id.defaultRecipes:
                     replaceFragment(new DefaultRecipesFragment());
-                    //      LogOut.setVisibility(View.GONE);
                     break;
                 case R.id.tipsTricks:
                     replaceFragment(new TandTFragment());
-                    //     LogOut.setVisibility(View.GONE);
                     break;
                 case R.id.pantry:
                     replaceFragment(new PantryFragment());
-                    //     LogOut.setVisibility(View.GONE);
                     break;
-
             }
 
             return true;
@@ -117,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.replace(R.id.frame_layout, fragment, "TAG"+fragment.toString());
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
     }

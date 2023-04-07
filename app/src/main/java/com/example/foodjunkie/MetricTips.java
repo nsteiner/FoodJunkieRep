@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.*;
 import android.view.View;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DecimalFormat;
@@ -103,6 +106,7 @@ public class MetricTips extends AppCompatActivity {
                 unit_Output.setText(formattedResult);
             }
         });
+
 /*home1.setOnClickListener(new View.OnClickListener() {
 public void onClick(View view) {
 Intent intent = new Intent(MetricTips.this,
