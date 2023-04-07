@@ -120,7 +120,7 @@ public class PantryFragment extends Fragment {
                 btn_add = popUpView.findViewById(R.id.add);
                // databasehelper = new DBHelper(getContext());
 
-                btn_add.setOnClickListener(new View.OnClickListener() {
+               /* btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -140,7 +140,7 @@ public class PantryFragment extends Fragment {
 
 
 
-                });
+                });*/
 
                 btn_cancel = popUpView.findViewById(R.id.btn_cancel);
                 btn_cancel.setOnClickListener(new View.OnClickListener() {

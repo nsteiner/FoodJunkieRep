@@ -1,8 +1,10 @@
 package com.example.foodjunkie;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.*;
 import android.view.View;
 import com.google.android.material.textfield.TextInputEditText;
@@ -20,6 +22,11 @@ public class MetricTips extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metric_tips);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        }
 
         TspToTbs = findViewById(R.id.btn_TspToTbs2);
         TbsToTsp = findViewById(R.id.btn_TbsToTsp2);
@@ -113,5 +120,16 @@ startActivity(intent);
 
 }
 }); */
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // navigate back to the previous fragment
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
