@@ -1,5 +1,6 @@
 package com.example.foodjunkie;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -28,13 +30,18 @@ public class MyRecipeList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_recipe_list);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        }
 
         //sets title depending on button clicked in default recipes fragment
         TextView title = findViewById(R.id.myTitle);
         String titleText = getIntent().getStringExtra("title");
         title.setText(titleText);
         Log.d(TAG, "onCreate: Started");
-        lv_recipeList = (ListView) findViewById(R.id.lv_recipeList);
+        lv_recipeList = (ListView) findViewById(R.id.lv_myRecipeList);
         myRecipeSearchBar = findViewById(R.id.myRecipeSearchBar);
         dataBaseHelper = new DataBaseHelper(MyRecipeList.this);
 
@@ -87,5 +94,16 @@ public class MyRecipeList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // navigate back to the previous fragment
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
