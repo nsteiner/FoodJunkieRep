@@ -3,16 +3,22 @@ package com.example.foodjunkie;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +29,8 @@ public class DefaultRecipeList extends AppCompatActivity {
     private static final String TAG = "";
     ListView lv_recipeList;
     EditText defaultSearchBar;
+
+    Button btn_dietaryFilters;
 
     DataBaseHelper dataBaseHelper;
 
@@ -37,6 +45,7 @@ public class DefaultRecipeList extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back);
         }
         defaultSearchBar = (EditText) findViewById(R.id.defaultSearchBar);
+        btn_dietaryFilters = findViewById(R.id.btn_dietaryFilters);
 
         //sets title depending on button clicked in default recipes fragment
         TextView title = findViewById(R.id.defaultTitle);
@@ -101,6 +110,26 @@ public class DefaultRecipeList extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+
+        btn_dietaryFilters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int width = 550;
+                int height = 400;
+
+                View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.filterpopup, null);
+                final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
+
+                // Show the soft keyboard for the EditText view
+                InputMethodManager imm = (InputMethodManager) getBaseContext().getSystemService(getBaseContext().INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
+                // Add the popup window to the PopupWindow instance
+                // popupWindow = new PopupWindow(popUpView, width, height, true);
+                popupWindow.setContentView(popUpView);
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
             }
         });
 

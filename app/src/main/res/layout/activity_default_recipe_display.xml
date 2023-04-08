@@ -28,7 +28,8 @@
                 android:layout_width="0dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"
-                android:layout_weight="25" />
+                android:layout_weight="25"
+                android:scaleType="fitXY"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -98,6 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="7dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="50">
 
@@ -134,6 +136,7 @@
                     android:id="@+id/sv_ingredients"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="7dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="50">
 

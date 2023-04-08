@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import android.database.SQLException;
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -644,6 +645,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // make sure to close sqlite
         cursor.close();
         db.close();
+
+        for(int i = 0; i < returnList.size(); i++){
+            RecipeModel recipeModel = returnList.get(i);
+            for(int j = i + 1; j < returnList.size(); j++){
+                RecipeModel recipeModelComparison = returnList.get(j);
+                String recipeModelName = recipeModel.getRecipeName();
+                String recipeModelComparisonName = recipeModelComparison.getRecipeName();
+                if(Objects.equals(recipeModelName, recipeModelComparisonName)){
+                    returnList.remove(j);
+                }
+            }
+            for(int k = 0; k < i; k++){
+                RecipeModel recipeModelComparison = returnList.get(k);
+                String recipeModelName = recipeModel.getRecipeName();
+                String recipeModelComparisonName = recipeModelComparison.getRecipeName();
+                if(Objects.equals(recipeModelName, recipeModelComparisonName)){
+                    returnList.remove(k);
+                }
+            }
+        }
         return returnList;
     }
 

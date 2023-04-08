@@ -53,14 +53,14 @@
             android:layout_height="0dp"
             android:layout_weight="7"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:weightSum="100">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/unit_input2"
-                android:layout_width="179dp"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_marginBottom="508dp"
-                android:layout_weight="1"
+                android:layout_weight="50"
                 android:backgroundTint="@color/green"
                 android:backgroundTintMode="src_over"
                 android:hint="@string/unit_input"
@@ -77,10 +77,10 @@
 
             <TextView
                 android:id="@+id/unit_Output2"
-                android:layout_width="170dp"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_marginBottom="508dp"
-                android:layout_weight="1"
+                android:layout_weight="50"
                 android:text="@string/unit_Output"
                 android:textAlignment="center"
                 android:textColor="@color/black"

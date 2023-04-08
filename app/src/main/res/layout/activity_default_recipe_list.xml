@@ -14,14 +14,31 @@
         android:orientation="vertical"
         android:weightSum="100">
 
-        <EditText
-            android:id="@+id/defaultSearchBar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:orientation="horizontal"
             android:layout_weight="10"
-            android:hint="Search"
-            android:inputType="date|textUri|textShortMessage|textLongMessage|textAutoCorrect|numberSigned|textVisiblePassword|textWebEditText|textMultiLine|textNoSuggestions|textFilter|number|datetime|textWebEmailAddress|textPersonName|textEnableTextConversionSuggestions|text|textPhonetic|textCapSentences|textPassword|textAutoComplete|textImeMultiLine|textPostalAddress|numberDecimal|textEmailAddress|numberPassword|textCapWords|phone|textEmailSubject|textCapCharacters|time|textWebPassword"
-            android:textColorHint="#66615757" />
+            android:weightSum="100">
+
+            <Button
+                android:id="@+id/btn_dietaryFilters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="25"
+                android:text="Dietary Filters" />
+
+            <EditText
+                android:id="@+id/defaultSearchBar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="75"
+                android:hint="Search"
+                android:inputType="date|textUri|textShortMessage|textLongMessage|textAutoCorrect|numberSigned|textVisiblePassword|textWebEditText|textMultiLine|textNoSuggestions|textFilter|number|datetime|textWebEmailAddress|textPersonName|textEnableTextConversionSuggestions|text|textPhonetic|textCapSentences|textPassword|textAutoComplete|textImeMultiLine|textPostalAddress|numberDecimal|textEmailAddress|numberPassword|textCapWords|phone|textEmailSubject|textCapCharacters|time|textWebPassword"
+                android:textColorHint="#66615757" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/defaultTitle"

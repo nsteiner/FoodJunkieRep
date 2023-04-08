@@ -40,8 +40,6 @@ public class PantryFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
-
     public PantryFragment() {
         // Required empty public constructor
     }
@@ -90,7 +88,7 @@ public class PantryFragment extends Fragment {
             public void onClick(View v) {
                 // Create and show the pop-up window
                 //final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
-                int width = 1400;
+                int width = 900;
                 int height = 1200;
 
                 View popUpView = LayoutInflater.from(getActivity()).inflate(R.layout.ingredientpopup, null);

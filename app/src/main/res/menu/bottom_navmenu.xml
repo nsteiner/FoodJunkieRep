@@ -3,7 +3,7 @@
     <item
         android:id="@+id/myRecipes"
         android:icon="@drawable/img_37981"
-        android:title="My Recipes" />
+        android:title="My Cookbook" />
     <item
         android:id="@+id/pantry"
         android:icon="@drawable/thepantry"

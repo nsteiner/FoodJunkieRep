@@ -59,6 +59,7 @@
                 android:id="@+id/sv_ingredientList"
                 android:layout_width="0dp"
                 android:layout_weight="50"
+                android:layout_marginRight="7dp"
                 android:layout_height="match_parent">
 
                 <LinearLayout
@@ -78,6 +79,7 @@
                 android:id="@+id/sv_instructionList"
                 android:layout_width="0dp"
                 android:layout_weight="50"
+                android:layout_marginLeft="7dp"
                 android:layout_height="match_parent">
 
                 <LinearLayout
