@@ -214,8 +214,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
     //pulling information from the database
-    public List<RecipeModel> getAll(String table) {
-        List<RecipeModel> returnList = new ArrayList<>();
+    public List<String> getAll(String table) {
+        List<String> returnList = new ArrayList<>();
         switch (table) {
             case "Breakfast":
                 table = "BREAKFAST_TABLE";
@@ -257,21 +257,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         //next, want to loop through results, create new recipe object for each row; if statement checks if there's items in database; if moveToFirst is true, there's an item in that row
         if (cursor.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor.getString(i));
-                }
-                int dairy_free = cursor.getInt(61);
-                int gluten_free = cursor.getInt(62);
-                int vegan = cursor.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor.moveToNext());
         }
 
@@ -341,7 +328,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<RecipeModel> filter(String searchInput, String table) {
+    public List<String> filter(String searchInput, String table) {
         String switchTable = "";
         switch (table) {
             case "Breakfast":
@@ -380,25 +367,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
 
-        List<RecipeModel> returnList = new ArrayList<RecipeModel>();
+        List<String> returnList = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor.getString(i));
-                }
-                int dairy_free = cursor.getInt(61);
-                int gluten_free = cursor.getInt(62);
-                int vegan = cursor.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor.moveToNext());
         }
 
@@ -408,21 +382,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor2.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor2.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor2.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor2.getString(i));
-                }
-                int dairy_free = cursor2.getInt(61);
-                int gluten_free = cursor2.getInt(62);
-                int vegan = cursor2.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor2.moveToNext());
         }
 
@@ -432,21 +393,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor3.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor3.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor3.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor3.getString(i));
-                }
-                int dairy_free = cursor3.getInt(61);
-                int gluten_free = cursor3.getInt(62);
-                int vegan = cursor3.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor3.moveToNext());
         }
 
@@ -456,21 +404,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor4.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor4.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor4.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor4.getString(i));
-                }
-                int dairy_free = cursor4.getInt(61);
-                int gluten_free = cursor4.getInt(62);
-                int vegan = cursor4.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor4.moveToNext());
         }
 
@@ -480,21 +415,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor5.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor5.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor5.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor5.getString(i));
-                }
-                int dairy_free = cursor5.getInt(61);
-                int gluten_free = cursor5.getInt(62);
-                int vegan = cursor5.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor5.moveToNext());
         }
 
@@ -504,21 +426,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor6.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor6.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor6.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor6.getString(i));
-                }
-                int dairy_free = cursor6.getInt(61);
-                int gluten_free = cursor6.getInt(62);
-                int vegan = cursor6.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor6.moveToNext());
         }
 
@@ -528,21 +437,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor7.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor7.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor7.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor7.getString(i));
-                }
-                int dairy_free = cursor7.getInt(61);
-                int gluten_free = cursor7.getInt(62);
-                int vegan = cursor7.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor7.moveToNext());
         }
 
@@ -552,21 +448,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor8.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor8.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor8.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor8.getString(i));
-                }
-                int dairy_free = cursor8.getInt(61);
-                int gluten_free = cursor8.getInt(62);
-                int vegan = cursor8.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor8.moveToNext());
         }
 
@@ -576,21 +459,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor9.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor9.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor9.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor9.getString(i));
-                }
-                int dairy_free = cursor9.getInt(61);
-                int gluten_free = cursor9.getInt(62);
-                int vegan = cursor9.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor9.moveToNext());
         }
 
@@ -600,21 +470,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor10.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor10.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor10.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor10.getString(i));
-                }
-                int dairy_free = cursor10.getInt(61);
-                int gluten_free = cursor10.getInt(62);
-                int vegan = cursor10.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor10.moveToNext());
         }
 
@@ -623,21 +480,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor11.moveToFirst()) {
             do {
-                List<String> ingredients = new ArrayList<>(30);
-                List<String> instructions = new ArrayList<>(30);
                 String name = cursor11.getString(0);
-                for (int i = 1; i < 31; i++) {
-                    ingredients.add(cursor11.getString(i));
-                }
-                for (int i = 31; i < 61; i++) {
-                    instructions.add(cursor11.getString(i));
-                }
-                int dairy_free = cursor11.getInt(61);
-                int gluten_free = cursor11.getInt(62);
-                int vegan = cursor11.getInt(63);
-
-                RecipeModel newRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
-                returnList.add(newRecipe);
+                returnList.add(name);
             } while (cursor11.moveToNext());
         }
 
@@ -647,19 +491,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
 
         for(int i = 0; i < returnList.size(); i++){
-            RecipeModel recipeModel = returnList.get(i);
+            String recipeModel = returnList.get(i);
             for(int j = i + 1; j < returnList.size(); j++){
-                RecipeModel recipeModelComparison = returnList.get(j);
-                String recipeModelName = recipeModel.getRecipeName();
-                String recipeModelComparisonName = recipeModelComparison.getRecipeName();
+                String recipeModelComparison = returnList.get(j);
+                String recipeModelName = recipeModel;
+                String recipeModelComparisonName = recipeModelComparison;
                 if(Objects.equals(recipeModelName, recipeModelComparisonName)){
                     returnList.remove(j);
                 }
             }
             for(int k = 0; k < i; k++){
-                RecipeModel recipeModelComparison = returnList.get(k);
-                String recipeModelName = recipeModel.getRecipeName();
-                String recipeModelComparisonName = recipeModelComparison.getRecipeName();
+                String recipeModelComparison = returnList.get(k);
+                String recipeModelName = recipeModel;
+                String recipeModelComparisonName = recipeModelComparison;
                 if(Objects.equals(recipeModelName, recipeModelComparisonName)){
                     returnList.remove(k);
                 }

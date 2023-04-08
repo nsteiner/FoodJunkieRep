@@ -22,6 +22,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.Collator;
+import java.util.Collections;
 import java.util.List;
 
 public class DefaultRecipeList extends AppCompatActivity {
@@ -59,16 +61,14 @@ public class DefaultRecipeList extends AppCompatActivity {
 
         dataBaseHelper = new DataBaseHelper(DefaultRecipeList.this);
 
-        List<RecipeModel> recipeList = dataBaseHelper.getAll(getIntent().getStringExtra("title"));
+        List<String> recipeList = dataBaseHelper.getAll(getIntent().getStringExtra("title"));
 
 
         if(dataBaseHelper.checkEmpty(getIntent().getStringExtra("title"), "DefaultRecipes")){
-            List<RecipeModel> displayList = this.dataBaseHelper.getAll(getIntent().getStringExtra("title"));
+            List<String> displayList = this.dataBaseHelper.getAll(getIntent().getStringExtra("title"));
+            Collections.sort(displayList, Collator.getInstance());
             DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(this, R.layout.default_view_layout, displayList);
             lv_recipeList.setAdapter(adapter);
-            for(int i = 0; i < displayList.size() ; i++){
-                System.out.println(displayList.get(i).getRecipeName());
-            }
         }
         else{
             Toast.makeText(DefaultRecipeList.this, "No Recipes Found! Create your own, or go to 'FJ Recipes'", Toast.LENGTH_LONG).show();
@@ -81,7 +81,7 @@ public class DefaultRecipeList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(DefaultRecipeList.this, DefaultRecipeDisplay.class);
                 //RecipeModel recipeModel = lv_recipeList.get(position)
-                String item = recipeList.get(i).getRecipeName();
+                String item = recipeList.get(i);
                 Bundle extras = new Bundle();
                 extras.putString("Recipe", item);
                 extras.putString("Title", titleText);
@@ -99,12 +99,10 @@ public class DefaultRecipeList extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 //(DefaultRecipeList.this).adapter.getFilter().filter(charSequence);
-                List<RecipeModel> filteredList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText);
+                List<String> filteredList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText);
+                Collections.sort(filteredList, Collator.getInstance());
                 DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(getBaseContext(), R.layout.default_view_layout, filteredList);
                 lv_recipeList.setAdapter(adapter);
-                for(int j = 0; j < filteredList.size() ; j++){
-                    System.out.println(filteredList.get(j).getRecipeName());
-                }
             }
 
             @Override

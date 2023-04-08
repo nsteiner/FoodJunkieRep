@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class MyRecipeListAdapter extends ArrayAdapter<RecipeModel> {
+public class MyRecipeListAdapter extends ArrayAdapter<String> {
     private static final String TAG = "Recipe List Adapter";
     private Context mContext;
     private int mResource;
@@ -29,7 +29,7 @@ public class MyRecipeListAdapter extends ArrayAdapter<RecipeModel> {
     }
 
 
-    public MyRecipeListAdapter(Context context, int resource, List<RecipeModel> objects) {
+    public MyRecipeListAdapter(Context context, int resource, List<String> objects) {
         super(context, resource, objects);
         this.mContext = context;
         mResource = resource;
@@ -41,7 +41,7 @@ public class MyRecipeListAdapter extends ArrayAdapter<RecipeModel> {
         //this "getView" is responsible for getting the view and then attaching it to the list view
 
         //get the persons info:
-        String name = getItem(position).getRecipeName();
+        String name = getItem(position);
         //String imgURL = getItem(position).getImgURL();
         //String imgURL = getItem(position).getImgResID();
         //int resID = getContext().getResources().getIdentifier(imgURL, "drawable", getContext().getPackageName());

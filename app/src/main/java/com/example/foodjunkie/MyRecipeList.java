@@ -45,7 +45,7 @@ public class MyRecipeList extends AppCompatActivity {
         myRecipeSearchBar = findViewById(R.id.myRecipeSearchBar);
         dataBaseHelper = new DataBaseHelper(MyRecipeList.this);
 
-        List<RecipeModel> recipeList = dataBaseHelper.getAll("My" + getIntent().getStringExtra("title"));
+        List<String> recipeList = dataBaseHelper.getAll("My" + getIntent().getStringExtra("title"));
 
 
 
@@ -68,12 +68,9 @@ public class MyRecipeList extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 //(DefaultRecipeList.this).adapter.getFilter().filter(charSequence);
-                List<RecipeModel> filteredList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), titleText);
+                List<String> filteredList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), titleText);
                 MyRecipeListAdapter adapter = new MyRecipeListAdapter(getBaseContext(), R.layout.myrecipe_view_layout, filteredList);
                 lv_recipeList.setAdapter(adapter);
-                for(int j = 0; j < filteredList.size() ; j++){
-                    System.out.println(filteredList.get(j).getRecipeName());
-                }
             }
 
             @Override
@@ -86,7 +83,7 @@ public class MyRecipeList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MyRecipeList.this, MyRecipeDisplay.class);
                 //RecipeModel recipeModel = lv_recipeList.get(position)
-                String item = recipeList.get(i).getRecipeName();
+                String item = recipeList.get(i);
                 Bundle extras = new Bundle();
                 extras.putString("Recipe", item);
                 extras.putString("Title", titleText);

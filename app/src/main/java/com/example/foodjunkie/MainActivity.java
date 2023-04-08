@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     // we switch back it doesn't go to the main recipe page
     int screen = 1;
 
-    Button btnNewRecipe, LogOut, btn_signout;
+    Button btnname, LogOut, btn_signout;
 
 
     @Override

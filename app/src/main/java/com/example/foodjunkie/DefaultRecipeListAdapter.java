@@ -21,8 +21,9 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.util.List;
+import java.util.Locale;
 
-public class DefaultRecipeListAdapter extends ArrayAdapter<RecipeModel> {
+public class DefaultRecipeListAdapter extends ArrayAdapter<String> {
     private static final String TAG = "Recipe List Adapter";
     private Context mContext;
     private int mResource;
@@ -43,7 +44,7 @@ public class DefaultRecipeListAdapter extends ArrayAdapter<RecipeModel> {
     }
 
 
-    public DefaultRecipeListAdapter(Context context, int resource, List<RecipeModel> objects) {
+    public DefaultRecipeListAdapter(Context context, int resource, List<String> objects) {
         super(context, resource, objects);
         this.mContext = context;
         mResource = resource;
@@ -57,7 +58,7 @@ public class DefaultRecipeListAdapter extends ArrayAdapter<RecipeModel> {
         //setup the image loader...
         setupImageLoader();
         //get the persons info:
-        String name = getItem(position).getRecipeName();
+        String name = getItem(position);
         //String imgURL = getItem(position).getImgURL();
         //String imgURL = getItem(position).getImgResID();
         //int resID = getContext().getResources().getIdentifier(imgURL, "drawable", getContext().getPackageName());
@@ -103,7 +104,9 @@ public class DefaultRecipeListAdapter extends ArrayAdapter<RecipeModel> {
         result.startAnimation(animation);
         lastPosition = position;
 
-        holder.img.setImageResource(getItem(position).getImgResID());
+        String imgURL = name.replace(" ", "").replace("-","").toLowerCase(Locale.ROOT);
+        int resID = mContext.getResources().getIdentifier(imgURL, "drawable", mContext.getPackageName());
+        holder.img.setImageResource(resID);
 
         holder.name.setText(name);
 
