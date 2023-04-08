@@ -1,25 +1,46 @@
 package com.example.foodjunkie;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.LauncherActivity;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link PantryFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class PantryFragment extends Fragment {
 
-    //PantryListAdapter adapter;
-    //DBHelper databasehelper;
-   // PantryModel newPantry;
+    PantryListAdapter adapter;
+    DBHelper databasehelper;
+    PantryModel newPantry;
     Context context;
     int quantity;
     String unit, ingredientName;
@@ -39,6 +60,8 @@ public class PantryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
 
     public PantryFragment() {
         // Required empty public constructor
@@ -70,15 +93,16 @@ public class PantryFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_pantry, container, false);
 
-        //listView =view.findViewById(R.id.myingredients);
+        listView =view.findViewById(R.id.myingredients);
 
-       // databasehelper = new DBHelper(getContext());
+        databasehelper = new DBHelper(getContext());
 
-      //  List<PantryModel> pantryList = databasehelper.getAll();
+        List<PantryModel> pantryList = databasehelper.getAll();
 
-       // if(databasehelper.checkEmpty()){
-           // adapter = new PantryListAdapter(getContext(), R.layout.adapter_view_layout, pantryList);
-     //       listView.setAdapter(adapter);}
+        if(databasehelper.checkEmpty()){
+            adapter = new PantryListAdapter(getContext(), R.layout.pantryadapter, pantryList);
+            listView.setAdapter(adapter);
+        }
         // Inflate the layout for this fragment
 
 
@@ -116,9 +140,9 @@ public class PantryFragment extends Fragment {
 
 
                 btn_add = popUpView.findViewById(R.id.add);
-               // databasehelper = new DBHelper(getContext());
+                databasehelper = new DBHelper(getContext());
 
-               /* btn_add.setOnClickListener(new View.OnClickListener() {
+                btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -127,8 +151,8 @@ public class PantryFragment extends Fragment {
                         unit = tv_unit.getText().toString();
                         ingredientName = tv_ingredient.getText().toString();
 
-                        //newPantry = new PantryModel(context,quantity, unit,ingredientName );
-                        //databasehelper.addOne(newPantry);
+                        newPantry = new PantryModel(context,quantity, unit,ingredientName );
+                        databasehelper.addOne(newPantry);
 
                         tv_unit.setText("");
                         tv_quantity.setText("");
@@ -138,7 +162,7 @@ public class PantryFragment extends Fragment {
 
 
 
-                });*/
+                });
 
                 btn_cancel = popUpView.findViewById(R.id.btn_cancel);
                 btn_cancel.setOnClickListener(new View.OnClickListener() {
@@ -166,3 +190,7 @@ public class PantryFragment extends Fragment {
 
 
 }
+
+
+
+

@@ -25,21 +25,21 @@
             android:weightSum="100">
 
             <EditText
-                android:id="@+id/tv_unit"
-                android:layout_width="0dp"
-                android:layout_height="69dp"
-                android:layout_gravity="center"
-                android:layout_weight="20"
-                android:hint="Unit"
-                android:textAlignment="center" />
-
-            <EditText
                 android:id="@+id/tv_quantity"
                 android:layout_width="0dp"
                 android:layout_height="69dp"
                 android:layout_gravity="center"
+                android:layout_weight="20"
+                android:hint="Quan."
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/tv_unit"
+                android:layout_width="0dp"
+                android:layout_height="69dp"
+                android:layout_gravity="center"
                 android:layout_weight="30"
-                android:hint="Quantity"
+                android:hint="Unit"
                 android:inputType="text"
                 android:textAlignment="center" />
 
