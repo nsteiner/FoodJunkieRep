@@ -162,4 +162,5 @@ Baking soda / powder alternatives: \n
     <string name="stringAdded" />
     <string name="recipeAdded">✅ Added to My Recipes</string>
     <string name="searchBarHint">"Search "</string>
+    <string name="vegetarian">Vegetarian</string>
 </resources>

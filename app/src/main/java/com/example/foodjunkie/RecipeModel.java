@@ -8,16 +8,13 @@ import android.content.Context;
 
 public class RecipeModel {
     private String recipeName;
-    private List<String> instructions;
-    private List<String> ingredients;
+    private List<String> instructions, ingredients, tags;
+
     private Context context;
 
-    private int glutenFree, dairyFree, vegan;
+    private int glutenFree, dairyFree, vegan, vegetarian;
 
-    public RecipeModel() {
-    }
-
-    public RecipeModel(Context context, String recipeName, List<String> ingredients, List<String> instructions, int dairyFree, int glutenFree, int vegan) {
+    public RecipeModel(Context context, String recipeName, List<String> ingredients, List<String> instructions, List<String> tags, int dairyFree, int glutenFree, int vegan, int vegetarian) {
         this.recipeName = recipeName;
         this.instructions = instructions;
         this.ingredients = ingredients;
@@ -25,6 +22,8 @@ public class RecipeModel {
         this.glutenFree = glutenFree;
         this.vegan = vegan;
         this.context = context;
+        this.tags = tags;
+        this.vegetarian = vegetarian;
     }
 
     public String getRecipeName() {
@@ -75,6 +74,22 @@ public class RecipeModel {
 
     public void setVegan(int vegan) {
         this.vegan = vegan;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public int getVegetarian() {
+        return vegetarian;
+    }
+
+    public void setVegetarian(int vegetarian) {
+        this.vegetarian = vegetarian;
     }
 
     public int getImgResID(){

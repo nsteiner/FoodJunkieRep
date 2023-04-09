@@ -23,9 +23,6 @@ public class MyRecipeListAdapter extends ArrayAdapter<String> {
     //thanks internet! #1
     static class ViewHolder {
         TextView name;
-        TextView birthday;
-        TextView sex;
-        ImageView img;
     }
 
 

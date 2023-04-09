@@ -173,6 +173,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put("DAIRY_FREE", recipeModel.getDairyFree());
         cv.put("GLUTEN_FREE", recipeModel.getGlutenFree());
         cv.put("VEGAN", recipeModel.getVegan());
+        cv.put("VEGETARIAN", recipeModel.getVegetarian());
 
         //long insert = db.insert(table, null, cv);
         switch (table) {
@@ -309,6 +310,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         List<String> ingredients = new ArrayList<>(30);
         List<String> instructions = new ArrayList<>(30);
+        List<String> tags = new ArrayList<>(10);
         RecipeModel displayRecipe;
 
         String name = cursor.getString(0);
@@ -318,17 +320,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         for (int i = 31; i < 61; i++) {
             instructions.add(cursor.getString(i));
         }
+
         int dairy_free = cursor.getInt(61);
         int gluten_free = cursor.getInt(62);
         int vegan = cursor.getInt(63);
+        int vegetarian = cursor.getInt(64);
 
-        displayRecipe = new RecipeModel(context, name, ingredients, instructions, dairy_free, gluten_free, vegan);
+        for (int i = 65; i < 75; i++){
+            tags.add(cursor.getString(i));
+        }
+
+        displayRecipe = new RecipeModel(context, name, ingredients, instructions, tags, dairy_free, gluten_free, vegan, vegetarian);
 
         return displayRecipe;
     }
 
 
-    public List<String> filter(String searchInput, String table) {
+    public List<String> filter(String searchInput, String table, int dairyFreeFilter, int glutenFreeFilter, int veganFilter, int vegetarianFilter) {
         String switchTable = "";
         switch (table) {
             case "Breakfast":
@@ -368,11 +376,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(queryString, null);
 
         List<String> returnList = new ArrayList<>();
+        List<String> returnListPreFilter = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
             do {
                 String name = cursor.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor.moveToNext());
         }
 
@@ -383,7 +392,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor2.moveToFirst()) {
             do {
                 String name = cursor2.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor2.moveToNext());
         }
 
@@ -394,7 +403,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor3.moveToFirst()) {
             do {
                 String name = cursor3.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor3.moveToNext());
         }
 
@@ -405,7 +414,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor4.moveToFirst()) {
             do {
                 String name = cursor4.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor4.moveToNext());
         }
 
@@ -416,7 +425,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor5.moveToFirst()) {
             do {
                 String name = cursor5.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor5.moveToNext());
         }
 
@@ -427,7 +436,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor6.moveToFirst()) {
             do {
                 String name = cursor6.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor6.moveToNext());
         }
 
@@ -438,7 +447,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor7.moveToFirst()) {
             do {
                 String name = cursor7.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor7.moveToNext());
         }
 
@@ -449,7 +458,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor8.moveToFirst()) {
             do {
                 String name = cursor8.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor8.moveToNext());
         }
 
@@ -460,7 +469,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor9.moveToFirst()) {
             do {
                 String name = cursor9.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor9.moveToNext());
         }
 
@@ -471,7 +480,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor10.moveToFirst()) {
             do {
                 String name = cursor10.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor10.moveToNext());
         }
 
@@ -481,7 +490,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor11.moveToFirst()) {
             do {
                 String name = cursor11.getString(0);
-                returnList.add(name);
+                returnListPreFilter.add(name);
             } while (cursor11.moveToNext());
         }
 
@@ -489,6 +498,37 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // make sure to close sqlite
         cursor.close();
         db.close();
+
+        for(int i = 0; i < returnListPreFilter.size(); i++){
+            String queryString12 = "SELECT * FROM " + switchTable + " WHERE RECIPE_NAME ='" + returnListPreFilter.get(i) + "'";
+            Cursor cursor12 = db.rawQuery(queryString12, null);
+            int dairyFree = cursor12.getInt(61);
+            int glutenFree = cursor12.getInt(62);
+            int vegan = cursor12.getInt(63);
+            int vegetarian = cursor12.getInt(64);
+
+            if(dairyFreeFilter == 1){
+                if(dairyFree == 1){
+                    returnList.add(cursor12.getString(0));
+                }
+            }
+            if(glutenFreeFilter == 1){
+                if(glutenFree == 1){
+                    returnList.add(cursor12.getString(0));
+                }
+            }
+            if(veganFilter == 1){
+                if(vegan == 1){
+                    returnList.add(cursor12.getString(0));
+                }
+            }
+            if(vegetarianFilter == 1){
+                if(vegetarian == 1){
+                    returnList.add(cursor12.getString(0));
+                }
+            }
+        }
+
 
         for(int i = 0; i < returnList.size(); i++){
             String recipeModel = returnList.get(i);
