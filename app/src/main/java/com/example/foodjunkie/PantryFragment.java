@@ -1,73 +1,44 @@
 package com.example.foodjunkie;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.LauncherActivity;
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Parcelable;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.TextView;
-
-import java.util.ArrayList;
+import android.widget.Toast;
+import androidx.fragment.app.Fragment;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PantryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PantryFragment extends Fragment {
-
     PantryListAdapter adapter;
     DBHelper databasehelper;
     PantryModel newPantry;
     Context context;
-    int quantity;
-    String unit, ingredientName;
+    int intquantity;
+    String strunit, stringredientName;
     private Parcelable mListState = null;
     private ListView listView;
-
     private View view;
     private EditText tv_quantity, tv_unit, tv_ingredient;
     private Button btn_add;
     private Button btn_cancel;
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-
 
     public PantryFragment() {
         // Required empty public constructor
     }
-
-
     public static PantryFragment newInstance(String param1, String param2) {
         PantryFragment fragment = new PantryFragment();
         Bundle args = new Bundle();
@@ -76,11 +47,9 @@ public class PantryFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -89,34 +58,52 @@ public class PantryFragment extends Fragment {
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         view = inflater.inflate(R.layout.fragment_pantry, container, false);
-
         listView =view.findViewById(R.id.myingredients);
-
         databasehelper = new DBHelper(getContext());
-
         List<PantryModel> pantryList = databasehelper.getAll();
-
         if(databasehelper.checkEmpty()){
             adapter = new PantryListAdapter(getContext(), R.layout.pantryadapter, pantryList);
-            listView.setAdapter(adapter);
-        }
-        // Inflate the layout for this fragment
+            listView.setAdapter(adapter);}
 
+        Button deleteIng = view.findViewById(R.id.btn_deleteIng);
 
+        //show message
+        deleteIng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Show a Toast message
+                Toast.makeText(getContext(), "Long click the ingredient you want to delete!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //delete ingredient from lv and database if long clicked
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                PantryModel item = adapter.getItem(position);
+                DBHelper dbHelper = new DBHelper(getContext());
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                db.delete("PANTRY", "QUANTITY=? AND UNIT=? AND INGNAME=?", new String[]{String.valueOf(item.getQuantity()), item.getUnit(), item.getIngredientName()});
+                adapter.remove(adapter.getItem(position));
+                adapter.notifyDataSetChanged();
+                return true;
+            }
+        });
+
+        //button labeled "add ingredient" which takes u to pop up window
         Button btnShowPopUp = view.findViewById(R.id.btn_addIngredient);
         btnShowPopUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create and show the pop-up window
-                //final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
-                int width = 900;
-                int height = 1200;
 
+                //define pop up window
+                int width = 1400;
+                int height = 1200;
                 View popUpView = LayoutInflater.from(getActivity()).inflate(R.layout.ingredientpopup, null);
                 final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
+
+                //define edittexts and set focusable
                 tv_quantity = popUpView.findViewById(R.id.tv_quantity);
                 tv_unit = popUpView.findViewById(R.id.tv_unit);
                 tv_ingredient = popUpView.findViewById(R.id.tv_ingredient);
@@ -127,58 +114,40 @@ public class PantryFragment extends Fragment {
                 tv_unit.setFocusableInTouchMode(true);
                 tv_ingredient.setFocusableInTouchMode(true);
 
-                // Show the soft keyboard for the EditText view
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-
-                // Add the popup window to the PopupWindow instance
-                // popupWindow = new PopupWindow(popUpView, width, height, true);
                 popupWindow.setContentView(popUpView);
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-                // MyContract.MyDbHelper mDbHelper = new MyContract.MyDbHelper(getContext());
-
-
+                //button to add ingredient inside popup
                 btn_add = popUpView.findViewById(R.id.add);
                 databasehelper = new DBHelper(getContext());
-
                 btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-
-                        quantity = Integer.parseInt(tv_quantity.getText().toString());
-                        unit = tv_unit.getText().toString();
-                        ingredientName = tv_ingredient.getText().toString();
-
-                        newPantry = new PantryModel(context,quantity, unit,ingredientName );
+                        intquantity = Integer.parseInt(tv_quantity.getText().toString());
+                        strunit = tv_unit.getText().toString();
+                        stringredientName = tv_ingredient.getText().toString();
+                        newPantry = new PantryModel(context,intquantity, strunit,stringredientName );
                         databasehelper.addOne(newPantry);
-
+                        adapter.add(newPantry);
+                        adapter.notifyDataSetChanged();
                         tv_unit.setText("");
                         tv_quantity.setText("");
                         tv_ingredient.setText("");
-
-                    }
-
-
-
-                });
-
+                        popupWindow.dismiss();
+                    }});
+                //button to leave popup window
                 btn_cancel = popUpView.findViewById(R.id.btn_cancel);
                 btn_cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Dismiss the pop-up window when the close button is clicked
                         popupWindow.dismiss();
-                    }
-                });
+                    }});
             }
         });
         return view;
     }
-
-
-
     @Override
     public void onResume() {
         super.onResume();
@@ -186,11 +155,4 @@ public class PantryFragment extends Fragment {
             listView.onRestoreInstanceState(mListState);
         }
     }
-
-
-
 }
-
-
-
-

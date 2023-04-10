@@ -7,8 +7,6 @@ public class PantryModel {
     private String unit;
     private String ingredientName;
     Context context;
-
-
     public PantryModel(Context context, int quantity, String unit, String ingredientName) {
         this.context=context;
         this.unit=unit;
@@ -19,19 +17,14 @@ public class PantryModel {
     public int getQuantity() {
         return quantity;
     }
-
     public String getUnit() {
         return unit;
     }
-
     public String getIngredientName() {
         return ingredientName;
     }
-
     @Override
     public String toString() {
         return unit + " " + quantity + " " + ingredientName;
     }
-
-
 }
