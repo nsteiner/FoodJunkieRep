@@ -37,15 +37,6 @@ public class PantryFragment extends Fragment {
     private String mParam2;
 
     public PantryFragment() {
-        // Required empty public constructor
-    }
-    public static PantryFragment newInstance(String param1, String param2) {
-        PantryFragment fragment = new PantryFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +63,6 @@ public class PantryFragment extends Fragment {
         deleteIng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Show a Toast message
                 Toast.makeText(getContext(), "Long click the ingredient you want to delete!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -98,8 +88,8 @@ public class PantryFragment extends Fragment {
             public void onClick(View v) {
 
                 //define pop up window
-                int width = 1400;
-                int height = 1200;
+                int width = 1100;
+                int height = 600;
                 View popUpView = LayoutInflater.from(getActivity()).inflate(R.layout.ingredientpopup, null);
                 final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
 
@@ -117,7 +107,7 @@ public class PantryFragment extends Fragment {
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
                 popupWindow.setContentView(popUpView);
-                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, -300);
 
                 //button to add ingredient inside popup
                 btn_add = popUpView.findViewById(R.id.add);
@@ -137,6 +127,7 @@ public class PantryFragment extends Fragment {
                         tv_ingredient.setText("");
                         popupWindow.dismiss();
                     }});
+
                 //button to leave popup window
                 btn_cancel = popUpView.findViewById(R.id.btn_cancel);
                 btn_cancel.setOnClickListener(new View.OnClickListener() {
