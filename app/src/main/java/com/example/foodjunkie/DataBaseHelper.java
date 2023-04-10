@@ -335,6 +335,62 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return displayRecipe;
     }
 
+    public List<String> dietaryFilter(Cursor cursor, int dairyFreeFilter, int glutenFreeFilter, int veganFilter, int vegetarianFilter, List<String> returnList){
+        List<Integer> dairyFreeList = new ArrayList<>();
+        List<Integer> glutenFreeList = new ArrayList<>();
+        List<Integer> veganList = new ArrayList<>();
+        List<Integer> vegetarianList = new ArrayList<>();
+        if(cursor.moveToFirst()){
+            do{
+                String name = cursor.getString(0);
+                int isRecipeDF = cursor.getInt(61);
+                int isRecipeGF = cursor.getInt(62);
+                int isRecipeVegan = cursor.getInt(63);
+                int isRecipeVegetarian = cursor.getInt(64);
+                dairyFreeList.add(isRecipeDF);
+                glutenFreeList.add(isRecipeGF);
+                veganList.add(isRecipeVegan);
+                vegetarianList.add(isRecipeVegetarian);
+                returnList.add(name);
+            }
+            while(cursor.moveToNext());
+        }
+        if (cursor.moveToFirst()) {
+            do {
+                if(dairyFreeFilter == 1){
+                    for(int i = 0; i < returnList.size(); i++){
+                        System.out.println(dairyFreeList.get(i));
+                        if(dairyFreeList.get(i) != 1){
+                            returnList.remove(i);
+                        }
+                    }
+                }
+                if(glutenFreeFilter == 1){
+                    for(int i = 0; i < returnList.size(); i++){
+                        if(glutenFreeList.get(i) != 1){
+                            returnList.remove(i);
+                        }
+                    }
+                }
+                if(veganFilter == 1){
+                    for(int i = 0; i < returnList.size(); i++){
+                        if(veganList.get(i) != 1){
+                            returnList.remove(i);
+                        }
+                    }
+                }
+                if(vegetarianFilter == 1){
+                    for(int i = 0; i < returnList.size(); i++){
+                        if(vegetarianList.get(i) != 1){
+                            returnList.remove(i);
+                        }
+                    }
+                }
+            } while (cursor.moveToNext());
+        }
+        return returnList;
+    }
+
 
     public List<String> filter(String searchInput, String table, int dairyFreeFilter, int glutenFreeFilter, int veganFilter, int vegetarianFilter) {
         String switchTable = "";
@@ -371,163 +427,78 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 break;
         }
 
+        List<String> returnList = new ArrayList<>();
+
+
         String queryString = "SELECT * FROM " + switchTable + " WHERE RECIPE_NAME LIKE '%" + searchInput + "%'";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
 
-        List<String> returnList = new ArrayList<>();
-        List<String> returnListPreFilter = new ArrayList<>();
-
-        if (cursor.moveToFirst()) {
-            do {
-                String name = cursor.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor.moveToNext());
-        }
+        returnList = dietaryFilter(cursor, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
 
 
         String queryString2 = "SELECT * FROM " + switchTable + " WHERE TAG1 LIKE'%" + searchInput + "%'";
         Cursor cursor2 = db.rawQuery(queryString2, null);
 
-        if (cursor2.moveToFirst()) {
-            do {
-                String name = cursor2.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor2.moveToNext());
-        }
+        returnList = dietaryFilter(cursor2, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
 
 
         String queryString3 = "SELECT * FROM " + switchTable + " WHERE TAG2 LIKE'%" + searchInput + "%'";
         Cursor cursor3 = db.rawQuery(queryString3, null);
 
-        if (cursor3.moveToFirst()) {
-            do {
-                String name = cursor3.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor3.moveToNext());
-        }
+        returnList = dietaryFilter(cursor3, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
 
 
         String queryString4 = "SELECT * FROM " + switchTable + " WHERE TAG3 LIKE'%" + searchInput + "%'";
         Cursor cursor4 = db.rawQuery(queryString4, null);
 
-        if (cursor4.moveToFirst()) {
-            do {
-                String name = cursor4.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor4.moveToNext());
-        }
+        returnList = dietaryFilter(cursor4, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
 
 
         String queryString5 = "SELECT * FROM " + switchTable + " WHERE TAG4 LIKE'%" + searchInput + "%'";
         Cursor cursor5 = db.rawQuery(queryString5, null);
 
-        if (cursor5.moveToFirst()) {
-            do {
-                String name = cursor5.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor5.moveToNext());
-        }
+        returnList = dietaryFilter(cursor5, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
 
 
         String queryString6 = "SELECT * FROM " + switchTable + " WHERE TAG5 LIKE'%" + searchInput + "%'";
         Cursor cursor6 = db.rawQuery(queryString6, null);
 
-        if (cursor6.moveToFirst()) {
-            do {
-                String name = cursor6.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor6.moveToNext());
-        }
+        returnList = dietaryFilter(cursor6, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
 
 
         String queryString7 = "SELECT * FROM " + switchTable + " WHERE TAG6 LIKE'%" + searchInput + "%'";
         Cursor cursor7 = db.rawQuery(queryString7, null);
 
-        if (cursor7.moveToFirst()) {
-            do {
-                String name = cursor7.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor7.moveToNext());
-        }
+        returnList = dietaryFilter(cursor7, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
 
 
         String queryString8 = "SELECT * FROM " + switchTable + " WHERE TAG7 LIKE'%" + searchInput + "%'";
         Cursor cursor8 = db.rawQuery(queryString8, null);
 
-        if (cursor8.moveToFirst()) {
-            do {
-                String name = cursor8.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor8.moveToNext());
-        }
+        returnList = dietaryFilter(cursor8, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
 
 
         String queryString9 = "SELECT * FROM " + switchTable + " WHERE TAG8 LIKE'%" + searchInput + "%'";
         Cursor cursor9 = db.rawQuery(queryString9, null);
 
-        if (cursor9.moveToFirst()) {
-            do {
-                String name = cursor9.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor9.moveToNext());
-        }
+        returnList = dietaryFilter(cursor9, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
 
 
         String queryString10 = "SELECT * FROM " + switchTable + " WHERE TAG9 LIKE'%" + searchInput + "%'";
         Cursor cursor10 = db.rawQuery(queryString10, null);
 
-        if (cursor10.moveToFirst()) {
-            do {
-                String name = cursor10.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor10.moveToNext());
-        }
+        returnList = dietaryFilter(cursor10, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
+
 
         String queryString11 = "SELECT * FROM " + switchTable + " WHERE TAG10 LIKE'%" + searchInput + "%'";
         Cursor cursor11 = db.rawQuery(queryString11, null);
 
-        if (cursor11.moveToFirst()) {
-            do {
-                String name = cursor11.getString(0);
-                returnListPreFilter.add(name);
-            } while (cursor11.moveToNext());
-        }
-
+        returnList = dietaryFilter(cursor11, dairyFreeFilter, glutenFreeFilter, veganFilter, vegetarianFilter, returnList);
 
         // make sure to close sqlite
         cursor.close();
         db.close();
-
-        for(int i = 0; i < returnListPreFilter.size(); i++){
-            String queryString12 = "SELECT * FROM " + switchTable + " WHERE RECIPE_NAME ='" + returnListPreFilter.get(i) + "'";
-            Cursor cursor12 = db.rawQuery(queryString12, null);
-            int dairyFree = cursor12.getInt(61);
-            int glutenFree = cursor12.getInt(62);
-            int vegan = cursor12.getInt(63);
-            int vegetarian = cursor12.getInt(64);
-
-            if(dairyFreeFilter == 1){
-                if(dairyFree == 1){
-                    returnList.add(cursor12.getString(0));
-                }
-            }
-            if(glutenFreeFilter == 1){
-                if(glutenFree == 1){
-                    returnList.add(cursor12.getString(0));
-                }
-            }
-            if(veganFilter == 1){
-                if(vegan == 1){
-                    returnList.add(cursor12.getString(0));
-                }
-            }
-            if(vegetarianFilter == 1){
-                if(vegetarian == 1){
-                    returnList.add(cursor12.getString(0));
-                }
-            }
-        }
 
 
         for(int i = 0; i < returnList.size(); i++){

@@ -54,6 +54,7 @@ public class NewRecipe extends AppCompatActivity {
 
         instructions = new ArrayList<>(30);
         ingredients = new ArrayList<>(30);
+        tags = new ArrayList<>(10);
 
         btn_addRecipe = findViewById(R.id.btn_addRecipe2);
         btn_addIngredient = findViewById(R.id.btn_addIngredient2);

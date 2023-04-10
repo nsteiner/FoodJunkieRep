@@ -33,12 +33,12 @@ public class DefaultRecipeList extends AppCompatActivity {
     private static final String TAG = "";
     ListView lv_recipeList;
     EditText defaultSearchBar;
-    CheckBox cb_dairyFree, cb_glutenFree, cb_vegan, cb_vegetarian;
+    CheckBox cb_dairyFree, cb_glutenFree, cb_vegan, cb_vegetarian, cb_dairyFree2;
 
     Button btn_dietaryFilters, btn_filter, btn_cancel;
 
     DataBaseHelper dataBaseHelper;
-    int dairyFree = 0; int glutenFree = 0; int vegan = 0; int vegetarian = 0;
+    int dairyFree; int glutenFree; int vegan; int vegetarian;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +50,15 @@ public class DefaultRecipeList extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back);
         }
+
+
+        //sets title depending on button clicked in default recipes fragment
+        TextView title = findViewById(R.id.defaultTitle);
+        String titleText = getIntent().getStringExtra("title");
+        title.setText(titleText);
+
         defaultSearchBar = (EditText) findViewById(R.id.defaultSearchBar);
         btn_dietaryFilters = findViewById(R.id.btn_dietaryFilters);
-
-
 
         int width = 600;
         int height = 800;
@@ -64,8 +69,6 @@ public class DefaultRecipeList extends AppCompatActivity {
         cb_glutenFree = popUpView.findViewById(R.id.cb_GFfilter);
         cb_vegan = popUpView.findViewById(R.id.cb_veganFilter);
         cb_vegetarian = popUpView.findViewById(R.id.cb_vegetarianFilter);
-        btn_filter = popUpView.findViewById(R.id.btn_filter);
-        btn_cancel = popUpView.findViewById(R.id.btn_cancelFilter);
         cb_dairyFree.setFocusable(true);
         cb_glutenFree.setFocusable(true);
         cb_vegan.setFocusable(true);
@@ -74,24 +77,19 @@ public class DefaultRecipeList extends AppCompatActivity {
         cb_vegan.setFocusableInTouchMode(true);
         cb_vegetarian.setFocusable(true);
         cb_vegetarian.setFocusableInTouchMode(true);
-
-        //sets title depending on button clicked in default recipes fragment
-        TextView title = findViewById(R.id.defaultTitle);
-        String titleText = getIntent().getStringExtra("title");
-        title.setText(titleText);
+        cb_dairyFree2 = findViewById(R.id.cb_dairyFreeFilter2);
 
         Log.d(TAG, "onCreate: Started");
         lv_recipeList = (ListView) findViewById(R.id.lv_recipeList);
 
         dataBaseHelper = new DataBaseHelper(DefaultRecipeList.this);
 
-        List<String> recipeList = dataBaseHelper.getAll(getIntent().getStringExtra("title"));
+        List<String> recipeList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
 
 
         if(dataBaseHelper.checkEmpty(getIntent().getStringExtra("title"), "DefaultRecipes")){
-            List<String> displayList = this.dataBaseHelper.getAll(getIntent().getStringExtra("title"));
-            Collections.sort(displayList, Collator.getInstance());
-            DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(this, R.layout.default_view_layout, displayList);
+            Collections.sort(recipeList, Collator.getInstance());
+            DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(this, R.layout.default_view_layout, recipeList);
             lv_recipeList.setAdapter(adapter);
         }
         else{
@@ -135,6 +133,7 @@ public class DefaultRecipeList extends AppCompatActivity {
         });
 
         btn_dietaryFilters.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 int width = 700;
@@ -152,11 +151,13 @@ public class DefaultRecipeList extends AppCompatActivity {
                 popupWindow.setContentView(popUpView);
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
+                btn_filter = (Button) popUpView.findViewById(R.id.btn_filter);
+                btn_cancel = (Button) popUpView.findViewById(R.id.btn_cancelFilter);
 
                 btn_filter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(cb_dairyFree.isChecked()){
+                        if(cb_dairyFree2.isChecked()){
                             dairyFree = 1;
                         }
                         if(cb_glutenFree.isChecked()){
@@ -173,12 +174,12 @@ public class DefaultRecipeList extends AppCompatActivity {
                         cb_vegan.setChecked(false);
                         cb_vegetarian.setChecked(false);
 
-                        popupWindow.dismiss();
-
                         List<String> filteredList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
                         Collections.sort(filteredList, Collator.getInstance());
                         DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(getBaseContext(), R.layout.default_view_layout, filteredList);
                         lv_recipeList.setAdapter(adapter);
+
+                        popupWindow.dismiss();
                     }
                 });
                 btn_cancel.setOnClickListener(new View.OnClickListener() {
@@ -194,6 +195,7 @@ public class DefaultRecipeList extends AppCompatActivity {
                 });
 
             }
+
         });
 
     }

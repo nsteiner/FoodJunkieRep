@@ -88,7 +88,7 @@ public class MyRecipeList extends AppCompatActivity {
 
 
         if(dataBaseHelper.checkEmpty(getIntent().getStringExtra("title"), "MyRecipes")){
-            List<String> displayList = this.dataBaseHelper.getAll(getIntent().getStringExtra("title"));
+            List<String> displayList = this.dataBaseHelper.getAll("My" + getIntent().getStringExtra("title"));
             Collections.sort(displayList, Collator.getInstance());
             MyRecipeListAdapter adapter = new MyRecipeListAdapter(this, R.layout.myrecipe_view_layout, displayList);
             lv_recipeList.setAdapter(adapter);

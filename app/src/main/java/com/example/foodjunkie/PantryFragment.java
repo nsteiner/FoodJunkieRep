@@ -74,7 +74,7 @@ public class PantryFragment extends Fragment {
                 PantryModel item = adapter.getItem(position);
                 DBHelper dbHelper = new DBHelper(getContext());
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
-                db.delete("PANTRY", "QUANTITY=? AND UNIT=? AND INGNAME=?", new String[]{String.valueOf(item.getQuantity()), item.getUnit(), item.getIngredientName()});
+                db.delete("PANTRY", "QUANTITY=? AND UNIT=? AND INGREDIENT=?", new String[]{String.valueOf(item.getQuantity()), item.getUnit(), item.getIngredientName()});
                 adapter.remove(adapter.getItem(position));
                 adapter.notifyDataSetChanged();
                 return true;
@@ -115,7 +115,7 @@ public class PantryFragment extends Fragment {
                 btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        intquantity = Integer.parseInt(tv_quantity.getText().toString());
+                        intquantity = Integer.parseInt(tv_quantity.getText().toString().replace(" ", ""));
                         strunit = tv_unit.getText().toString();
                         stringredientName = tv_ingredient.getText().toString();
                         newPantry = new PantryModel(context,intquantity, strunit,stringredientName );

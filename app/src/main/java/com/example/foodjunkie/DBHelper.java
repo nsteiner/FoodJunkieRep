@@ -25,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "PANTRY";
     public static final String COLUMN_NAME_QUANTITY = "QUANTITY";
     public static final String COLUMN_NAME_UNIT = "UNIT";
-    public static final String COLUMN_NAME_NAME = "INGNAME";
+    public static final String COLUMN_NAME_NAME = "INGREDIENT";
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_NAME + " (" + COLUMN_NAME_QUANTITY + " INTEGER," + COLUMN_NAME_UNIT + " TEXT," + COLUMN_NAME_NAME + " TEXT)";
     private final Context context;
     static SQLiteDatabase sqliteDataBase;
@@ -97,7 +97,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("UNIT", pantryModel.getUnit());
         cv.put("QUANTITY", pantryModel.getQuantity());
-        cv.put("INGNAME", pantryModel.getIngredientName());
+        cv.put("INGREDIENT", pantryModel.getIngredientName());
         db.insert("PANTRY", null, cv);
     }
     public boolean checkEmpty(){
@@ -134,7 +134,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public PantryModel getPantry(String ingName){
         String switchTable = "PANTRY";
-        String queryString = "SELECT * FROM " + switchTable + " WHERE INGNAME ='" + ingName +"'";
+        String queryString = "SELECT * FROM " + switchTable + " WHERE INGREDIENT ='" + ingName +"'";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
         cursor.moveToFirst();

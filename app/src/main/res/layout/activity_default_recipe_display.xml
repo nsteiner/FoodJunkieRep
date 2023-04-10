@@ -80,6 +80,43 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/rightScrollView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_ingredients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/tv_ingredients" />
+
+                <ScrollView
+                    android:id="@+id/sv_ingredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="50">
+
+                    <LinearLayout
+                        android:id="@+id/IngLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_ingredientsOutput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/leftScrollView"
                 android:layout_width="0dp"
                 android:layout_weight="50"
@@ -111,43 +148,6 @@
 
                         <TextView
                             android:id="@+id/tv_instructionsOutput"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="TextView" />
-                    </LinearLayout>
-                </ScrollView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/rightScrollView"
-                android:layout_width="0dp"
-                android:layout_weight="50"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_ingredients"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_ingredients"
-                    android:layout_gravity="center"/>
-
-                <ScrollView
-                    android:id="@+id/sv_ingredients"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="50">
-
-                    <LinearLayout
-                        android:id="@+id/IngLinearLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tv_ingredientsOutput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView" />
