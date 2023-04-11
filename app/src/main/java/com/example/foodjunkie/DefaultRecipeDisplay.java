@@ -5,26 +5,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DefaultRecipeDisplay extends AppCompatActivity {
 
-    Button btn_addRecipe;
-    TextView recipeName, tv_vegan, tv_dairyFree, tv_glutenFree, tv_ingredients, tv_instructions, recipeAdded;
-    ScrollView sv_ingredients, sv_instructions;
+    Button btn_addRecipe, btn_checkPantry;
+    TextView recipeName, tv_vegan, tv_dairyFree, tv_glutenFree, tv_ingredients, tv_instructions, recipeAdded, tv_pantry;
+    ScrollView sv_ingredients, sv_instructions, sv_pantry;
+    ImageView imageView3;
 
     DataBaseHelper dataBaseHelper;
+    DBHelper dbHelper;
+    String pantrycheck;
     ImageView imageView;
 
 
@@ -49,6 +53,7 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
         tv_instructions = findViewById(R.id.tv_instructionsOutput);
         recipeAdded = findViewById(R.id.tv_recipeAdded);
         imageView = findViewById(R.id.imageView);
+        btn_checkPantry = findViewById(R.id.btn_checkPantry);
 
 
         dataBaseHelper = new DataBaseHelper(DefaultRecipeDisplay.this);
@@ -68,12 +73,37 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
         //combining arrays into one string
         String printIngredients = "";
         String printInstructions = "";
+        dbHelper = new DBHelper(getBaseContext());
+        List<String> list = dbHelper.getAllIng();
         for(int i = 0; i < recipe.getIngredientList().indexOf(""); i++){
-            printIngredients = printIngredients + recipe.getIngredient(i) + "\n" + "\n";
+            String recipeIng = recipe.getIngredient(i);
+            String[] items = recipeIng.split(" "); // split into individual words
+            boolean matchFound = false; // initialize flag
+            for(String item : items) {
+                for(String ing : list) {
+                    String[] ingWords = ing.split(" "); // split into individual words
+                    for(String ingWord : ingWords) {
+                        if(ingWord.equals(item)) {
+                            matchFound = true;
+                            break;
+                        }
+                    }
+                    if(matchFound) {
+                        break;
+                    }
+                }
+                if(matchFound) {
+                    break;
+                }
+            }
+            String pantrycheck = matchFound ? "✅" : "❌"; // set pantrycheck based on matchFound flag
+            printIngredients = printIngredients + recipeIng + " " + pantrycheck + "\n" + "\n";
         }
+
         for(int i = 0; i < recipe.getInstructionList().indexOf(""); i++){
             printInstructions = printInstructions + "Step " + (i + 1) + ") " + recipe.getInstruction(i) + "\n" + "\n";
         }
+
 
         //set scroll views
         tv_ingredients.setText(printIngredients);
@@ -101,6 +131,50 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
                 dataBaseHelper.addOne(recipe, title);
                 recipeAdded.setVisibility(View.VISIBLE);
                 btn_addRecipe.setVisibility(View.GONE);
+            }
+        });
+
+
+        dbHelper = new DBHelper(getBaseContext());
+        btn_checkPantry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int width = 550;
+                int height = 1300;
+
+                View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.pantrypopup, null);
+                final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
+                List<PantryModel>pantryList = dbHelper.getAll();
+                sv_pantry = popUpView.findViewById(R.id.sv_pantry);
+                tv_pantry = popUpView.findViewById(R.id.textView2);
+                for(int i = 0; i < pantryList.size(); i++){
+                    tv_pantry.setText(tv_pantry.getText() + pantryList.get(i).toString() + "\n" + "\n");
+                }
+
+                popupWindow.setContentView(popUpView);
+                popupWindow.showAtLocation(view, Gravity.RIGHT, 0, 120);
+            }
+        });
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int width = 1100;
+                int height = 1100;
+                View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.imagepopup, null);
+                final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
+                popupWindow.setContentView(popUpView);
+                popupWindow.showAtLocation(v, Gravity.CENTER, 0, -300);
+                imageView3 = popUpView.findViewById(R.id.imageView3);
+                Intent intent = getIntent();
+                Bundle extras = intent.getExtras();
+                String nameForObject = extras.getString("Recipe");
+                String title = extras.getString("Title");
+                RecipeModel recipe = dataBaseHelper.getRecipe(nameForObject, title);
+                imageView3.setImageResource(recipe.getImgResID());
+
+
             }
         });
 

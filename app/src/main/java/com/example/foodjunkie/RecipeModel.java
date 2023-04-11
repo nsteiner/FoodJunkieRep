@@ -25,6 +25,16 @@ public class RecipeModel {
         this.tags = tags;
         this.vegetarian = vegetarian;
     }
+    public RecipeModel(Context context, String recipeName, List<String> ingredients, List<String> instructions,  int dairyFree, int glutenFree, int vegan, int vegetarian) {
+        this.recipeName = recipeName;
+        this.instructions = instructions;
+        this.ingredients = ingredients;
+        this.dairyFree = dairyFree;
+        this.glutenFree = glutenFree;
+        this.vegan = vegan;
+        this.context = context;
+        this.vegetarian = vegetarian;
+    }
 
     public String getRecipeName() {
         return recipeName;
@@ -93,7 +103,7 @@ public class RecipeModel {
     }
 
     public int getImgResID(){
-        String imgURL = recipeName.replace(" ", "").replace("-","").toLowerCase(Locale.ROOT);
+        String imgURL = recipeName.replace(" ", "").replace("-","").replace("/", "").replace(")", "").replace("(", "").replace(",", "").toLowerCase(Locale.ROOT);
         int resID = context.getResources().getIdentifier(imgURL, "drawable", context.getPackageName());
         return resID;
     }

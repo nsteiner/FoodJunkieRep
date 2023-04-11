@@ -23,7 +23,7 @@ public class NewRecipe extends AppCompatActivity {
     EditText nameInput, ingredientInput, instructionInput, tagInput;
     String recipeName, tempIngredient, tempInstruction, category = "breakfast";
     int glutenFree = 0; int dairyFree = 0; int vegan = 0; int vegetarian = 0;
-    ArrayList<String> instructions, ingredients, tags;
+    ArrayList<String> instructions, ingredients;
 
     Button btn_addRecipe, btn_addIngredient, btn_addInstruction, btn_addTag;
 
@@ -54,12 +54,10 @@ public class NewRecipe extends AppCompatActivity {
 
         instructions = new ArrayList<>(30);
         ingredients = new ArrayList<>(30);
-        tags = new ArrayList<>(10);
 
         btn_addRecipe = findViewById(R.id.btn_addRecipe2);
         btn_addIngredient = findViewById(R.id.btn_addIngredient2);
         btn_addInstruction = findViewById(R.id.btn_addInstruction2);
-        btn_addTag = findViewById(R.id.btn_addTag);
 
         cb_dairyFree = findViewById(R.id.cb_dairyFree2);
         cb_glutenFree = findViewById(R.id.cb_glutenFree2);
@@ -105,7 +103,6 @@ public class NewRecipe extends AppCompatActivity {
         nameInput = findViewById(R.id.recipeInput);
         ingredientInput = findViewById(R.id.ingredientInput);
         instructionInput = findViewById(R.id.instructionInput);
-        tagInput = findViewById(R.id.tagInput);
 
 
         btn_addRecipe.setOnClickListener(new View.OnClickListener() {
@@ -117,9 +114,6 @@ public class NewRecipe extends AppCompatActivity {
                 }
                 for(int i = insCounter; i < 30; i++){
                     instructions.add("");
-                }
-                for(int i = tagCounter; i < 10; i++){
-                    tags.add("");
                 }
 
 
@@ -139,13 +133,12 @@ public class NewRecipe extends AppCompatActivity {
                 }
 
 
-                newRecipe = new RecipeModel(context, recipeName, instructions, ingredients, tags, dairyFree, glutenFree, vegan, vegetarian);
+                newRecipe = new RecipeModel(context, recipeName, instructions, ingredients, dairyFree, glutenFree, vegan, vegetarian);
                 dataBaseHelper.addOne(newRecipe, category);
 
                 nameInput.setText("");
                 instructionInput.setText("");
                 ingredientInput.setText("");
-                tagInput.setText("");
                 insCounter = 0;
                 ingCounter = 0;
                 tagCounter = 0;
@@ -159,7 +152,6 @@ public class NewRecipe extends AppCompatActivity {
                 for(int i = 0; i < 30; i++){
                     ingredients.set(i, "");
                     instructions.set(i, "");
-                    tags.set(i, "");
                 }
 
 
@@ -188,20 +180,6 @@ public class NewRecipe extends AppCompatActivity {
                     instructions.add(instructionInput.getText().toString());
                     insCounter++;
                     instructionInput.setText("");
-                }
-            }
-        });
-
-        btn_addTag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(tags.size() == 10){
-                    Toast.makeText(getBaseContext(), "Max tags reached", Toast.LENGTH_SHORT);
-                }
-                else{
-                    tags.add(tagInput.getText().toString());
-                    tagCounter++;
-                    tagInput.setText("");
                 }
             }
         });

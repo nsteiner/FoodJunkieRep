@@ -112,7 +112,7 @@
             android:id="@+id/instructions"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
+            android:layout_weight="20"
             android:orientation="horizontal"
             android:weightSum="100">
 
@@ -134,7 +134,7 @@
             <EditText
                 android:id="@+id/instructionInput"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
                 android:layout_weight="60"
@@ -163,40 +163,6 @@
                 app:layout_constraintStart_toEndOf="@+id/ingredientInput"
                 app:layout_constraintTop_toBottomOf="@+id/recipeInput" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="15"
-            android:weightSum="100">
-
-            <TextView
-                android:id="@+id/tagLabel"
-                android:layout_width="0dp"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:layout_weight="30"
-                android:gravity="center"
-                android:text="Add Keywords             (for searching)" />
-
-            <EditText
-                android:id="@+id/tagInput"
-                android:layout_width="0dp"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:layout_weight="60"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <Button
-                android:id="@+id/btn_addTag"
-                android:layout_width="0dp"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:text="+" />
         </LinearLayout>
 
         <LinearLayout

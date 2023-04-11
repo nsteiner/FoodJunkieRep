@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -124,6 +125,7 @@ public class MyRecipesFragment extends Fragment implements View.OnClickListener 
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
+                Toast.makeText(getActivity(), "Logging Out", Toast.LENGTH_SHORT).show();
             }
         });
         newRecipe.setOnClickListener(new View.OnClickListener() {

@@ -145,4 +145,21 @@ public class DBHelper extends SQLiteOpenHelper {
         displayPantry = new PantryModel(context, quantity, unit, ingredientName);
         return displayPantry;
     }
+
+    public List<String> getAllIng() {
+        List<String> returnList = new ArrayList<>();
+        String table="PANTRY";
+        String queryString = "SELECT * FROM " + table;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String ingredientName = cursor.getString(2);
+                returnList.add(ingredientName);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return returnList;
+    }
 }

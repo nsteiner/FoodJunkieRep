@@ -25,6 +25,6 @@ public class PantryModel {
     }
     @Override
     public String toString() {
-        return unit + " " + quantity + " " + ingredientName;
+        return quantity + " " + unit + " " + ingredientName;
     }
 }
