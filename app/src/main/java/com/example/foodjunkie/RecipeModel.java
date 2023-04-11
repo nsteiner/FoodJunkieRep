@@ -103,7 +103,7 @@ public class RecipeModel {
     }
 
     public int getImgResID(){
-        String imgURL = recipeName.replace(" ", "").replace("-","").replace("/", "").replace(")", "").replace("(", "").replace(",", "").toLowerCase(Locale.ROOT);
+        String imgURL = recipeName.replace(",", "").replace(" ", "").replace("-","").replace("/", "").replace(")", "").replace("(", "").toLowerCase(Locale.ROOT);
         int resID = context.getResources().getIdentifier(imgURL, "drawable", context.getPackageName());
         return resID;
     }

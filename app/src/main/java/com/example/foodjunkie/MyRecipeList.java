@@ -35,7 +35,7 @@ public class MyRecipeList extends AppCompatActivity {
     Button btn_dietaryFilters, btn_filter, btn_cancel;
     DataBaseHelper dataBaseHelper;
     EditText myRecipeSearchBar;
-    int dairyFree = 0; int glutenFree = 0; int vegan = 0; int vegetarian = 0;
+    int dairyFree; int glutenFree; int vegan; int vegetarian;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

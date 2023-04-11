@@ -163,4 +163,8 @@ Baking soda / powder alternatives: \n
     <string name="recipeAdded">✅ Added to My Recipes</string>
     <string name="searchBarHint">"Search "</string>
     <string name="vegetarian">Vegetarian</string>
+    <string name="exit_pantry">Exit</string>
+    <string name="pantryIngredients">Pantry Ingredients</string>
+    <string name="ingredientsKey">✅ = (subs.) in pantry</string>
+    <string name="ingredientKey2">✅ = ingredient or substitution in pantry</string>
 </resources>

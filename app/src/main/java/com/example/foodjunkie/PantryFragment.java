@@ -19,10 +19,10 @@ import androidx.fragment.app.Fragment;
 import java.util.List;
 
 public class PantryFragment extends Fragment {
+    Context context;
     PantryListAdapter adapter;
     DBHelper databasehelper;
     PantryModel newPantry;
-    Context context;
     int intquantity;
     String strunit, stringredientName;
     private Parcelable mListState = null;
@@ -53,11 +53,13 @@ public class PantryFragment extends Fragment {
         listView =view.findViewById(R.id.myingredients);
         databasehelper = new DBHelper(getContext());
         List<PantryModel> pantryList = databasehelper.getAll();
+        adapter = new PantryListAdapter(getContext(), R.layout.pantryadapter, pantryList);
         if(databasehelper.checkEmpty()){
-            adapter = new PantryListAdapter(getContext(), R.layout.pantryadapter, pantryList);
             listView.setAdapter(adapter);}
 
         Button deleteIng = view.findViewById(R.id.btn_deleteIng);
+
+
 
         //show message
         deleteIng.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +120,7 @@ public class PantryFragment extends Fragment {
                         intquantity = Integer.parseInt(tv_quantity.getText().toString().replace(" ", ""));
                         strunit = tv_unit.getText().toString();
                         stringredientName = tv_ingredient.getText().toString();
-                        newPantry = new PantryModel(context,intquantity, strunit,stringredientName );
+                        newPantry = new PantryModel(context,intquantity, strunit,stringredientName);
                         databasehelper.addOne(newPantry);
                         adapter.add(newPantry);
                         adapter.notifyDataSetChanged();

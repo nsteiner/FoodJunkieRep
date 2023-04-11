@@ -18,10 +18,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class DefaultRecipeDisplay extends AppCompatActivity {
 
-    Button btn_addRecipe, btn_checkPantry;
+    Button btn_addRecipe, btn_checkPantry, btn_exitPantry;
     TextView recipeName, tv_vegan, tv_dairyFree, tv_glutenFree, tv_ingredients, tv_instructions, recipeAdded, tv_pantry;
     ScrollView sv_ingredients, sv_instructions, sv_pantry;
     ImageView imageView3;
@@ -83,7 +84,7 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
                 for(String ing : list) {
                     String[] ingWords = ing.split(" "); // split into individual words
                     for(String ingWord : ingWords) {
-                        if(ingWord.equals(item)) {
+                        if(ingWord.toLowerCase(Locale.ROOT).equals(item.toLowerCase(Locale.ROOT))) {
                             matchFound = true;
                             break;
                         }
@@ -166,6 +167,7 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
                 final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
                 popupWindow.setContentView(popUpView);
                 popupWindow.showAtLocation(v, Gravity.CENTER, 0, -300);
+                btn_exitPantry = popUpView.findViewById(R.id.btn_exitPantry);
                 imageView3 = popUpView.findViewById(R.id.imageView3);
                 Intent intent = getIntent();
                 Bundle extras = intent.getExtras();
@@ -174,6 +176,12 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
                 RecipeModel recipe = dataBaseHelper.getRecipe(nameForObject, title);
                 imageView3.setImageResource(recipe.getImgResID());
 
+                btn_exitPantry.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        popupWindow.dismiss();
+                    }
+                });
 
             }
         });

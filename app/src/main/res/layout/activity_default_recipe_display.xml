@@ -27,18 +27,35 @@
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
-                android:scaleType="fitXY"
                 android:layout_gravity="center"
-                android:layout_weight="30"/>
+                android:layout_weight="30"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="70"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewKey2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="25"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="@string/ingredientKey2" />
 
                 <TextView
                     android:id="@+id/tv_recipesName"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="70"
-                    android:textSize="25sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="75"
                     android:gravity="center"
-                    android:text="@string/recipe_name" />
+                    android:text="@string/recipe_name"
+                    android:textSize="25sp" />
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -83,9 +100,9 @@
                         <TextView
                             android:id="@+id/tv_ingredientsOutput"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="5dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
                             android:text="TextView" />
                     </LinearLayout>
                 </ScrollView>
@@ -94,28 +111,28 @@
             <LinearLayout
                 android:id="@+id/leftScrollView"
                 android:layout_width="0dp"
-                android:layout_weight="50"
                 android:layout_height="match_parent"
+                android:layout_weight="50"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_instructions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_instructions"
+                    android:layout_gravity="center"
 
-                    android:layout_gravity="center"/>
+                    android:text="@string/tv_instructions" />
 
                 <ScrollView
                     android:id="@+id/sv_instructions"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/border"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="7dp"
                     android:layout_gravity="bottom"
-                    android:layout_weight="50">
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="50"
+                    android:background="@drawable/border">
 
                     <LinearLayout
                         android:id="@+id/InsLinearLayout"
@@ -127,8 +144,8 @@
                             android:id="@+id/tv_instructionsOutput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
                             android:text="TextView" />
                     </LinearLayout>
                 </ScrollView>
