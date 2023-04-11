@@ -355,34 +355,34 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             }
             while(cursor.moveToNext());
         }
-        if (cursor.moveToFirst()) {
+        for(int i = 0; i < returnList.size(); i++) {
             do {
                 if(dairyFreeFilter == 1){
-                    for(int i = 0; i < returnList.size(); i++){
-                        System.out.println(dairyFreeList.get(i));
-                        if(dairyFreeList.get(i) != 1){
-                            returnList.remove(i);
+                    for(int j = 0; j < returnList.size(); j++){
+                        System.out.println(dairyFreeList.get(j));
+                        if(dairyFreeList.get(j) != 1){
+                            returnList.remove(j);
                         }
                     }
                 }
                 if(glutenFreeFilter == 1){
-                    for(int i = 0; i < returnList.size(); i++){
-                        if(glutenFreeList.get(i) != 1){
-                            returnList.remove(i);
+                    for(int j = 0; j < returnList.size(); j++){
+                        if(glutenFreeList.get(j) != 1){
+                            returnList.remove(j);
                         }
                     }
                 }
                 if(veganFilter == 1){
-                    for(int i = 0; i < returnList.size(); i++){
-                        if(veganList.get(i) != 1){
-                            returnList.remove(i);
+                    for(int j = 0; j < returnList.size(); j++){
+                        if(veganList.get(j) != 1){
+                            returnList.remove(j);
                         }
                     }
                 }
                 if(vegetarianFilter == 1){
-                    for(int i = 0; i < returnList.size(); i++){
-                        if(vegetarianList.get(i) != 1){
-                            returnList.remove(i);
+                    for(int j = 0; j < returnList.size(); j++){
+                        if(vegetarianList.get(j) != 1){
+                            returnList.remove(j);
                         }
                     }
                 }

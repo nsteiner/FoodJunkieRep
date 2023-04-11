@@ -90,6 +90,10 @@ public class MyRecipeDisplay extends AppCompatActivity {
             printIngredients = printIngredients + recipeIng + " " + pantrycheck + "\n" + "\n";
         }
 
+        for(int i = 0; i < recipe.getInstructionList().indexOf(""); i++){
+            printInstructions = printInstructions + "Step " + (i + 1) + ") " + recipe.getInstruction(i) + "\n" + "\n";
+        }
+
         //set scroll views
         tv_ingredients.setText(printIngredients);
         tv_instructions.setText(printInstructions);

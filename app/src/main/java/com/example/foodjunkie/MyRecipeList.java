@@ -22,6 +22,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.search.SearchBar;
+
 import java.text.Collator;
 import java.util.Collections;
 import java.util.List;
@@ -51,28 +53,6 @@ public class MyRecipeList extends AppCompatActivity {
 
         myRecipeSearchBar = (EditText) findViewById(R.id.myRecipeSearchBar);
         btn_dietaryFilters = findViewById(R.id.btn_dietaryFilters2);
-
-
-        int width = 600;
-        int height = 800;
-
-        View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.filterpopup, null);
-        final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
-        cb_dairyFree = popUpView.findViewById(R.id.cb_DFfilter);
-        cb_glutenFree = popUpView.findViewById(R.id.cb_GFfilter);
-        cb_vegan = popUpView.findViewById(R.id.cb_veganFilter);
-        cb_vegetarian = popUpView.findViewById(R.id.cb_vegetarianFilter);
-        btn_filter = popUpView.findViewById(R.id.btn_filter);
-        btn_cancel = popUpView.findViewById(R.id.btn_cancelFilter);
-        cb_dairyFree.setFocusable(true);
-        cb_glutenFree.setFocusable(true);
-        cb_vegan.setFocusable(true);
-        cb_glutenFree.setFocusableInTouchMode(true);
-        cb_dairyFree.setFocusableInTouchMode(true);
-        cb_vegan.setFocusableInTouchMode(true);
-        cb_vegetarian.setFocusable(true);
-        cb_vegetarian.setFocusableInTouchMode(true);
-
 
 
         //sets title depending on button clicked in default recipes fragment
@@ -136,21 +116,33 @@ public class MyRecipeList extends AppCompatActivity {
         btn_dietaryFilters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int width = 550;
-                int height = 400;
+                int width = 600;
+                int height = 800;
 
                 View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.filterpopup, null);
                 final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
-
-                // Show the soft keyboard for the EditText view
-                InputMethodManager imm = (InputMethodManager) getBaseContext().getSystemService(getBaseContext().INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                cb_dairyFree = popUpView.findViewById(R.id.cb_DFfilter);
+                cb_glutenFree = popUpView.findViewById(R.id.cb_GFfilter);
+                cb_vegan = popUpView.findViewById(R.id.cb_veganFilter);
+                cb_vegetarian = popUpView.findViewById(R.id.cb_vegetarianFilter);
+                btn_filter = popUpView.findViewById(R.id.btn_filter);
+                btn_cancel = popUpView.findViewById(R.id.btn_cancelFilter);
+                cb_dairyFree.setFocusable(true);
+                cb_glutenFree.setFocusable(true);
+                cb_vegan.setFocusable(true);
+                cb_glutenFree.setFocusableInTouchMode(true);
+                cb_dairyFree.setFocusableInTouchMode(true);
+                cb_vegan.setFocusableInTouchMode(true);
+                cb_vegetarian.setFocusable(true);
+                cb_vegetarian.setFocusableInTouchMode(true);
 
                 // Add the popup window to the PopupWindow instance
                 // popupWindow = new PopupWindow(popUpView, width, height, true);
                 popupWindow.setContentView(popUpView);
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
+                btn_filter = (Button) popUpView.findViewById(R.id.btn_filter);
+                btn_cancel = (Button) popUpView.findViewById(R.id.btn_cancelFilter);
 
                 btn_filter.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -171,6 +163,11 @@ public class MyRecipeList extends AppCompatActivity {
                         cb_glutenFree.setChecked(false);
                         cb_vegan.setChecked(false);
                         cb_vegetarian.setChecked(false);
+
+                        List<String> filteredList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), "My" + titleText, dairyFree, glutenFree, vegan, vegetarian);
+                        Collections.sort(filteredList, Collator.getInstance());
+                        MyRecipeListAdapter adapter = new MyRecipeListAdapter(getBaseContext(), R.layout.myrecipe_view_layout, filteredList);
+                        lv_recipeList.setAdapter(adapter);
 
                         popupWindow.dismiss();
                     }

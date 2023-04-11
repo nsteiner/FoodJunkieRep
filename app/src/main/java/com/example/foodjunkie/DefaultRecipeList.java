@@ -60,25 +60,6 @@ public class DefaultRecipeList extends AppCompatActivity {
         defaultSearchBar = (EditText) findViewById(R.id.defaultSearchBar);
         btn_dietaryFilters = findViewById(R.id.btn_dietaryFilters);
 
-        int width = 600;
-        int height = 800;
-
-        View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.filterpopup, null);
-        final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
-        cb_dairyFree = popUpView.findViewById(R.id.cb_DFfilter);
-        cb_glutenFree = popUpView.findViewById(R.id.cb_GFfilter);
-        cb_vegan = popUpView.findViewById(R.id.cb_veganFilter);
-        cb_vegetarian = popUpView.findViewById(R.id.cb_vegetarianFilter);
-        cb_dairyFree.setFocusable(true);
-        cb_glutenFree.setFocusable(true);
-        cb_vegan.setFocusable(true);
-        cb_glutenFree.setFocusableInTouchMode(true);
-        cb_dairyFree.setFocusableInTouchMode(true);
-        cb_vegan.setFocusableInTouchMode(true);
-        cb_vegetarian.setFocusable(true);
-        cb_vegetarian.setFocusableInTouchMode(true);
-        cb_dairyFree2 = findViewById(R.id.cb_dairyFreeFilter2);
-
         Log.d(TAG, "onCreate: Started");
         lv_recipeList = (ListView) findViewById(R.id.lv_recipeList);
 
@@ -136,11 +117,23 @@ public class DefaultRecipeList extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                int width = 700;
-                int height = 700;
+                int width = 600;
+                int height = 800;
 
                 View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.filterpopup, null);
                 final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
+                cb_dairyFree = popUpView.findViewById(R.id.cb_DFfilter);
+                cb_glutenFree = popUpView.findViewById(R.id.cb_GFfilter);
+                cb_vegan = popUpView.findViewById(R.id.cb_veganFilter);
+                cb_vegetarian = popUpView.findViewById(R.id.cb_vegetarianFilter);
+                cb_dairyFree.setFocusable(true);
+                cb_glutenFree.setFocusable(true);
+                cb_vegan.setFocusable(true);
+                cb_glutenFree.setFocusableInTouchMode(true);
+                cb_dairyFree.setFocusableInTouchMode(true);
+                cb_vegan.setFocusableInTouchMode(true);
+                cb_vegetarian.setFocusable(true);
+                cb_vegetarian.setFocusableInTouchMode(true);
 
                 // Show the soft keyboard for the EditText view
                 InputMethodManager imm = (InputMethodManager) getBaseContext().getSystemService(getBaseContext().INPUT_METHOD_SERVICE);
@@ -157,7 +150,7 @@ public class DefaultRecipeList extends AppCompatActivity {
                 btn_filter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(cb_dairyFree2.isChecked()){
+                        if(cb_dairyFree.isChecked()){
                             dairyFree = 1;
                         }
                         if(cb_glutenFree.isChecked()){
