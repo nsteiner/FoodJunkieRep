@@ -16,6 +16,10 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
+
+import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PantryFragment extends Fragment {
@@ -52,7 +56,24 @@ public class PantryFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_pantry, container, false);
         listView =view.findViewById(R.id.myingredients);
         databasehelper = new DBHelper(getContext());
+
         List<PantryModel> pantryList = databasehelper.getAll();
+        List<String> pantryStrings = new ArrayList<>(pantryList.size());
+        for(int i = 0; i < pantryList.size(); i++){
+            pantryStrings.add(pantryList.get(i).getIngredientName());
+        }
+
+        Collections.sort(pantryStrings, Collator.getInstance());
+        for(int i = 0; i < pantryStrings.size(); i++){
+            for(int j = 0; j < pantryList.size(); j++){
+                if(pantryList.get(j).getIngredientName() == pantryStrings.get(i)){
+                    PantryModel tempPantry = pantryList.get(i);
+                    pantryList.set(i, pantryList.get(j));
+                    pantryList.set(j, tempPantry);
+                }
+            }
+        }
+
         adapter = new PantryListAdapter(getContext(), R.layout.pantryadapter, pantryList);
         if(databasehelper.checkEmpty()){
             listView.setAdapter(adapter);}
@@ -122,8 +143,27 @@ public class PantryFragment extends Fragment {
                         stringredientName = tv_ingredient.getText().toString();
                         newPantry = new PantryModel(context,intquantity, strunit,stringredientName);
                         databasehelper.addOne(newPantry);
-                        adapter.add(newPantry);
-                        adapter.notifyDataSetChanged();
+
+                        List<PantryModel> pantryList = databasehelper.getAll();
+                        List<String> pantryStrings = new ArrayList<>(pantryList.size());
+                        for(int i = 0; i < pantryList.size(); i++){
+                            pantryStrings.add(pantryList.get(i).getIngredientName());
+                        }
+
+                        Collections.sort(pantryStrings, Collator.getInstance());
+                        for(int i = 0; i < pantryStrings.size(); i++){
+                            for(int j = 0; j < pantryList.size(); j++){
+                                if(pantryList.get(j).getIngredientName() == pantryStrings.get(i)){
+                                    PantryModel tempPantry = pantryList.get(i);
+                                    pantryList.set(i, pantryList.get(j));
+                                    pantryList.set(j, tempPantry);
+                                }
+                            }
+                        }
+
+                        adapter = new PantryListAdapter(getContext(), R.layout.pantryadapter, pantryList);
+                        listView.setAdapter(adapter);
+
                         tv_unit.setText("");
                         tv_quantity.setText("");
                         tv_ingredient.setText("");
