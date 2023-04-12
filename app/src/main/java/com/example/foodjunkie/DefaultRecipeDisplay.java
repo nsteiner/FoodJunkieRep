@@ -23,7 +23,7 @@ import java.util.Locale;
 public class DefaultRecipeDisplay extends AppCompatActivity {
 
     Button btn_addRecipe, btn_checkPantry, btn_exitPantry;
-    TextView recipeName, tv_vegan, tv_dairyFree, tv_glutenFree, tv_ingredients, tv_instructions, recipeAdded, tv_pantry;
+    TextView recipeName, tv_vegan, tv_dairyFree, tv_glutenFree, tv_ingredients, tv_instructions, recipeAdded, tv_pantry, tv_vegetarian;
     ScrollView sv_ingredients, sv_instructions, sv_pantry;
     ImageView imageView3;
 
@@ -55,7 +55,7 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
         recipeAdded = findViewById(R.id.tv_recipeAdded);
         imageView = findViewById(R.id.imageView);
         btn_checkPantry = findViewById(R.id.btn_checkPantry);
-
+        tv_vegetarian = findViewById(R.id.tv_vegetarian);
 
         dataBaseHelper = new DataBaseHelper(DefaultRecipeDisplay.this);
 
@@ -119,6 +119,9 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
         }
         if(recipe.getVegan() == 0){
             tv_vegan.setVisibility(View.INVISIBLE);
+        }
+        if(recipe.getVegetarian() == 0){
+            tv_vegetarian.setVisibility(View.INVISIBLE);
         }
 
         if(dataBaseHelper.checkMyRecipes(recipe.getRecipeName(), title)){

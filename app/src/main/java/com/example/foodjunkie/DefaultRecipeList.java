@@ -17,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -117,23 +118,17 @@ public class DefaultRecipeList extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                dairyFree = 0; glutenFree = 0; vegan = 0; vegetarian = 0;
+
                 int width = 600;
-                int height = 800;
+                int height = 600;
 
                 View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.filterpopup, null);
                 final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
-                cb_dairyFree = popUpView.findViewById(R.id.cb_DFfilter);
+                cb_dairyFree = (CheckBox) popUpView.findViewById(R.id.cb_DFfilter);
                 cb_glutenFree = popUpView.findViewById(R.id.cb_GFfilter);
                 cb_vegan = popUpView.findViewById(R.id.cb_veganFilter);
                 cb_vegetarian = popUpView.findViewById(R.id.cb_vegetarianFilter);
-                cb_dairyFree.setFocusable(true);
-                cb_glutenFree.setFocusable(true);
-                cb_vegan.setFocusable(true);
-                cb_glutenFree.setFocusableInTouchMode(true);
-                cb_dairyFree.setFocusableInTouchMode(true);
-                cb_vegan.setFocusableInTouchMode(true);
-                cb_vegetarian.setFocusable(true);
-                cb_vegetarian.setFocusableInTouchMode(true);
 
                 // Show the soft keyboard for the EditText view
                 InputMethodManager imm = (InputMethodManager) getBaseContext().getSystemService(getBaseContext().INPUT_METHOD_SERVICE);
@@ -144,8 +139,15 @@ public class DefaultRecipeList extends AppCompatActivity {
                 popupWindow.setContentView(popUpView);
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
+                Boolean cb_dairyFreeChecked = cb_dairyFree.isChecked();
+
+
                 btn_filter = (Button) popUpView.findViewById(R.id.btn_filter);
                 btn_cancel = (Button) popUpView.findViewById(R.id.btn_cancelFilter);
+
+
+
+
 
                 btn_filter.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -162,15 +164,18 @@ public class DefaultRecipeList extends AppCompatActivity {
                         if(cb_vegetarian.isChecked()){
                             vegetarian = 1;
                         }
-                        cb_dairyFree.setChecked(false);
-                        cb_glutenFree.setChecked(false);
-                        cb_vegan.setChecked(false);
-                        cb_vegetarian.setChecked(false);
 
                         List<String> filteredList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
                         Collections.sort(filteredList, Collator.getInstance());
                         DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(getBaseContext(), R.layout.default_view_layout, filteredList);
                         lv_recipeList.setAdapter(adapter);
+
+                        cb_dairyFree.setChecked(false);
+                        cb_glutenFree.setChecked(false);
+                        cb_vegan.setChecked(false);
+                        cb_vegetarian.setChecked(false);
+
+
 
                         popupWindow.dismiss();
                     }

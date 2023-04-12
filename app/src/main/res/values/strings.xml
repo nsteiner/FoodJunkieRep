@@ -167,4 +167,5 @@ Baking soda / powder alternatives: \n
     <string name="pantryIngredients">Pantry Ingredients</string>
     <string name="ingredientsKey">✅ = (subs.) in pantry</string>
     <string name="ingredientKey2">✅ = ingredient or substitution in pantry</string>
+    <string name="tv_vegetarian">Vegetarian ✅</string>
 </resources>

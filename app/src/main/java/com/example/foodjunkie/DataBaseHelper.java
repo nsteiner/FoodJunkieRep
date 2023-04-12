@@ -340,6 +340,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         List<Integer> glutenFreeList = new ArrayList<>();
         List<Integer> veganList = new ArrayList<>();
         List<Integer> vegetarianList = new ArrayList<>();
+        List<String> returnList2 = new ArrayList<>();
         if(cursor.moveToFirst()){
             do{
                 String name = cursor.getString(0);
@@ -351,42 +352,38 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 glutenFreeList.add(isRecipeGF);
                 veganList.add(isRecipeVegan);
                 vegetarianList.add(isRecipeVegetarian);
-                returnList.add(name);
+                returnList2.add(name);
             }
             while(cursor.moveToNext());
         }
-        for(int i = 0; i < returnList.size(); i++) {
-            do {
+        for(int i = 0; i < returnList2.size(); i++) {
                 if(dairyFreeFilter == 1){
-                    for(int j = 0; j < returnList.size(); j++){
-                        System.out.println(dairyFreeList.get(j));
-                        if(dairyFreeList.get(j) != 1){
-                            returnList.remove(j);
+                        if(dairyFreeList.get(i) != 1){
+                            returnList2.set(i, null);
                         }
-                    }
                 }
                 if(glutenFreeFilter == 1){
-                    for(int j = 0; j < returnList.size(); j++){
-                        if(glutenFreeList.get(j) != 1){
-                            returnList.remove(j);
+                        if(glutenFreeList.get(i) != 1){
+                            returnList2.set(i, null);
                         }
-                    }
                 }
                 if(veganFilter == 1){
-                    for(int j = 0; j < returnList.size(); j++){
-                        if(veganList.get(j) != 1){
-                            returnList.remove(j);
+                        if(veganList.get(i) != 1) {
+                            returnList2.set(i, null);
                         }
-                    }
                 }
                 if(vegetarianFilter == 1){
-                    for(int j = 0; j < returnList.size(); j++){
-                        if(vegetarianList.get(j) != 1){
-                            returnList.remove(j);
+                    if(vegetarianList.get(i) != 1){
+                            returnList2.set(i, null);
                         }
-                    }
+
                 }
-            } while (cursor.moveToNext());
+        }
+
+        for(int i = 0; i < returnList2.size(); i++){
+            if(returnList2.get(i) != null){
+                returnList.add(returnList2.get(i));
+            }
         }
         return returnList;
     }

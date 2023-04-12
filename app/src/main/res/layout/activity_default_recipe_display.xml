@@ -207,20 +207,11 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_vegan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="33.3"
-                    android:gravity="center"
-                    android:text="@string/tv_vegan" />
-
-                <TextView
                     android:id="@+id/tv_dairyFree"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
-                    android:layout_weight="33.3"
+                    android:layout_weight="25"
                     android:gravity="center"
                     android:text="@string/tv_dairyFree" />
 
@@ -229,9 +220,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
-                    android:layout_weight="33.3"
+                    android:layout_weight="25"
                     android:gravity="center"
                     android:text="@string/tv_glutenFree" />
+
+                <TextView
+                    android:id="@+id/tv_vegan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="25"
+                    android:gravity="center"
+                    android:text="@string/tv_vegan" />
+
+                <TextView
+                    android:id="@+id/tv_vegetarian"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="25"
+                    android:gravity="center"
+                    android:text="@string/tv_vegetarian" />
+
             </LinearLayout>
 
         </LinearLayout>
