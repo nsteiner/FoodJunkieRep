@@ -157,6 +157,14 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
 
                 popupWindow.setContentView(popUpView);
                 popupWindow.showAtLocation(view, Gravity.RIGHT, 0, 120);
+
+                btn_exitPantry = popUpView.findViewById(R.id.btn_exitPantry);
+                btn_exitPantry.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        popupWindow.dismiss();
+                    }
+                });
             }
         });
 
@@ -170,7 +178,6 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
                 final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
                 popupWindow.setContentView(popUpView);
                 popupWindow.showAtLocation(v, Gravity.CENTER, 0, -300);
-                btn_exitPantry = popUpView.findViewById(R.id.btn_exitPantry);
                 imageView3 = popUpView.findViewById(R.id.imageView3);
                 Intent intent = getIntent();
                 Bundle extras = intent.getExtras();
@@ -179,12 +186,6 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
                 RecipeModel recipe = dataBaseHelper.getRecipe(nameForObject, title);
                 imageView3.setImageResource(recipe.getImgResID());
 
-                btn_exitPantry.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        popupWindow.dismiss();
-                    }
-                });
 
             }
         });
