@@ -48,7 +48,7 @@
                 android:layout_weight="5"
                 android:gravity="center"
                 android:text="TextView"
-                android:textSize="15sp" />
+                android:textSize="20sp" />
         <ListView
             android:id="@+id/lv_recipeList"
             android:layout_width="match_parent"

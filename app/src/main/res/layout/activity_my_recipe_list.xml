@@ -55,7 +55,7 @@
                 android:layout_weight="50"
                 android:gravity="center"
                 android:text="TextView"
-                android:textSize="15sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btn_deleteRecipe"
