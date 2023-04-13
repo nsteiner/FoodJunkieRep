@@ -104,7 +104,7 @@ public class DefaultRecipeListAdapter extends ArrayAdapter<String> {
         result.startAnimation(animation);
         lastPosition = position;
 
-        String imgURL = name.replace(" ", "").replace("-","").toLowerCase(Locale.ROOT);
+        String imgURL = name.replace(",", "").replace(" ", "").replace("-","").replace("/", "").replace(")", "").replace("(", "").toLowerCase(Locale.ROOT);
         int resID = mContext.getResources().getIdentifier(imgURL, "drawable", mContext.getPackageName());
         holder.img.setImageResource(resID);
 

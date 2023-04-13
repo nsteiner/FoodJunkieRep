@@ -93,7 +93,7 @@ public class MyRecipeList extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 //(DefaultRecipeList.this).adapter.getFilter().filter(charSequence);
-                recipeList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
+                recipeList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), "My" + titleText, dairyFree, glutenFree, vegan, vegetarian);
                 Collections.sort(recipeList, Collator.getInstance());
                 adapter = new MyRecipeListAdapter(getBaseContext(), R.layout.myrecipe_view_layout, recipeList);
                 lv_recipeList.setAdapter(adapter);
@@ -121,8 +121,8 @@ public class MyRecipeList extends AppCompatActivity {
         btn_dietaryFilters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int width = 600;
-                int height = 800;
+                int width = 580;
+                int height = 500;
 
                 View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.filterpopup, null);
                 final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
@@ -132,14 +132,6 @@ public class MyRecipeList extends AppCompatActivity {
                 cb_vegetarian = popUpView.findViewById(R.id.cb_vegetarianFilter);
                 btn_filter = popUpView.findViewById(R.id.btn_filter);
                 btn_cancel = popUpView.findViewById(R.id.btn_cancelFilter);
-                cb_dairyFree.setFocusable(true);
-                cb_glutenFree.setFocusable(true);
-                cb_vegan.setFocusable(true);
-                cb_glutenFree.setFocusableInTouchMode(true);
-                cb_dairyFree.setFocusableInTouchMode(true);
-                cb_vegan.setFocusableInTouchMode(true);
-                cb_vegetarian.setFocusable(true);
-                cb_vegetarian.setFocusableInTouchMode(true);
 
                 // Add the popup window to the PopupWindow instance
                 // popupWindow = new PopupWindow(popUpView, width, height, true);
@@ -164,15 +156,19 @@ public class MyRecipeList extends AppCompatActivity {
                         if(cb_vegetarian.isChecked()){
                             vegetarian = 1;
                         }
-                        cb_dairyFree.setChecked(false);
-                        cb_glutenFree.setChecked(false);
-                        cb_vegan.setChecked(false);
-                        cb_vegetarian.setChecked(false);
-
                         recipeList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), "My" + titleText, dairyFree, glutenFree, vegan, vegetarian);
                         Collections.sort(recipeList, Collator.getInstance());
                         adapter = new MyRecipeListAdapter(getBaseContext(), R.layout.myrecipe_view_layout, recipeList);
                         lv_recipeList.setAdapter(adapter);
+
+                        cb_dairyFree.setChecked(false);
+                        cb_glutenFree.setChecked(false);
+                        cb_vegan.setChecked(false);
+                        cb_vegetarian.setChecked(false);
+                        dairyFree = 0;
+                        glutenFree = 0;
+                        vegan = 0;
+                        vegetarian = 0;
 
                         popupWindow.dismiss();
                     }
