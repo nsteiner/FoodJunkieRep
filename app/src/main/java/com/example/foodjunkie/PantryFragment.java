@@ -98,7 +98,7 @@ public class PantryFragment extends Fragment {
                 DBHelper dbHelper = new DBHelper(getContext());
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 db.delete("PANTRY", "QUANTITY=? AND UNIT=? AND INGREDIENT=?", new String[]{String.valueOf(item.getQuantity()), item.getUnit(), item.getIngredientName()});
-                adapter.remove(adapter.getItem(position));
+                adapter.remove(item);
                 adapter.notifyDataSetChanged();
                 return true;
             }

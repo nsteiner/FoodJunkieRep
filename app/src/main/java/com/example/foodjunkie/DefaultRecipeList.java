@@ -102,9 +102,9 @@ public class DefaultRecipeList extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                List<String> filteredList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
-                Collections.sort(filteredList, Collator.getInstance());
-                DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(getBaseContext(), R.layout.default_view_layout, filteredList);
+                List<String> recipeList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
+                Collections.sort(recipeList, Collator.getInstance());
+                DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(getBaseContext(), R.layout.default_view_layout, recipeList);
                 lv_recipeList.setAdapter(adapter);
             }
 
@@ -165,9 +165,9 @@ public class DefaultRecipeList extends AppCompatActivity {
                             vegetarian = 1;
                         }
 
-                        List<String> filteredList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
-                        Collections.sort(filteredList, Collator.getInstance());
-                        DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(getBaseContext(), R.layout.default_view_layout, filteredList);
+                        List<String> recipeList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
+                        Collections.sort(recipeList, Collator.getInstance());
+                        DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(getBaseContext(), R.layout.default_view_layout, recipeList);
                         lv_recipeList.setAdapter(adapter);
 
                         cb_dairyFree.setChecked(false);

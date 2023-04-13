@@ -549,4 +549,50 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    public boolean delete(String recipeName, String titleText){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String switchTable = "";
+        switch (titleText) {
+            case "Breakfast":
+                switchTable = "BREAKFAST_TABLE";
+                break;
+            case "Lunch":
+                switchTable = "LUNCH_TABLE";
+                break;
+            case "Dinner":
+                switchTable = "DINNER_TABLE";
+                break;
+            case "Dessert":
+                switchTable = "DESSERT_TABLE";
+                break;
+            case "Snacks":
+                switchTable = "SNACKS_TABLE";
+                break;
+            case "MyBreakfast":
+                switchTable = "MYBREAKFAST_TABLE";
+                break;
+            case "MyLunch":
+                switchTable = "MYLUNCH_TABLE";
+                break;
+            case "MyDinner":
+                switchTable = "MYDINNER_TABLE";
+                break;
+            case "MyDessert":
+                switchTable = "MYDESSERT_TABLE";
+                break;
+            case "MySnacks":
+                switchTable = "MYSNACKS_TABLE";
+                break;
+        }
+        String queryString = "DELETE FROM " + switchTable + " WHERE RECIPE_NAME ='" + recipeName + "'";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if(cursor.moveToFirst()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

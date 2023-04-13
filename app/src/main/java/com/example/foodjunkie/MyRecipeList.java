@@ -4,6 +4,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -34,10 +36,13 @@ public class MyRecipeList extends AppCompatActivity {
     ListView lv_recipeList;
     CheckBox cb_dairyFree, cb_glutenFree, cb_vegan, cb_vegetarian;
 
-    Button btn_dietaryFilters, btn_filter, btn_cancel;
+    Button btn_dietaryFilters, btn_filter, btn_cancel, btn_deleteRecipe;
     DataBaseHelper dataBaseHelper;
     EditText myRecipeSearchBar;
     int dairyFree; int glutenFree; int vegan; int vegetarian;
+    int deleteCondition;
+    MyRecipeListAdapter adapter;
+    List<String> recipeList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,7 @@ public class MyRecipeList extends AppCompatActivity {
 
         myRecipeSearchBar = (EditText) findViewById(R.id.myRecipeSearchBar);
         btn_dietaryFilters = findViewById(R.id.btn_dietaryFilters2);
+        btn_deleteRecipe = findViewById(R.id.btn_deleteRecipe);
 
 
         //sets title depending on button clicked in default recipes fragment
@@ -63,14 +69,13 @@ public class MyRecipeList extends AppCompatActivity {
         lv_recipeList = (ListView) findViewById(R.id.lv_myRecipeList);
         dataBaseHelper = new DataBaseHelper(MyRecipeList.this);
 
-        List<String> recipeList = dataBaseHelper.getAll("My" + getIntent().getStringExtra("title"));
-
-
+        
+        
 
         if(dataBaseHelper.checkEmpty(getIntent().getStringExtra("title"), "MyRecipes")){
-            List<String> displayList = this.dataBaseHelper.getAll("My" + getIntent().getStringExtra("title"));
-            Collections.sort(displayList, Collator.getInstance());
-            MyRecipeListAdapter adapter = new MyRecipeListAdapter(this, R.layout.myrecipe_view_layout, displayList);
+            recipeList = this.dataBaseHelper.getAll("My" + getIntent().getStringExtra("title"));
+            Collections.sort(recipeList, Collator.getInstance());
+            adapter = new MyRecipeListAdapter(this, R.layout.myrecipe_view_layout, recipeList);
             lv_recipeList.setAdapter(adapter);
         }
         else{
@@ -88,9 +93,9 @@ public class MyRecipeList extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 //(DefaultRecipeList.this).adapter.getFilter().filter(charSequence);
-                List<String> filteredList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
-                Collections.sort(filteredList, Collator.getInstance());
-                MyRecipeListAdapter adapter = new MyRecipeListAdapter(getBaseContext(), R.layout.myrecipe_view_layout, filteredList);
+                recipeList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
+                Collections.sort(recipeList, Collator.getInstance());
+                adapter = new MyRecipeListAdapter(getBaseContext(), R.layout.myrecipe_view_layout, recipeList);
                 lv_recipeList.setAdapter(adapter);
             }
 
@@ -164,9 +169,9 @@ public class MyRecipeList extends AppCompatActivity {
                         cb_vegan.setChecked(false);
                         cb_vegetarian.setChecked(false);
 
-                        List<String> filteredList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), "My" + titleText, dairyFree, glutenFree, vegan, vegetarian);
-                        Collections.sort(filteredList, Collator.getInstance());
-                        MyRecipeListAdapter adapter = new MyRecipeListAdapter(getBaseContext(), R.layout.myrecipe_view_layout, filteredList);
+                        recipeList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), "My" + titleText, dairyFree, glutenFree, vegan, vegetarian);
+                        Collections.sort(recipeList, Collator.getInstance());
+                        adapter = new MyRecipeListAdapter(getBaseContext(), R.layout.myrecipe_view_layout, recipeList);
                         lv_recipeList.setAdapter(adapter);
 
                         popupWindow.dismiss();
@@ -185,6 +190,56 @@ public class MyRecipeList extends AppCompatActivity {
                 });
             }
         });
+
+        
+        btn_deleteRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getBaseContext(), "Long click the recipe you want to delete!", Toast.LENGTH_SHORT).show();
+                deleteCondition = 1;
+            }
+        });
+
+        lv_recipeList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                /*String item = adapter.getItem(position);
+                DataBaseHelper dataBaseHelper = new DataBaseHelper(getBaseContext());
+                dataBaseHelper.delete(item, titleText);
+                adapter.remove(item);
+                adapter.notifyDataSetChanged();
+                return true;
+                 */
+                String item = adapter.getItem(position);
+                DBHelper dbHelper = new DBHelper(getBaseContext());
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                String switchTable = "";
+                switch (titleText) {
+                    case "Breakfast":
+                        switchTable = "MYBREAKFAST_TABLE";
+                        break;
+                    case "Lunch":
+                        switchTable = "MYLUNCH_TABLE";
+                        break;
+                    case "Dinner":
+                        switchTable = "MYDINNER_TABLE";
+                        break;
+                    case "Dessert":
+                        switchTable = "MYDESSERT_TABLE";
+                        break;
+                    case "Snacks":
+                        switchTable = "MYSNACKS_TABLE";
+                        break;
+                }
+                db.delete(switchTable, "RECIPE_NAME=?", new String[]{item});
+                adapter.remove(item);
+                adapter.notifyDataSetChanged();
+                return true;
+            }
+        });
+
+        //delete ingredient from lv and database if long clicked
+
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
