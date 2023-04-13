@@ -39,6 +39,7 @@ public class PantryFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+    int deleteCondition;
 
     public PantryFragment() {
     }
@@ -87,6 +88,7 @@ public class PantryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "Long click the ingredient you want to delete!", Toast.LENGTH_SHORT).show();
+                deleteCondition = 1;
             }
         });
 
@@ -94,13 +96,17 @@ public class PantryFragment extends Fragment {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                PantryModel item = adapter.getItem(position);
-                DBHelper dbHelper = new DBHelper(getContext());
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                db.delete("PANTRY", "QUANTITY=? AND UNIT=? AND INGREDIENT=?", new String[]{String.valueOf(item.getQuantity()), item.getUnit(), item.getIngredientName()});
-                adapter.remove(item);
-                adapter.notifyDataSetChanged();
-                return true;
+                if(deleteCondition == 1) {
+                    PantryModel item = adapter.getItem(position);
+                    DBHelper dbHelper = new DBHelper(getContext());
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+                    db.delete("PANTRY", "QUANTITY=? AND UNIT=? AND INGREDIENT=?", new String[]{String.valueOf(item.getQuantity()), item.getUnit(), item.getIngredientName()});
+                    adapter.remove(item);
+                    adapter.notifyDataSetChanged();
+                    deleteCondition = 0;
+                    return true;
+                }
+                else{return false;}
             }
         });
 

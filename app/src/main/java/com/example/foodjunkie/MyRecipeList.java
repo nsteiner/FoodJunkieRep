@@ -210,31 +210,35 @@ public class MyRecipeList extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 return true;
                  */
-                String item = adapter.getItem(position);
-                DBHelper dbHelper = new DBHelper(getBaseContext());
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                String switchTable = "";
-                switch (titleText) {
-                    case "Breakfast":
-                        switchTable = "MYBREAKFAST_TABLE";
-                        break;
-                    case "Lunch":
-                        switchTable = "MYLUNCH_TABLE";
-                        break;
-                    case "Dinner":
-                        switchTable = "MYDINNER_TABLE";
-                        break;
-                    case "Dessert":
-                        switchTable = "MYDESSERT_TABLE";
-                        break;
-                    case "Snacks":
-                        switchTable = "MYSNACKS_TABLE";
-                        break;
+                if(deleteCondition == 1) {
+                    String item = adapter.getItem(position);
+                    DBHelper dbHelper = new DBHelper(getBaseContext());
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+                    String switchTable = "";
+                    switch (titleText) {
+                        case "Breakfast":
+                            switchTable = "MYBREAKFAST_TABLE";
+                            break;
+                        case "Lunch":
+                            switchTable = "MYLUNCH_TABLE";
+                            break;
+                        case "Dinner":
+                            switchTable = "MYDINNER_TABLE";
+                            break;
+                        case "Dessert":
+                            switchTable = "MYDESSERT_TABLE";
+                            break;
+                        case "Snacks":
+                            switchTable = "MYSNACKS_TABLE";
+                            break;
+                    }
+                    db.delete(switchTable, "RECIPE_NAME=?", new String[]{item});
+                    adapter.remove(item);
+                    adapter.notifyDataSetChanged();
+                    deleteCondition = 0;
+                    return true;
                 }
-                db.delete(switchTable, "RECIPE_NAME=?", new String[]{item});
-                adapter.remove(item);
-                adapter.notifyDataSetChanged();
-                return true;
+                else{return false;}
             }
         });
 
