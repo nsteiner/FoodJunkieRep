@@ -107,6 +107,8 @@ public class MyRecipeList extends AppCompatActivity {
         lv_recipeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                recipeList = dataBaseHelper.filter(myRecipeSearchBar.getText().toString(), "My" + titleText, dairyFree, glutenFree, vegan, vegetarian);
+                Collections.sort(recipeList, Collator.getInstance());
                 Intent intent = new Intent(MyRecipeList.this, MyRecipeDisplay.class);
                 //RecipeModel recipeModel = lv_recipeList.get(position)
                 String item = recipeList.get(i);
@@ -121,8 +123,13 @@ public class MyRecipeList extends AppCompatActivity {
         btn_dietaryFilters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int width = 580;
-                int height = 500;
+                int width = 700;
+                int height = 600;
+
+                dairyFree = 0;
+                glutenFree = 0;
+                vegan = 0;
+                vegetarian = 0;
 
                 View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.filterpopup, null);
                 final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
@@ -165,10 +172,7 @@ public class MyRecipeList extends AppCompatActivity {
                         cb_glutenFree.setChecked(false);
                         cb_vegan.setChecked(false);
                         cb_vegetarian.setChecked(false);
-                        dairyFree = 0;
-                        glutenFree = 0;
-                        vegan = 0;
-                        vegetarian = 0;
+
 
                         popupWindow.dismiss();
                     }

@@ -83,6 +83,8 @@ public class DefaultRecipeList extends AppCompatActivity {
         lv_recipeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                List<String> recipeList = dataBaseHelper.filter(defaultSearchBar.getText().toString(), titleText, dairyFree, glutenFree, vegan, vegetarian);
+                Collections.sort(recipeList, Collator.getInstance());
                 Intent intent = new Intent(DefaultRecipeList.this, DefaultRecipeDisplay.class);
                 //RecipeModel recipeModel = lv_recipeList.get(position)
                 String item = recipeList.get(i);
@@ -113,8 +115,8 @@ public class DefaultRecipeList extends AppCompatActivity {
 
             }
         });
-        int width = 580;
-        int height = 500;
+        int width = 700;
+        int height = 600;
 
         View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.filterpopup, null);
         final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);
@@ -128,6 +130,10 @@ public class DefaultRecipeList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Show the soft keyboard for the EditText view
+                dairyFree = 0;
+                glutenFree = 0;
+                vegan = 0;
+                vegetarian = 0;
                 InputMethodManager imm = (InputMethodManager) getBaseContext().getSystemService(getBaseContext().INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 
@@ -162,21 +168,17 @@ public class DefaultRecipeList extends AppCompatActivity {
                             vegetarian = 1;
                         }
 
-                        List<String> recipeList = dataBaseHelper.filter(defaultSearchBar.getText().toString(),titleText, dairyFree, glutenFree, vegan, vegetarian);
-                        Collections.sort(recipeList, Collator.getInstance());
-                        DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(getBaseContext(), R.layout.default_view_layout, recipeList);
-                        lv_recipeList.setAdapter(adapter);
-
                         cb_dairyFree.setChecked(false);
                         cb_glutenFree.setChecked(false);
                         cb_vegan.setChecked(false);
                         cb_vegetarian.setChecked(false);
-                        dairyFree = 0;
-                        glutenFree = 0;
-                        vegan = 0;
-                        vegetarian = 0;
 
                         popupWindow.dismiss();
+
+                        List<String> recipeList = dataBaseHelper.filter(defaultSearchBar.getText().toString(),titleText, dairyFree, glutenFree, vegan, vegetarian);
+                        Collections.sort(recipeList, Collator.getInstance());
+                        DefaultRecipeListAdapter adapter = new DefaultRecipeListAdapter(getBaseContext(), R.layout.default_view_layout, recipeList);
+                        lv_recipeList.setAdapter(adapter);
                     }
                 });
                 btn_cancel.setOnClickListener(new View.OnClickListener() {
