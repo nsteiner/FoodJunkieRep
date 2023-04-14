@@ -15,7 +15,7 @@
     <string name="add_Ingredient">+</string>
     <string name="add_instruction">+</string>
     <string name="title_activity_safety_tips">SafetyTips</string>
-    <string name="button_Safety">Cooking Safety</string>
+    <string name="button_Safety">Cooking Safety and Kitchen Hacks</string>
     <string name="button_Sub">Common Ingredient Substitutions</string>
     <string name="button_Metric">Unit Converter</string>
     <string name="button_TspToTbs">Teaspoon to Tablespoon</string>
@@ -26,6 +26,8 @@
     <string name="button_ButToCup">Stick of Butter to Cup</string>
     <string name="unit_input">Enter number.</string>
     <string name="unit_Output">Result</string>
+    <string name="unit1">unit</string>
+    <string name="unit2">unit</string>
     <string name="button_Home">Home</string>
     <string name="Metric_Act">Unit Conversions</string>
     <string name="Breakfast">Breakfast</string>
@@ -94,7 +96,51 @@ Cooking Temperature: \n\n
 
 " internal temperature of 165 °F as \n"
 " measured with a food \n"
-" thermometer.\n"
+" thermometer.\n\n\n"
+
+
+
+Kitchen Hacks: \n\n
+
+1. Peel garlic with a jar lid: Place the garlic
+clove on a flat surface, put a jar lid on top
+of it, and press down firmly. This will easily
+separate the garlic from its skin. \n\n
+2. Freeze leftover herbs in olive oil: Chop up
+leftover herbs and place them in an ice cube
+tray. Fill the tray with olive oil and freeze. This
+creates a convenient way to add herbs to
+soups, stews, and sauces. \n\n
+3. Ripen bananas in the oven: If you need
+ripe bananas for a recipe but only have
+unripe ones, place them on a baking sheet
+and bake at 300°F for about 15-20 minutes.
+This will help ripen them quickly.\n\n
+
+"4. Soften butter in a ziplock bag: If you need
+softened butter for a recipe but forgot to
+take it out of the refrigerator ahead of time,
+place the butter in a ziplock bag and pound
+it with a rolling pin until it's soft. \n\n"
+
+"5. Use a muffin tin for portion control: Use a
+muffin tin to portion out ingredients like
+chopped vegetables, cheese, and nuts. This
+makes it easy to add the right
+amount of each ingredient to a recipe.\n\n"
+
+"6. Keep brown sugar soft with a slice of
+bread: Place a slice of bread in a container
+with brown sugar to keep it from hardening.
+The bread will absorb the moisture and keep
+the sugar soft. \n\n"
+
+"7. Use a citrus juicer for pomegranates: Cut
+a pomegranate in half and place it in a citrus
+juicer. This will easily separate the seeds
+from the flesh, making it easier to use them
+in recipes.\n\n"
+
 </string>
     <string name="large_text2">
 Ingredient Substitutions: \n\n

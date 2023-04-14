@@ -16,12 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="30"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="0dp">
 
             <ImageView
                 android:id="@+id/TipsImage"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="196dp"
+                android:layout_marginTop="0dp"
                 android:src="@drawable/mise_en_plase" />
 
             <TextView
@@ -45,11 +46,11 @@
 
         <Button
             android:id="@+id/btn_Safety"
-            android:layout_width="wrap_content"
+            android:layout_width="316dp"
             android:layout_height="0dp"
-            android:layout_weight="20"
-            android:layout_marginTop="20dp"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_weight="20"
             android:backgroundTint="@color/green"
             android:fontFamily="@font/alata"
             android:text="@string/button_Safety"
@@ -75,7 +76,7 @@
 
         <Button
             android:id="@+id/btn_Metric"
-            android:layout_width="wrap_content"
+            android:layout_width="316dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="20"
@@ -92,3 +93,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
+

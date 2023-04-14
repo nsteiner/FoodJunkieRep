@@ -143,8 +143,8 @@ public class DefaultRecipeDisplay extends AppCompatActivity {
         btn_checkPantry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int width = 550;
-                int height = 1300;
+                int width = 700;
+                int height = 1850;
 
                 View popUpView = LayoutInflater.from(getBaseContext()).inflate(R.layout.pantrypopup, null);
                 final PopupWindow popupWindow = new PopupWindow(popUpView, width, height, true);

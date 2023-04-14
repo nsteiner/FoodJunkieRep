@@ -56,8 +56,7 @@
                 android:id="@+id/scrollView2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="80"
-android:layout_marginBottom="10dp"
+                android:layout_weight="100"
                 android:fillViewport="true" >
 
                 <TextView
@@ -68,15 +67,10 @@ android:layout_marginBottom="10dp"
                     android:text="@string/large_text"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
+
             </ScrollView>
 
-            <ImageView
-                android:id="@+id/imageViewCook"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="20"
-                android:gravity="bottom"
-                app:srcCompat="@drawable/__steps_banner_revised" />
+
 
         </LinearLayout>
 
